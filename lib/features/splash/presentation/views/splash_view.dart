@@ -1,0 +1,15 @@
+import 'package:ekhtarly_app/features/splash/presentation/views/widgets/splash_view_body.dart';
+import 'package:flutter/material.dart';
+
+class SplashView extends StatelessWidget {
+  const SplashView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      //0xff2C557D
+      backgroundColor: Color(0xffFFFFFF),
+      body: SplashViewBody(),
+    );
+  }
+}
