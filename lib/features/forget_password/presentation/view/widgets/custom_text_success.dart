@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 
 class CustomTextSuccess extends StatelessWidget {
@@ -15,7 +16,7 @@ final TextStyle style;
           const SizedBox(height: 8,),
           Text(text,style:style.copyWith(
             fontWeight: FontWeight.w500,
-            color:const Color(0xff6B7280),) ,
+            color:kThridColor,) ,
             textAlign: TextAlign.center
             ,),
       ],

@@ -86,6 +86,7 @@ IconData? suffixIcon = Icons.visibility;
               child: CustomButton(
                   onPressed:() {
                       if (loginFormKey.currentState!.validate()) {
+                        
                         loginFormKey.currentState!.save();
                         GoRouter.of(context).push(AppRouter.kHomeView);
                       } else {
@@ -110,7 +111,7 @@ IconData? suffixIcon = Icons.visibility;
             ),
         const  Spacer(),
             CustomWidgetRowText(
-              text: 'Haven\'t an account? ', textColor:const Color(0xff6B7280), featureText: 'Register',
+              text: 'Haven\'t an account? ', textColor:kThridColor, featureText: 'Register',
               mainAxisAlignment: MainAxisAlignment.center,
               onTap: () {
                 GoRouter.of(context).push(AppRouter.kRegisterView);

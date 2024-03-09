@@ -28,7 +28,7 @@ class CheckEmailBody extends StatelessWidget {
             ),
             CustomWidgetRowText(
               mainAxisAlignment: MainAxisAlignment.center,
-              text: 'Can\'t get email?', textColor: const Color(0xff6B7280), featureText:  'Resubmit',
+              text: 'Can\'t get email?', textColor: kThridColor, featureText:  'Resubmit',
            onTap: () {
                    GoRouter.of(context).pop();
                   },
