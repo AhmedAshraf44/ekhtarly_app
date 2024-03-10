@@ -26,7 +26,6 @@ class EkhtarlyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-       // color:const Color(0xffE5E5E5),
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
         theme: ThemeData(textTheme:GoogleFonts.interTextTheme(),

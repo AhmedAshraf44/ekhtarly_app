@@ -22,13 +22,16 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
       if (pageNumber == 4) {
         pageNumber = 0;
       }
+       if (pageController.hasClients) {
       pageController.animateToPage(
         pageNumber,
         duration: const Duration(seconds: 1),
         curve: Curves.easeInOutCirc,
       );
       pageNumber++;
-    });
+    }
+  });
+    
   }
 
   @override
@@ -100,7 +103,7 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
                   size: 12,
                   color: pageNumber == index
                       ? kPrimaryColor
-                      : const Color(0xffFFFFFF),
+                      : kAlternateButtonColor,
                       //kAlternateButtonColor,
                       //Colors.grey.shade300,
                 ),
