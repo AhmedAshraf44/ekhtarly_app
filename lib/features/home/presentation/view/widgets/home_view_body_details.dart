@@ -1,31 +1,5 @@
-import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/core/utils/styles.dart';
-import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_tips_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-class HomeViewBodyDetails extends StatelessWidget {
-  const HomeViewBodyDetails({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-          child: CustomTipsSlider(),
-        ),
-         Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-                  child: Text('Newest Laptop',style: Styles.textStyle16Smei,),
-                ),
-        CustomTipsGridView()
-      ],
-    );
-  }
-}
+import '../../../../../core/utils/widgets/custom_sliver_list_item.dart';
 
 class CustomTipsGridView extends StatelessWidget {
   const CustomTipsGridView({super.key});
@@ -33,163 +7,16 @@ class CustomTipsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-       // crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        mainAxisExtent: 300,
+       crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
+        mainAxisExtent: MediaQuery.of(context).size.height * .27,
       ),
       delegate: SliverChildBuilderDelegate(
         childCount: 6,
-        (context, index) =>  Padding(
-          padding: const EdgeInsets.only(right: 10,left: 10),
-          child: Container(
-            decoration: const BoxDecoration(
-              //color: kSecondaryColor,
-              color: kAlternateButtonColor,
-             //color: Color(0xffFFFFFF),
-              borderRadius: BorderRadius.all(
-                Radius.circular(15),
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                    borderRadius:const BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
-                    child: Image.network(
-                      'https://wallpapers.com/images/featured/laptop-murjp1nk4lp1idlt.jpg',
-                      fit: BoxFit.cover,
-                      height: 190,
-                    )),
-                   const SizedBox(height: 10,),
-                const Flexible(
-                   child:  Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 10),
-                      child: Text('Laptop Wallpapers',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      style: Styles.textStyle16Smei,),
-                    ),
-                 ),
-                  Padding(
-                    padding:const EdgeInsets.symmetric(horizontal: 10,
-                    vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(r'$ 500',style: Styles.textStyle14.copyWith(
-                          color: kThridColor,
-                        ),),
-                        const Icon(Icons.favorite_border,color:  kThridColor,)
-                      ],
-                    ),
-                  )
-              ],
-            ),
-          ),
-        ),
+        (context, index) =>const  CustomSliverListItem(),
       ),);
     
-  //   GridView.builder(
-  //    shrinkWrap: true,
-  //     physics: const NeverScrollableScrollPhysics(),
-  //     itemCount:6,
-  //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-  //       crossAxisCount: 2,
-  //       crossAxisSpacing: 12,
-  //       mainAxisSpacing: 12,
-  //       mainAxisExtent: 300,
-  //     ),
-  //     itemBuilder: (context, index) {
-  //       return Container(
-  //         decoration: const BoxDecoration(
-  //           //color: kSecondaryColor,
-  //           color: kAlternateButtonColor,
-  //          //color: Color(0xffFFFFFF),
-
-  //           borderRadius: BorderRadius.all(
-  //             Radius.circular(15),
-  //           ),
-  //         ),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             ClipRRect(
-  //                 borderRadius:const BorderRadius.only(
-  //                   topLeft: Radius.circular(15),
-  //                   topRight: Radius.circular(15),
-  //                 ),
-  //                 child: Image.network(
-  //                   'https://wallpapers.com/images/featured/laptop-murjp1nk4lp1idlt.jpg',
-  //                   fit: BoxFit.cover,
-  //                   height: 190,
-  //                 )),
-  //                const SizedBox(height: 10,),
-  //              const Padding(
-  //                 padding:  EdgeInsets.symmetric(horizontal: 10),
-  //                 child: Expanded(
-  //                   child:  Text('Laptop Wallpapers',
-  //                   overflow: TextOverflow.ellipsis,
-  //                   maxLines: 2,
-  //                   style: Styles.textStyle16Smei,),
-  //                 ),
-  //               ),
-  //               Padding(
-  //                 padding:const EdgeInsets.symmetric(horizontal: 10,
-  //                 vertical: 10),
-  //                 child: Row(
-  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                   children: [
-  //                     Text(r'$ 500',style: Styles.textStyle14.copyWith(
-  //                       color: kThridColor,
-  //                     ),),
-  //                     const Icon(Icons.favorite_border,color:  kThridColor,)
-  //                   ],
-  //                 ),
-  //               )
-  //           ],
-  //         ),
-  //       );
-  //     },
-  //   );
   }
 }
-
-// class CustomTipsListView extends StatelessWidget {
-//   const CustomTipsListView({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: MediaQuery.of(context).size.height * .16,
-//       child: ListView.builder(
-//         scrollDirection: Axis.horizontal,
-//         physics: const BouncingScrollPhysics(),
-//         itemCount: 3,
-//         itemBuilder: (context, index) {
-//           return const Padding(
-//             padding: EdgeInsets.only(right: 11),
-//             child: CustomTipItem(),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
-
-// class CustomTipItem extends StatelessWidget {
-//   const CustomTipItem({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Image.asset(
-//       'assets/images/Group 3115.png',
-//       fit: BoxFit.fill,
-//     );
-//   }
-// }
-

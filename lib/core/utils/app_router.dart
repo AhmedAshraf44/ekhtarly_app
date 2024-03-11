@@ -7,7 +7,9 @@ import 'package:ekhtarly_app/features/forget_password/presentation/view/success_
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
+import '../../features/favourite/presentation/view/favourite_view.dart';
 import '../../features/forget_password/presentation/view/forget_passwoed_view.dart';
+import '../../features/search/presentation/view/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
@@ -20,6 +22,9 @@ static const kForgetPasswordView = '/ForgetPasswordView';
 static const kCheckEmailView = '/CheckEmailView';
 static const kChangeNewPasswordView = '/ChangeNewPasswordView';
 static const kSuccessView = '/SuccessView';
+static const kSearchView = '/SearchView';
+static const kFavouriteView = '/FavouriteView';
+
 
 static final router = GoRouter(
   routes: 
@@ -59,6 +64,14 @@ static final router = GoRouter(
       GoRoute(
       path: kSuccessView,
       builder: (context, state) => const SuccessView(),
+     ),
+     GoRoute(
+      path: kSearchView,
+      builder: (context, state) => const SearchView(),
+     ),
+          GoRoute(
+      path: kFavouriteView,
+      builder: (context, state) => const FavouriteView(),
      ),
   ]
   );

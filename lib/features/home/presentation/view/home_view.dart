@@ -2,7 +2,10 @@ import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body.dart';
+import 'package:ekhtarly_app/features/search/presentation/view/search_view.dart';
 import 'package:flutter/material.dart';
+
+import '../../../favourite/presentation/view/favourite_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -16,8 +19,9 @@ class _HomeViewState extends State<HomeView> {
 
   List screens = const [
     HomeViewBody(),
+    SearchView(),
     HomeViewBody(),
-    HomeViewBody(),
+    FavouriteView(),
   ];
 
   changeTab(int index) {
@@ -45,6 +49,12 @@ class _HomeViewState extends State<HomeView> {
             color: kPrimaryColor,
             size: 30,
           )),
+          CurvedNavigationBarItem(
+              child: Icon(
+            Icons.favorite,
+            color: kPrimaryColor,
+            size: 30,
+          )),
  ];
  
 
@@ -57,7 +67,6 @@ class _HomeViewState extends State<HomeView> {
       body: screens[selectedTab],
       bottomNavigationBar: CurvedNavigationBar(
         buttonBackgroundColor: Colors.blueAccent.shade100,
-       //buttonBackgroundColor: Colors.blue.shade100,
         backgroundColor: Colors.transparent,
         height: 60,
         index: selectedTab,

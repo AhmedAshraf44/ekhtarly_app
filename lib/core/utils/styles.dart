@@ -1,5 +1,6 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract class Styles {
   static const TextStyle splashtext = TextStyle(
@@ -52,5 +53,10 @@ abstract class Styles {
   static const textStyle10 = TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.w400,
+  );
+  static final googleFontsPoppins = GoogleFonts.poppins(
+    fontWeight: FontWeight.w600,
+    fontSize: 16,
+    color: const Color(0xff0D0D26),
   );
 }

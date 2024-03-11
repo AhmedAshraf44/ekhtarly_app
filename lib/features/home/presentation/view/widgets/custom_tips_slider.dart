@@ -19,7 +19,7 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
   getTimer() {
     return Timer.periodic(const Duration(seconds: 3), (timer) {
       // pageNumber == 4
-      if (pageNumber == 4) {
+      if (pageNumber > 4) {
         pageNumber = 0;
       }
        if (pageController.hasClients) {
@@ -103,7 +103,7 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
                   size: 12,
                   color: pageNumber == index
                       ? kPrimaryColor
-                      : kAlternateButtonColor,
+                      :const Color(0xff95969D),
                       //kAlternateButtonColor,
                       //Colors.grey.shade300,
                 ),
