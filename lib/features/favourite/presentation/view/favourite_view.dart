@@ -1,7 +1,6 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/features/favourite/presentation/view/widgets/favourite_view_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../../core/utils/styles.dart';
 

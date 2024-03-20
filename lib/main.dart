@@ -1,7 +1,7 @@
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/service_locator.dart';
 import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo_impl.dart';
-import 'package:ekhtarly_app/features/authentication/login/manger/login_cubit/login_cubit.dart';
+import 'package:ekhtarly_app/features/authentication/manger/register_cubit/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +17,8 @@ class EkhtarlyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return 
+    MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => RegisterCubit(
@@ -25,12 +26,13 @@ class EkhtarlyApp extends StatelessWidget {
           ),
         ),
       ],
-      child: MaterialApp.router(
+      child:
+       MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
         theme: ThemeData(textTheme:GoogleFonts.interTextTheme(),
         ),
-      ),
+       ),
     );
   }
 }

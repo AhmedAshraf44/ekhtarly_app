@@ -15,4 +15,4 @@ void setupServiceLocator() {
     ),
   );
  
-}
+ }

@@ -15,7 +15,7 @@ class CustomAllContentTextFormField extends StatelessWidget {
       required this.prefixIconColor,
       this.suffixIcon ,
       this.suffixIconColor = kBlackColor,
-      this.obscureText = false, this.onPressed});
+      this.obscureText = false, this.onPressed, this.validator});
   final void Function(String)? onChanged;
   final Color? colorTopTextFeild;
   final String textFormField;
@@ -25,7 +25,8 @@ class CustomAllContentTextFormField extends StatelessWidget {
   final IconData? suffixIcon;
   final Color? suffixIconColor;
   final bool obscureText;
-   final Function()? onPressed;
+  final Function()? onPressed;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,6 +40,7 @@ class CustomAllContentTextFormField extends StatelessWidget {
           height: 8,
         ),
         CustomTextFormField(
+          validator: validator,
           text: textFormField,
           onChanged: onChanged,
           prefixIcon: icon,

@@ -1,5 +1,4 @@
 
-import 'package:ekhtarly_app/features/authentication/login/view/Login_view.dart';
 import 'package:ekhtarly_app/features/authentication/registration/view/register_view.dart';
 import 'package:ekhtarly_app/features/forget_password/presentation/view/change_new_password_view.dart';
 import 'package:ekhtarly_app/features/forget_password/presentation/view/check_email_view.dart';
@@ -7,6 +6,7 @@ import 'package:ekhtarly_app/features/forget_password/presentation/view/success_
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
+import '../../features/authentication/login/view/login_view.dart';
 import '../../features/favourite/presentation/view/favourite_view.dart';
 import '../../features/forget_password/presentation/view/forget_passwoed_view.dart';
 import '../../features/search/presentation/view/search_view.dart';
