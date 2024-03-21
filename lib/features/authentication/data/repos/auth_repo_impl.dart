@@ -55,4 +55,23 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+  
+  @override
+  Future<Either<Failure, dynamic>> otpVerifyEmail({required String email, required String code})async {
+try {
+
+  var data= await apiService.patch(endpoint: 'verify', data: 
+  {
+    'email': email,
+    'code' : code,
+  });
+  log('true data :$data');
+      return right(data);
+} catch (e) {
+  if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
 }
+  }

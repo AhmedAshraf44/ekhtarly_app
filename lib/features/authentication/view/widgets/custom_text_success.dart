@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../constants.dart';
-import '../../../../../core/utils/styles.dart';
+import '../../../../constants.dart';
+import '../../../../core/utils/styles.dart';
 
 class CustomTextSuccess extends StatelessWidget {
   const CustomTextSuccess({super.key, required this.text, this.style=Styles.textStyle16Regular});

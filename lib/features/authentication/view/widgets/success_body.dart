@@ -1,12 +1,12 @@
-import 'package:ekhtarly_app/features/forget_password/presentation/view/widgets/custom_text_success.dart';
+import 'package:ekhtarly_app/features/authentication/view/widgets/custom_text_success.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 
-import '../../../../../constants.dart';
-import '../../../../../core/utils/app_router.dart';
-import '../../../../../core/utils/styles.dart';
-import '../../../../../core/utils/widgets/custom_button.dart';
+import '../../../../constants.dart';
+import '../../../../core/utils/app_router.dart';
+import '../../../../core/utils/styles.dart';
+import '../../../../core/utils/widgets/custom_button.dart';
 
 class SuccessBody extends StatelessWidget {
   const SuccessBody({super.key});

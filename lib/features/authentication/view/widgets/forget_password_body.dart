@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 
-import '../../../../../constants.dart';
-import '../../../../../core/utils/widgets/custom_all_content_text_form_field.dart';
+import '../../../../constants.dart';
+import '../../../../core/utils/widgets/custom_all_content_text_form_field.dart';
+import '../../../../core/utils/widgets/input_validation_mixin.dart';
 import 'custom_text_forget_password.dart';
-import '../../../../../core/utils/widgets/custom_widget_row_text.dart';
+import '../../../../core/utils/widgets/custom_widget_row_text.dart';
 
-class ForgetPasswordBody extends StatefulWidget {
+class ForgetPasswordBody extends StatefulWidget with InputValidationMixin{
   const ForgetPasswordBody({super.key});
 
   @override
@@ -20,7 +21,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
   GlobalKey <FormState> forgetPasswordForm = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   bool validate = false;
-
+  String ? email;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,14 +44,23 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
               height:54,
             ),
             CustomAllContentTextFormField(
+              validator: (email) {
+                      if (email?.isEmpty ?? true) {
+                        return 'Email is Required';
+                      } else if (!widget.isEmailValid(email.toString())) {
+                        return 'Email address is invalid, Please enter a valid email';
+                      } else {
+                        return null;
+                      }
+                    },
             textFormField: 'Eg namaemail@emailkamu.com ',
             topTextFeild: 'Email address', 
             colorTopTextFeild: validate ? kSecondaryColor : kBlackColor,
-            onChanged:(p0) {
+            onChanged:(value) {
               {
+                email = value;
                 setState(() {
                 validate =forgetPasswordForm.currentState!.validate();
-
                 });
               }
               
@@ -74,7 +84,9 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
               onPressed: (){
                 if(forgetPasswordForm.currentState!.validate())
                 {
-                 GoRouter.of(context).push(AppRouter.kCheckEmailView);
+                GoRouter.of(context).push(AppRouter.kOtpView,extra: email);
+
+                // GoRouter.of(context).push(AppRouter.kCheckEmailView);
                 }else {
                   setState(() {
                     validate = false ;

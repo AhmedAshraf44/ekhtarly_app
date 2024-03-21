@@ -13,7 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../../../../core/utils/widgets/custom_all_content_text_form_field.dart';
 import '../../../../../../core/utils/widgets/custom_widget_row_text.dart';
-import 'input_validation_mixin.dart';
+import '../../../../../../core/utils/widgets/input_validation_mixin.dart';
 
 class RegisterBodyDetails extends StatefulWidget with InputValidationMixin {
   const RegisterBodyDetails({super.key});
@@ -89,7 +89,7 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                       if (email?.isEmpty ?? true) {
                         return 'Email is Required';
                       } else if (!widget.isEmailValid(email.toString())) {
-                        return 'Enter a valid email address';
+                        return 'Email address is invalid, Please enter a valid email';
                       } else {
                         return null;
                       }
@@ -113,7 +113,7 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                       if (password?.isEmpty ?? true) {
                         return 'Password is Required';
                       } else if (!widget.isPasswordValid(password.toString())) {
-                        return 'Enter a valid password';
+                        return 'At least 8 characters, Please enter a valid password';
                       } else {
                         return null;
                       }

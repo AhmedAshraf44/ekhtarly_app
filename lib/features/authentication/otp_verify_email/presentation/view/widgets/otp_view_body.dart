@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:ekhtarly_app/core/utils/widgets/custom_widget_row_text.dart';
 import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/widgets/custom_text_otp.dart';
-import 'package:ekhtarly_app/features/forget_password/presentation/view/widgets/custom_text_forget_password.dart';
+import 'package:ekhtarly_app/features/authentication/view/widgets/custom_text_forget_password.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../../../constants.dart';
