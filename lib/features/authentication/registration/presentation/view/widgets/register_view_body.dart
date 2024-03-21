@@ -1,4 +1,4 @@
-import 'package:ekhtarly_app/features/authentication/registration/view/widgets/register_body_details.dart';
+import 'package:ekhtarly_app/features/authentication/registration/presentation/view/widgets/register_body_details.dart';
 import 'package:flutter/material.dart';
 
 class RegisterViewBody extends StatelessWidget {

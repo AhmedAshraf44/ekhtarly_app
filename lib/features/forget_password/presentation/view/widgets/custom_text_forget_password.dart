@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 
 class CustomTextForgetPassword extends StatelessWidget {
@@ -24,7 +22,7 @@ final TextStyle style;
             ),
             Text(
               textDetails,
-              style: style..copyWith(color: kSecondaryColor),
+              style: style,
             ),
       ],
     );

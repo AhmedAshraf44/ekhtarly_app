@@ -1,12 +1,13 @@
 
-import 'package:ekhtarly_app/features/authentication/registration/view/register_view.dart';
+import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/otp_view.dart';
+import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
 import 'package:ekhtarly_app/features/forget_password/presentation/view/change_new_password_view.dart';
 import 'package:ekhtarly_app/features/forget_password/presentation/view/check_email_view.dart';
 import 'package:ekhtarly_app/features/forget_password/presentation/view/success_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
-import '../../features/authentication/login/view/login_view.dart';
+import '../../features/authentication/login/presentation/view/login_view.dart';
 import '../../features/favourite/presentation/view/favourite_view.dart';
 import '../../features/forget_password/presentation/view/forget_passwoed_view.dart';
 import '../../features/search/presentation/view/search_view.dart';
@@ -24,7 +25,7 @@ static const kChangeNewPasswordView = '/ChangeNewPasswordView';
 static const kSuccessView = '/SuccessView';
 static const kSearchView = '/SearchView';
 static const kFavouriteView = '/FavouriteView';
-
+static const kOtpView ='/OtpView';
 
 static final router = GoRouter(
   routes: 
@@ -69,9 +70,15 @@ static final router = GoRouter(
       path: kSearchView,
       builder: (context, state) => const SearchView(),
      ),
-          GoRoute(
+      GoRoute(
       path: kFavouriteView,
       builder: (context, state) => const FavouriteView(),
+     ),
+      GoRoute(
+      path: kOtpView,
+      builder: (context, state) {
+         final email = state.extra as String?;
+        return  OtpView(email: email,);}
      ),
   ]
   );

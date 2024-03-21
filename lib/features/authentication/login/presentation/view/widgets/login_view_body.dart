@@ -1,4 +1,4 @@
-import 'package:ekhtarly_app/features/authentication/login/view/widgets/login_body_details.dart';
+import 'package:ekhtarly_app/features/authentication/login/presentation/view/widgets/login_body_details.dart';
 import 'package:flutter/material.dart';
 
 

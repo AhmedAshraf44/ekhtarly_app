@@ -11,12 +11,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../../../../../../../core/utils/widgets/custom_all_content_text_form_field.dart';
-import '../../../../../core/utils/widgets/custom_widget_row_text.dart';
-import '../../../data/models/auth_model/auth_model.dart';
+import '../../../../../../../../core/utils/widgets/custom_all_content_text_form_field.dart';
+import '../../../../../../core/utils/widgets/custom_widget_row_text.dart';
 import 'input_validation_mixin.dart';
 
-class RegisterBodyDetails extends StatefulWidget with InputValidationMixin{
+class RegisterBodyDetails extends StatefulWidget with InputValidationMixin {
   const RegisterBodyDetails({super.key});
 
   @override
@@ -40,7 +39,8 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
       listener: (context, state) {
         if (state is RegisterSuccess) {
           //showSnackBar(context, 'sucess');
-          GoRouter.of(context).push(AppRouter.kHomeView);
+         // GoRouter.of(context).push(AppRouter.kHomeView);
+          GoRouter.of(context).push(AppRouter.kOtpView,extra: email);
         } else if (state is RegisterFailure) {
           showSnackBar(context, state.errorMessage);
         }
@@ -88,11 +88,9 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                     validator: (email) {
                       if (email?.isEmpty ?? true) {
                         return 'Email is Required';
-                      } else if(!widget.isEmailValid(email.toString()))
-                      {
-                       return 'Enter a valid email address';
-                      }
-                      else {
+                      } else if (!widget.isEmailValid(email.toString())) {
+                        return 'Enter a valid email address';
+                      } else {
                         return null;
                       }
                     },
@@ -114,11 +112,9 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                     validator: (password) {
                       if (password?.isEmpty ?? true) {
                         return 'Password is Required';
-                      }else if(!widget.isPasswordValid(password.toString()))
-                      {
+                      } else if (!widget.isPasswordValid(password.toString())) {
                         return 'Enter a valid password';
-                      }
-                       else {
+                      } else {
                         return null;
                       }
                     },
@@ -150,7 +146,8 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                       child: CustomButton(
                           onPressed: () {
                             setState(() {
-                              validate=registerFormKey.currentState!.validate();
+                              validate =
+                                  registerFormKey.currentState!.validate();
                             });
                             if (registerFormKey.currentState!.validate()) {
                               registerFormKey.currentState!.save();
