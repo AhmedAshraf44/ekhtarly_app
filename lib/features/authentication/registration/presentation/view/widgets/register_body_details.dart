@@ -1,7 +1,4 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/core/functions/show_snack_bar.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_text_button.dart';
@@ -33,7 +30,6 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
   String? email;
   String? password;
   String? name;
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
@@ -41,7 +37,7 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
         if (state is RegisterSuccess) {
           //showSnackBar(context, 'sucess');
          // GoRouter.of(context).push(AppRouter.kHomeView);
-          GoRouter.of(context).push(AppRouter.kOtpView,extra: email);
+          GoRouter.of(context).push(AppRouter.kOtpView,extra: email, );
         } else if (state is RegisterFailure) {
            ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

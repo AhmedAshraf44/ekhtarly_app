@@ -78,21 +78,37 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, dynamic>> resendVerifyCode(
       {required String email}) async {
     try {
-  var data = await apiService.post(
-    endpoint: 'sendVC',
-    data: {
-      'email': email,
-    },
-  );
-  return right(data);
-} catch (e) {
-  if (e is DioException )
-  {
-    return left(ServerFailure.formDioError(e));
-  }else
-  {
-    return left(ServerFailure(e.toString()));
+      var data = await apiService.post(
+        endpoint: 'sendVC',
+        data: {
+          'email': email,
+        },
+      );
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
   }
-}
- }
+
+  @override
+  Future<Either<Failure, dynamic>> forgotPasswordSendCode(
+      {required String email}) async {
+    try {
+      var data =
+          await apiService.post(endpoint: 'forgotPassword-sendCode', data: {
+        "email": email,
+      });
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

@@ -1,12 +1,14 @@
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
-
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../../constants.dart';
+import '../../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../../core/utils/widgets/custom_all_content_text_form_field.dart';
 import '../../../../../../core/utils/widgets/input_validation_mixin.dart';
+import '../../../../manger/otp_forget_password_cubit/otp_forget_password_cubit.dart';
 import 'custom_text_forget_password.dart';
 import '../../../../../../core/utils/widgets/custom_widget_row_text.dart';
 
@@ -72,7 +74,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
           ),
           CustomWidgetRowText(
             featureText:'Sign in' ,
-            text: 'Remember the password?',
+            text: 'Remember the password? ',
             textColor: kSecondaryColor,
             onTap: () {
                   GoRouter.of(context).pop();
@@ -80,25 +82,42 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
           ),
          const  Spacer(flex: 4),
            Center(
-             child: CustomButton(
-              onPressed: (){
-                if(forgetPasswordForm.currentState!.validate())
-                {
-                GoRouter.of(context).push(AppRouter.kOtpView,extra: email);
-
-                // GoRouter.of(context).push(AppRouter.kCheckEmailView);
-                }else {
-                  setState(() {
-                    validate = false ;
-                   autovalidateMode = AutovalidateMode.always;
-                  });
-                  
-                }
-              }, 
-             text: 'Submit', 
-             colorButton: validate ? kPrimaryColor : kAlternateButtonColor,
-                     colorText:  validate ? Colors.white : kButtonColor),
-           ),
+             child: BlocConsumer<OtpForgetPasswordCubit, OtpForgetPasswordState>(
+        listener: (context, state) {
+          if (state is OtpForgetPasswordSuccess) {
+            GoRouter.of(context).push(AppRouter.kOtpForgetPasswordView,extra: email);
+          } else if (state is OtpForgetPasswordFailure) {
+            showSnackBar(context, state.errorMessage);
+          }
+        },
+        builder: (context, state) =>
+        //  ModalProgressHUD(
+        //   inAsyncCall: state is OtpForgetPasswordLoading,
+              //  child: 
+              state is OtpForgetPasswordLoading?const Center(child: CircularProgressIndicator()):
+                  CustomButton(
+                  onPressed: (){
+                    if(forgetPasswordForm.currentState!.validate())
+                    {
+                      BlocProvider.of<OtpForgetPasswordCubit>(context).forgotPasswordSendCode(email:email!);
+                      //BlocProvider.of<OtpForgetPasswordCubit>(context).
+                   // GoRouter.of(context).push(AppRouter.kOtpForgetPasswordView,extra: email);
+                 
+                    // GoRouter.of(context).push(AppRouter.kCheckEmailView);
+                    }else {
+                      setState(() {
+                        validate = false ;
+                       autovalidateMode = AutovalidateMode.always;
+                      });
+                      
+                    }
+                  }, 
+                 text: 'Submit', 
+                 colorButton: validate ? kPrimaryColor : kAlternateButtonColor,
+                         colorText:  validate ? Colors.white : kButtonColor),
+               ),
+             ),
+           //),
             const  Spacer(),
           ],
         ),
