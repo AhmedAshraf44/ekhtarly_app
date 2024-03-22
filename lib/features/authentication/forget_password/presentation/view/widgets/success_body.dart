@@ -36,7 +36,7 @@ class SuccessBody extends StatelessWidget {
               flex: 2,
              ),
           CustomButton(onPressed: (){
-                    GoRouter.of(context).push(AppRouter.kRegisterView);
+                    GoRouter.of(context).push(AppRouter.kLoginView);
                   },
            text: 'Sign in',
             colorButton: kPrimaryColor,

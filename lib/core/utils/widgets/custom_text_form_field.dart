@@ -13,7 +13,7 @@ class CustomTextFormField extends StatelessWidget{
       this.suffixIcon =Icons.visibility_off,
       this.suffixIconColor ,
       required this.obscureText , this.onPressed,
-       this.validator});
+       this.validator,});
   final String text;
   final void Function(String)? onChanged;
   final IconData prefixIcon;

@@ -6,6 +6,7 @@ Future<Either<Failure,dynamic>>  loginUser({required String email,required Strin
 Future<Either<Failure,dynamic>>  otpVerifyEmail({required String email,required String code});
 Future<Either<Failure,dynamic>>  resendVerifyCode({required String email});
 Future<Either<Failure,dynamic>>  forgotPasswordSendCode({required String email});
-
+Future<Either<Failure,dynamic>>  forgotPasswordSubmitCode({required String email, required String code});
+Future<Either<Failure,dynamic>>  forgotPasswordChange({required String email, required String code,required String password});
 }
 //List<AuthModel>

@@ -46,7 +46,7 @@ class AuthRepoImpl implements AuthRepo {
           "password": password,
         },
       );
-      log('true data :$data');
+      log('$data');
       return right(data);
     } catch (e) {
       if (e is DioException) {
@@ -64,7 +64,7 @@ class AuthRepoImpl implements AuthRepo {
         'email': email,
         'code': code,
       });
-      log('true data :$data');
+      log('$data');
       return right(data);
     } catch (e) {
       if (e is DioException) {
@@ -109,6 +109,42 @@ class AuthRepoImpl implements AuthRepo {
       } else {
         return left(ServerFailure(e.toString()));
       }
+    }
+  }
+  
+  @override
+  Future<Either<Failure, dynamic>> forgotPasswordSubmitCode({required String email, required String code,}) async{
+    try {
+      var data = await apiService.post(endpoint: 'forgotPassword-submitCode', data: {
+        'email': email,
+        'code': code,
+      });
+      log('$data');
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, dynamic>> forgotPasswordChange({required String email, required String code, required String password}) async{
+     
+    try {
+      var data = await apiService.patch(endpoint: 'forgotPassword-change', data: {
+        'email': email,
+        'code': code,
+        'password' : password ,
+      });
+      log('$data');
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 }

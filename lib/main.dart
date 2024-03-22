@@ -1,7 +1,9 @@
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/service_locator.dart';
 import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo_impl.dart';
-import 'package:ekhtarly_app/features/authentication/manger/otp_forget_password_cubit/otp_forget_password_cubit.dart';
+import 'package:ekhtarly_app/features/authentication/manger/forgot_password_change_cubit/forgot_password_change_cubit.dart';
+import 'package:ekhtarly_app/features/authentication/manger/forgot_password_send_code_cubit/forgot_password_send_code_cubit.dart';
+import 'package:ekhtarly_app/features/authentication/manger/forgot_password_submit_code_cubit/forgot_password_submit_code_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/resend_cubit/resned_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/login_cubit/login_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cubit/otp_cubit.dart';
@@ -45,7 +47,17 @@ class EkhtarlyApp extends StatelessWidget {
           ),
         ),
          BlocProvider(
-          create: (context) => OtpForgetPasswordCubit(
+          create: (context) => ForgotPasswordSendCodeCubit(
+           getIt.get<AuthRepoImpl>(),
+          ),
+        ),
+         BlocProvider(
+          create: (context) => ForgotPasswordSubmitCodeCubit(
+           getIt.get<AuthRepoImpl>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ForgotPasswordChangeCubit(
            getIt.get<AuthRepoImpl>(),
           ),
         ),

@@ -2,14 +2,13 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../../../constants.dart';
 import '../../../../../../core/functions/show_snack_bar.dart';
-import '../../../../../../core/utils/app_router.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../core/utils/widgets/custom_button.dart';
 import '../../../../../../core/utils/widgets/custom_widget_row_text.dart';
+import '../../../../manger/forgot_password_submit_code_cubit/forgot_password_submit_code_cubit.dart';
 import '../../../../manger/resend_cubit/resned_cubit.dart';
 import '../../../../otp_verify_email/presentation/view/widgets/custom_text_otp.dart';
 
@@ -170,7 +169,8 @@ class _OtpForgetPasswordViewBodyState extends State<OtpForgetPasswordViewBody> {
             child: CustomButton(
                 onPressed: () {
                   if (validate == true) {
-                     GoRouter.of(context).push(AppRouter.kCheckEmailView);
+                    BlocProvider.of<ForgotPasswordSubmitCodeCubit>(context).forgotPasswordSubmitCode(email: widget.email!, code: code!);
+                    BlocProvider.of<ForgotPasswordSubmitCodeCubit>(context).code=code!;
                   }
                 },
                 text: 'Confirm',

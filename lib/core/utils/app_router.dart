@@ -4,9 +4,9 @@ import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
-import '../../features/authentication/forget_password/presentation/view/check_email_view.dart';
 import '../../features/authentication/forget_password/presentation/view/otp_forget_passwoed_view.dart';
 import '../../features/authentication/forget_password/presentation/view/success_view.dart';
+import '../../features/authentication/forget_password/presentation/view_models/model.dart';
 import '../../features/authentication/login/presentation/view/login_view.dart';
 import '../../features/favourite/presentation/view/favourite_view.dart';
 import '../../features/authentication/forget_password/presentation/view/forget_passwoed_view.dart';
@@ -20,7 +20,7 @@ static const kRegisterView = '/RegisterView';
 static const kLoginView = '/LoginView';
 static const kHomeView = '/HomeView';
 static const kForgetPasswordView = '/ForgetPasswordView';
-static const kCheckEmailView = '/CheckEmailView';
+// static const kCheckEmailView = '/CheckEmailView';
 static const kChangeNewPasswordView = '/ChangeNewPasswordView';
 static const kSuccessView = '/SuccessView';
 static const kSearchView = '/SearchView';
@@ -56,13 +56,16 @@ static final router = GoRouter(
     path: kForgetPasswordView,
     builder: (context, state) =>const ForgetPasswordView(),
     ),
-     GoRoute(
-      path: kCheckEmailView,
-      builder: (context, state) => const CheckEmailView(),
-     ),
+    //  GoRoute(
+    //   path: kCheckEmailView,
+    //   builder: (context, state) => const CheckEmailView(),
+    //  ),
       GoRoute(
       path: kChangeNewPasswordView,
-      builder: (context, state) => const ChangeNewPasswordView(),
+      
+      builder: (context, state) {
+         final model = state.extra as Model?;
+       return  ChangeNewPasswordView(model:model!); },
      ),
       GoRoute(
       path: kSuccessView,

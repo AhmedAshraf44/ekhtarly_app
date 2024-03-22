@@ -15,7 +15,7 @@ class CustomAllContentTextFormField extends StatelessWidget {
       required this.prefixIconColor,
       this.suffixIcon ,
       this.suffixIconColor = kBlackColor,
-      this.obscureText = false, this.onPressed, this.validator});
+      this.obscureText = false, this.onPressed, this.validator,});
   final void Function(String)? onChanged;
   final Color? colorTopTextFeild;
   final String textFormField;
