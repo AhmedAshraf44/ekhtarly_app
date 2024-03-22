@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/styles.dart';
+import '../../../../../../core/utils/styles.dart';
 
 class CustomTextForgetPassword extends StatelessWidget {
   const CustomTextForgetPassword({super.key, required this.text, required this.textDetails,this.style = Styles.textStyle16Regular,});

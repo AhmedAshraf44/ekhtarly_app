@@ -5,7 +5,7 @@ import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intr
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/login/presentation/view/login_view.dart';
 import '../../features/favourite/presentation/view/favourite_view.dart';
-import '../../features/authentication/view/forget_passwoed_view.dart';
+import '../../features/authentication/forget_password/presentation/view/forget_passwoed_view.dart';
 import '../../features/search/presentation/view/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 

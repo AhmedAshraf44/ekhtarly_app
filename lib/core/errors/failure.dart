@@ -37,17 +37,17 @@ class ServerFailure extends Failure {
   }
 
   factory ServerFailure.formBadResponse(int statusCode, dynamic response) {
-    if (statusCode == 400 || statusCode == 401 ) {
+    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       log('statusCode : $statusCode');
       log('response : $response');
-      return ServerFailure("not valid email");
-      
-    } else if (statusCode == 403) {
-      log('response : $response');
-      log('statusCode : $statusCode');
       return ServerFailure(response['message']);
+    //else if (statusCode == 403) {
+    //   log('response : $response');
+    //   log('statusCode : $statusCode');
+    //   return ServerFailure(response['message']);
     }else if (statusCode == 404) {
-      return ServerFailure('Your request not found, Please try later!');
+      return ServerFailure(response['message']);
+      //return ServerFailure('Your request not found, Please try later!');
     } else if (statusCode == 500) {
       return ServerFailure('Internal Server error, Please try later');
     } else {

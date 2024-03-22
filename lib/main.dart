@@ -1,6 +1,8 @@
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/service_locator.dart';
 import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo_impl.dart';
+import 'package:ekhtarly_app/features/authentication/manger/login_cubit/login_cubit.dart';
+import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cubit/otp_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/register_cubit/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +24,16 @@ class EkhtarlyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => RegisterCubit(
+           getIt.get<AuthRepoImpl>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => LoginCubit(
+           getIt.get<AuthRepoImpl>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => OtpCubit(
            getIt.get<AuthRepoImpl>(),
           ),
         ),
