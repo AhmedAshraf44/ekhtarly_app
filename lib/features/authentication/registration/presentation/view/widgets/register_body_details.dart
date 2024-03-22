@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../../../../core/utils/widgets/custom_all_content_text_form_field.dart';
+import '../../../../../../core/utils/styles.dart';
 import '../../../../../../core/utils/widgets/custom_widget_row_text.dart';
 import '../../../../../../core/utils/widgets/input_validation_mixin.dart';
 
@@ -42,7 +43,14 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
          // GoRouter.of(context).push(AppRouter.kHomeView);
           GoRouter.of(context).push(AppRouter.kOtpView,extra: email);
         } else if (state is RegisterFailure) {
-          showSnackBar(context, state.errorMessage);
+           ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text( state.errorMessage,style: Styles.textStyle12.copyWith(color: Colors.white),),
+        backgroundColor: kPrimaryColor,
+         //shape:const StadiumBorder()
+      ),
+    );
+      //    showSnackBar(context, state.errorMessage);
         }
       },
       builder: (context, state) {

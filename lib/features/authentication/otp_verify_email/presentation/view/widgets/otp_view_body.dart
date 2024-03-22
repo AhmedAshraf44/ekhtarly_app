@@ -4,7 +4,7 @@ import 'package:ekhtarly_app/core/functions/show_snack_bar.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_widget_row_text.dart';
-import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo.dart';
+import 'package:ekhtarly_app/features/authentication/manger/cubit/resned_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cubit/otp_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cubit/otp_state.dart';
 import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/widgets/custom_text_otp.dart';
@@ -20,10 +20,8 @@ class OtpViewBody extends StatefulWidget {
   const OtpViewBody({
     super.key,
     required this.email,
-    required this.authRepo,
   });
   final String? email;
-  final AuthRepo authRepo;
   @override
   State<OtpViewBody> createState() => _OtpViewBodyState();
 }
@@ -35,25 +33,25 @@ class _OtpViewBodyState extends State<OtpViewBody> {
       StreamController<ErrorAnimationType>();
   TextEditingController textEditingController = TextEditingController();
   int start = 30;
-  bool wait =false ;
+  bool wait = false;
   void startTimer() {
     start = 30;
     const oneSec = Duration(seconds: 1);
     Timer _timer = Timer.periodic(oneSec, (timer) {
       if (start == 0) {
-        wait = false ;
+        wait = false;
         setState(() {
           timer.cancel();
         });
-
       } else {
-        wait =true;
+        wait = true;
         setState(() {
           start--;
         });
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<OtpCubit, OtpState>(
@@ -158,17 +156,36 @@ class _OtpViewBodyState extends State<OtpViewBody> {
               const SizedBox(
                 height: 36,
               ),
-               CustomWidgetRowText(
-                featureText: wait ? '00:$start sec' :'Resend'  ,
-                text: 'Don\'t receive this code ? ',
-                textColor: kSecondaryColor,
-                 onTap: wait ? null :() async{
-                  {
-                  startTimer();
-                    log(start.toString());
-                     await widget.authRepo.resendVerifyCode(email: widget.email!); 
+              BlocConsumer<ResnedCubit, ResnedState>(
+                listener: (context, state) {
+                  if (state is ResnedSuccess) {
+                    showSnackBar(context, state.successMessage);
+                  } else if (state is ResnedFailure) {
+                    showSnackBar(context, state.errorMessage);
                   }
-                   },
+                },
+                builder: (context, state) {
+                  return state is ResnedLoading
+                      ? const SizedBox(
+                          child: CircularProgressIndicator(
+                            strokeWidth: 3,
+                          ),
+                        )
+                      : CustomWidgetRowText(
+                          featureText: wait ? '00:$start sec' : 'Resend',
+                          text: 'Don\'t receive this code ? ',
+                          textColor: kSecondaryColor,
+                          onTap: wait
+                              ? null
+                              : () {
+                                  {
+                                    startTimer();
+                                    BlocProvider.of<ResnedCubit>(context)
+                                        .resendVerifyCode(email: widget.email!);
+                                  }
+                                },
+                        );
+                },
               ),
               const Spacer(flex: 4),
               Center(
