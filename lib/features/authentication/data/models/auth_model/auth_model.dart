@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import 'user.dart';
 
 class AuthModel extends Equatable {

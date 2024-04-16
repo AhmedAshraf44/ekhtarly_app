@@ -3,7 +3,8 @@
 class ApiService  {
 
 final Dio _dio;
-final _baseUri = "https://akhtarly-server.onrender.com/auth/";
+final _baseUri = "https://akhtarly.onrender.com/auth/";
+//"https://akhtarly-server.onrender.com/auth/";
   ApiService(this._dio);
 Future<Map<String,dynamic>> post({required String endpoint,required Map<String,String>? data,}) async{
   // Map<String, dynamic> headers = {};
