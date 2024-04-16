@@ -31,6 +31,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   curved_labeled_navigation_bar: ^2.0.2
   dartz: ^0.10.1
+  device_preview: ^1.1.0
   dio: ^5.4.1
   equatable: ^2.0.5
   flutter:

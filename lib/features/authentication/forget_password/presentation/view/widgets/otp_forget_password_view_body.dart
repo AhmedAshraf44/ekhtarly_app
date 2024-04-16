@@ -89,6 +89,13 @@ class _OtpForgetPasswordViewBodyState extends State<OtpForgetPasswordViewBody> {
             height: 25,
           ),
           PinCodeTextField(
+            // validator: (value) {
+            //   if(value!.isEmpty) 
+            //   {
+            //     return "Please enter code";
+            //   }
+            //   return null;
+            // },
               appContext: context,
               length: 6,
               obscureText: false,

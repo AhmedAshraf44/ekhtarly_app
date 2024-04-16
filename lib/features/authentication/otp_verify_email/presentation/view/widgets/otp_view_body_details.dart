@@ -88,7 +88,7 @@ class _OtpViewBodyDetailsState extends State<OtpViewBodyDetails> {
           const SizedBox(
             height: 25,
           ),
-          PinCodeTextField(
+          PinCodeTextField(         
               appContext: context,
               length: 6,
               obscureText: false,

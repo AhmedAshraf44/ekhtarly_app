@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/service_locator.dart';
 import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo_impl.dart';
@@ -15,7 +16,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   setupServiceLocator();
-  runApp(const EkhtarlyApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const EkhtarlyApp(),),);
 }
 
 class EkhtarlyApp extends StatelessWidget {
@@ -64,6 +68,8 @@ class EkhtarlyApp extends StatelessWidget {
       ],
       child:
        MaterialApp.router(
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
         theme: ThemeData(textTheme:GoogleFonts.interTextTheme(),
