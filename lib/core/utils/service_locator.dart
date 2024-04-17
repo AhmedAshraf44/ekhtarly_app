@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:ekhtarly_app/core/utils/api_service.dart';
 import 'package:get_it/get_it.dart';
@@ -14,5 +13,4 @@ void setupServiceLocator() {
       getIt.get<ApiService>(),
     ),
   );
- 
- }
+}

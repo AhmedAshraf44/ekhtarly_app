@@ -22,16 +22,15 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
       if (pageNumber > 4) {
         pageNumber = 0;
       }
-       if (pageController.hasClients) {
-      pageController.animateToPage(
-        pageNumber,
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeInOutCirc,
-      );
-      pageNumber++;
-    }
-  });
-    
+      if (pageController.hasClients) {
+        pageController.animateToPage(
+          pageNumber,
+          duration: const Duration(seconds: 1),
+          curve: Curves.easeInOutCirc,
+        );
+        pageNumber++;
+      }
+    });
   }
 
   @override
@@ -57,8 +56,7 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
             physics: const BouncingScrollPhysics(),
             onPageChanged: (index) {
               pageNumber = index;
-              setState(() {
-              });
+              setState(() {});
             },
             controller: pageController,
             itemCount: 5,
@@ -103,9 +101,9 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
                   size: 12,
                   color: pageNumber == index
                       ? kPrimaryColor
-                      :const Color(0xff95969D),
-                      //kAlternateButtonColor,
-                      //Colors.grey.shade300,
+                      : const Color(0xff95969D),
+                  //kAlternateButtonColor,
+                  //Colors.grey.shade300,
                 ),
               ),
             )),

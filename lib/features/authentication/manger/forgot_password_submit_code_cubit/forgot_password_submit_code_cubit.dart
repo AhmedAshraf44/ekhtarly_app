@@ -5,10 +5,12 @@ import '../../data/repos/auth_repo.dart';
 
 part 'forgot_password_submit_code_state.dart';
 
-class ForgotPasswordSubmitCodeCubit extends Cubit<ForgotPasswordSubmitCodeState> {
-  ForgotPasswordSubmitCodeCubit(this.authRepo) : super(ForgotPasswordSubmitCodeInitial());
+class ForgotPasswordSubmitCodeCubit
+    extends Cubit<ForgotPasswordSubmitCodeState> {
+  ForgotPasswordSubmitCodeCubit(this.authRepo)
+      : super(ForgotPasswordSubmitCodeInitial());
 
-   final AuthRepo authRepo;
+  final AuthRepo authRepo;
 
   String? code;
   Future<void> forgotPasswordSubmitCode({
@@ -17,11 +19,14 @@ class ForgotPasswordSubmitCodeCubit extends Cubit<ForgotPasswordSubmitCodeState>
   }) async {
     emit(ForgotPasswordSubmitCodeLoading());
 
-
-    var result = await authRepo.forgotPasswordSubmitCode(email: email,code: code,);
+    var result = await authRepo.forgotPasswordSubmitCode(
+      email: email,
+      code: code,
+    );
 
     result.fold(
-      (failure) => emit(ForgotPasswordSubmitCodeFailure(errorMessage: failure.errorMessage)),
+      (failure) => emit(
+          ForgotPasswordSubmitCodeFailure(errorMessage: failure.errorMessage)),
       (resned) => emit(
         ForgotPasswordSubmitCodeSuccess(),
       ),

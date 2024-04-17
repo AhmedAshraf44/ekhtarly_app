@@ -35,7 +35,8 @@ class CustomTextOtp extends StatelessWidget {
               TextSpan(text: textDetails.replaceAll(targetWord, '')),
               TextSpan(
                 text: targetWord,
-                style: style.copyWith(fontWeight: FontWeight.bold,color: kBlackColor),
+                style: style.copyWith(
+                    fontWeight: FontWeight.bold, color: kBlackColor),
               ),
             ],
           ),

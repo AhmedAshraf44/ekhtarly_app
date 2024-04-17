@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('E', style:Styles.textStyle20.copyWith(color: Colors.red)),
+        Text('E', style: Styles.textStyle20.copyWith(color: Colors.red)),
         Text('k', style: Styles.textStyle20.copyWith(color: Colors.blue)),
         Text('h', style: Styles.textStyle20.copyWith(color: Colors.yellow)),
         Text('t', style: Styles.textStyle20.copyWith(color: Colors.green)),

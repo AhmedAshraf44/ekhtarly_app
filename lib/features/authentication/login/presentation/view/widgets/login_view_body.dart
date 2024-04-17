@@ -1,7 +1,6 @@
 import 'package:ekhtarly_app/features/authentication/login/presentation/view/widgets/login_body_details.dart';
 import 'package:flutter/material.dart';
 
-
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
 
@@ -10,4 +9,3 @@ class LoginViewBody extends StatelessWidget {
     return const LoginBodyDetails();
   }
 }
-

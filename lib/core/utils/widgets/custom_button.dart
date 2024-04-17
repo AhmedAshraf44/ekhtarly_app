@@ -17,19 +17,18 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: kHeightButton,
-      width:MediaQuery.of(context).size.width ,
-      child: TextButton( 
+      width: MediaQuery.of(context).size.width,
+      child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: colorButton,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-      
         onPressed: onPressed,
         child: Text(
           text,
-          style:  TextStyle(
+          style: TextStyle(
               color: colorText, fontSize: 14, fontWeight: FontWeight.w700),
         ),
       ),

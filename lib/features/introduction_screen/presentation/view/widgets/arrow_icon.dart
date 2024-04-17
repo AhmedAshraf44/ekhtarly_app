@@ -8,7 +8,7 @@ class ArrowIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Icon(
       Icons.arrow_forward,
-     color: kPrimaryColor,
+      color: kPrimaryColor,
     );
   }
 }

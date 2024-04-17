@@ -3,6 +3,7 @@ import 'package:ekhtarly_app/features/splash/presentation/views/widgets/sliding_
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 

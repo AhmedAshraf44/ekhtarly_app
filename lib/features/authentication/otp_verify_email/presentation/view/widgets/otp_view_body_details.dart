@@ -13,7 +13,10 @@ import '../../../../manger/resend_cubit/resned_cubit.dart';
 import '../../../../manger/otp_verify_email_cubit/otp_cubit.dart';
 
 class OtpViewBodyDetails extends StatefulWidget {
-  const OtpViewBodyDetails({super.key, this.email,});
+  const OtpViewBodyDetails({
+    super.key,
+    this.email,
+  });
   final String? email;
 
   @override
@@ -23,7 +26,8 @@ class OtpViewBodyDetails extends StatefulWidget {
 class _OtpViewBodyDetailsState extends State<OtpViewBodyDetails> {
   bool validate = false;
   String? code;
-  StreamController<ErrorAnimationType> errorController =StreamController<ErrorAnimationType>();
+  StreamController<ErrorAnimationType> errorController =
+      StreamController<ErrorAnimationType>();
   TextEditingController textEditingController = TextEditingController();
   int start = 30;
   bool wait = false;
@@ -31,7 +35,7 @@ class _OtpViewBodyDetailsState extends State<OtpViewBodyDetails> {
   void startTimer() {
     start = 30;
     const oneSec = Duration(seconds: 1);
-     Timer.periodic(oneSec, (timer) {
+    Timer.periodic(oneSec, (timer) {
       if (start == 0) {
         wait = false;
         setState(() {
@@ -88,7 +92,7 @@ class _OtpViewBodyDetailsState extends State<OtpViewBodyDetails> {
           const SizedBox(
             height: 25,
           ),
-          PinCodeTextField(         
+          PinCodeTextField(
               appContext: context,
               length: 6,
               obscureText: false,
@@ -169,7 +173,7 @@ class _OtpViewBodyDetailsState extends State<OtpViewBodyDetails> {
             child: CustomButton(
                 onPressed: () {
                   if (validate == true) {
-                     BlocProvider.of<OtpCubit>(context).otpVerifyEmail(
+                    BlocProvider.of<OtpCubit>(context).otpVerifyEmail(
                       email: widget.email!,
                       code: code!,
                     );

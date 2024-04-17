@@ -13,17 +13,22 @@ import '../../../../manger/resend_cubit/resned_cubit.dart';
 import '../../../../otp_verify_email/presentation/view/widgets/custom_text_otp.dart';
 
 class OtpForgetPasswordViewBody extends StatefulWidget {
-  const OtpForgetPasswordViewBody({super.key, this.email,});
+  const OtpForgetPasswordViewBody({
+    super.key,
+    this.email,
+  });
   final String? email;
 
   @override
-  State<OtpForgetPasswordViewBody> createState() => _OtpForgetPasswordViewBodyState();
+  State<OtpForgetPasswordViewBody> createState() =>
+      _OtpForgetPasswordViewBodyState();
 }
 
 class _OtpForgetPasswordViewBodyState extends State<OtpForgetPasswordViewBody> {
   bool validate = false;
   String? code;
-  StreamController<ErrorAnimationType> errorController =StreamController<ErrorAnimationType>();
+  StreamController<ErrorAnimationType> errorController =
+      StreamController<ErrorAnimationType>();
   TextEditingController textEditingController = TextEditingController();
   int start = 30;
   bool wait = false;
@@ -31,7 +36,7 @@ class _OtpForgetPasswordViewBodyState extends State<OtpForgetPasswordViewBody> {
   void startTimer() {
     start = 30;
     const oneSec = Duration(seconds: 1);
-     Timer.periodic(oneSec, (timer) {
+    Timer.periodic(oneSec, (timer) {
       if (start == 0) {
         wait = false;
         setState(() {
@@ -89,13 +94,13 @@ class _OtpForgetPasswordViewBodyState extends State<OtpForgetPasswordViewBody> {
             height: 25,
           ),
           PinCodeTextField(
-            // validator: (value) {
-            //   if(value!.isEmpty) 
-            //   {
-            //     return "Please enter code";
-            //   }
-            //   return null;
-            // },
+              // validator: (value) {
+              //   if(value!.isEmpty)
+              //   {
+              //     return "Please enter code";
+              //   }
+              //   return null;
+              // },
               appContext: context,
               length: 6,
               obscureText: false,
@@ -176,8 +181,11 @@ class _OtpForgetPasswordViewBodyState extends State<OtpForgetPasswordViewBody> {
             child: CustomButton(
                 onPressed: () {
                   if (validate == true) {
-                    BlocProvider.of<ForgotPasswordSubmitCodeCubit>(context).forgotPasswordSubmitCode(email: widget.email!, code: code!);
-                    BlocProvider.of<ForgotPasswordSubmitCodeCubit>(context).code=code!;
+                    BlocProvider.of<ForgotPasswordSubmitCodeCubit>(context)
+                        .forgotPasswordSubmitCode(
+                            email: widget.email!, code: code!);
+                    BlocProvider.of<ForgotPasswordSubmitCodeCubit>(context)
+                        .code = code!;
                   }
                 },
                 text: 'Confirm',

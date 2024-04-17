@@ -7,16 +7,16 @@ class CustomTipsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
-      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-       crossAxisSpacing: 20,
+        crossAxisSpacing: 20,
         mainAxisSpacing: 20,
         mainAxisExtent: MediaQuery.of(context).size.height * .27,
       ),
       delegate: SliverChildBuilderDelegate(
         childCount: 6,
-        (context, index) =>const  CustomSliverListItem(),
-      ),);
-    
+        (context, index) => const CustomSliverListItem(),
+      ),
+    );
   }
 }

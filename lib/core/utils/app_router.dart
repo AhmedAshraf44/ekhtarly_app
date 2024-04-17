@@ -14,86 +14,82 @@ import '../../features/search/presentation/view/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
-
-static const kIntroductionView = '/IntroductionView';
-static const kRegisterView = '/RegisterView';
-static const kLoginView = '/LoginView';
-static const kHomeView = '/HomeView';
-static const kForgetPasswordView = '/ForgetPasswordView';
+  static const kIntroductionView = '/IntroductionView';
+  static const kRegisterView = '/RegisterView';
+  static const kLoginView = '/LoginView';
+  static const kHomeView = '/HomeView';
+  static const kForgetPasswordView = '/ForgetPasswordView';
 // static const kCheckEmailView = '/CheckEmailView';
-static const kChangeNewPasswordView = '/ChangeNewPasswordView';
-static const kSuccessView = '/SuccessView';
-static const kSearchView = '/SearchView';
-static const kFavouriteView = '/FavouriteView';
-static const kOtpView ='/OtpView';
-static const kOtpForgetPasswordView ='/OtpForgetPasswordView';
+  static const kChangeNewPasswordView = '/ChangeNewPasswordView';
+  static const kSuccessView = '/SuccessView';
+  static const kSearchView = '/SearchView';
+  static const kFavouriteView = '/FavouriteView';
+  static const kOtpView = '/OtpView';
+  static const kOtpForgetPasswordView = '/OtpForgetPasswordView';
 
-
-static final router = GoRouter(
-  routes: 
-  [
-   GoRoute(
-    path: '/',
-    builder: (context, state) =>const SplashView(),
+  static final router = GoRouter(routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const SplashView(),
     ),
     GoRoute(
-    path: kIntroductionView,
-    builder: (context, state) =>const IntroductionView(),
+      path: kIntroductionView,
+      builder: (context, state) => const IntroductionView(),
     ),
-     GoRoute(
-    path: kLoginView,
-    builder: (context, state) =>const LoginView(),
+    GoRoute(
+      path: kLoginView,
+      builder: (context, state) => const LoginView(),
     ),
-     GoRoute(
-    path: kRegisterView,
-    builder: (context, state) =>const RegisterView(),
+    GoRoute(
+      path: kRegisterView,
+      builder: (context, state) => const RegisterView(),
     ),
-     GoRoute(
-    path: kHomeView,
-    builder: (context, state) =>const HomeView(),
+    GoRoute(
+      path: kHomeView,
+      builder: (context, state) => const HomeView(),
     ),
-     GoRoute(
-    path: kForgetPasswordView,
-    builder: (context, state) =>const ForgetPasswordView(),
+    GoRoute(
+      path: kForgetPasswordView,
+      builder: (context, state) => const ForgetPasswordView(),
     ),
     //  GoRoute(
     //   path: kCheckEmailView,
     //   builder: (context, state) => const CheckEmailView(),
     //  ),
-      GoRoute(
+    GoRoute(
       path: kChangeNewPasswordView,
-      
       builder: (context, state) {
-         final model = state.extra as Model?;
-       return  ChangeNewPasswordView(model:model!); },
-     ),
-      GoRoute(
+        final model = state.extra as Model?;
+        return ChangeNewPasswordView(model: model!);
+      },
+    ),
+    GoRoute(
       path: kSuccessView,
       builder: (context, state) => const SuccessView(),
-     ),
-     GoRoute(
+    ),
+    GoRoute(
       path: kSearchView,
       builder: (context, state) => const SearchView(),
-     ),
-      GoRoute(
+    ),
+    GoRoute(
       path: kFavouriteView,
       builder: (context, state) => const FavouriteView(),
-     ),
-      GoRoute(
-      path: kOtpView,
-      builder: (context, state) {
-         final email = state.extra as String?;
-        return  OtpView(email: email,);}
-     ),
-     GoRoute(
-      path: kOtpForgetPasswordView,
-      builder: (context, state) {
-         final email = state.extra as String?;
-        return  OtpForgetPasswordView(email: email!, );}
-     ),
-  ]
-  );
-
-
-
+    ),
+    GoRoute(
+        path: kOtpView,
+        builder: (context, state) {
+          final email = state.extra as String?;
+          return OtpView(
+            email: email,
+          );
+        }),
+    GoRoute(
+        path: kOtpForgetPasswordView,
+        builder: (context, state) {
+          final email = state.extra as String?;
+          return OtpForgetPasswordView(
+            email: email!,
+          );
+        }),
+  ]);
 }

@@ -7,11 +7,17 @@ sealed class ForgotPasswordSubmitCodeState extends Equatable {
   List<Object> get props => [];
 }
 
-final class ForgotPasswordSubmitCodeInitial extends ForgotPasswordSubmitCodeState {}
+final class ForgotPasswordSubmitCodeInitial
+    extends ForgotPasswordSubmitCodeState {}
 
-final class ForgotPasswordSubmitCodeLoading extends ForgotPasswordSubmitCodeState {}
-final class ForgotPasswordSubmitCodeSuccess extends ForgotPasswordSubmitCodeState {}
-final class ForgotPasswordSubmitCodeFailure extends ForgotPasswordSubmitCodeState {
-    final String errorMessage ;
- const ForgotPasswordSubmitCodeFailure({required this.errorMessage});
+final class ForgotPasswordSubmitCodeLoading
+    extends ForgotPasswordSubmitCodeState {}
+
+final class ForgotPasswordSubmitCodeSuccess
+    extends ForgotPasswordSubmitCodeState {}
+
+final class ForgotPasswordSubmitCodeFailure
+    extends ForgotPasswordSubmitCodeState {
+  final String errorMessage;
+  const ForgotPasswordSubmitCodeFailure({required this.errorMessage});
 }

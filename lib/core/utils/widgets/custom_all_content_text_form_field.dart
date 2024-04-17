@@ -5,17 +5,20 @@ import '../../../constants.dart';
 import 'custom_featured_text.dart';
 
 class CustomAllContentTextFormField extends StatelessWidget {
-  const CustomAllContentTextFormField(
-      {super.key,
-      this.onChanged,
-      this.colorTopTextFeild,
-      required this.textFormField,
-      required this.topTextFeild,
-      required this.icon,
-      required this.prefixIconColor,
-      this.suffixIcon ,
-      this.suffixIconColor = kBlackColor,
-      this.obscureText = false, this.onPressed, this.validator,});
+  const CustomAllContentTextFormField({
+    super.key,
+    this.onChanged,
+    this.colorTopTextFeild,
+    required this.textFormField,
+    required this.topTextFeild,
+    required this.icon,
+    required this.prefixIconColor,
+    this.suffixIcon,
+    this.suffixIconColor = kBlackColor,
+    this.obscureText = false,
+    this.onPressed,
+    this.validator,
+  });
   final void Function(String)? onChanged;
   final Color? colorTopTextFeild;
   final String textFormField;

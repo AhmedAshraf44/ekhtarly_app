@@ -36,17 +36,23 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
       listener: (context, state) {
         if (state is RegisterSuccess) {
           //showSnackBar(context, 'sucess');
-         // GoRouter.of(context).push(AppRouter.kHomeView);
-          GoRouter.of(context).push(AppRouter.kOtpView,extra: email, );
+          // GoRouter.of(context).push(AppRouter.kHomeView);
+          GoRouter.of(context).push(
+            AppRouter.kOtpView,
+            extra: email,
+          );
         } else if (state is RegisterFailure) {
-           ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text( state.errorMessage,style: Styles.textStyle12.copyWith(color: Colors.white),),
-        backgroundColor: kPrimaryColor,
-         //shape:const StadiumBorder()
-      ),
-    );
-      //    showSnackBar(context, state.errorMessage);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.errorMessage,
+                style: Styles.textStyle12.copyWith(color: Colors.white),
+              ),
+              backgroundColor: kPrimaryColor,
+              //shape:const StadiumBorder()
+            ),
+          );
+          //    showSnackBar(context, state.errorMessage);
         }
       },
       builder: (context, state) {

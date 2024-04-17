@@ -2,12 +2,12 @@ import 'package:ekhtarly_app/features/authentication/registration/presentation/v
 import 'package:flutter/material.dart';
 
 class RegisterView extends StatelessWidget {
-  const RegisterView ({super.key});
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: RegisterViewBody(),
-      );
+    );
   }
 }

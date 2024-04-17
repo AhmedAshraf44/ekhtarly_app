@@ -6,7 +6,8 @@ import '../../data/repos/auth_repo.dart';
 part 'forgot_password_send_code_state.dart';
 
 class ForgotPasswordSendCodeCubit extends Cubit<ForgotPasswordSendCodeState> {
-  ForgotPasswordSendCodeCubit(this.authRepo) : super(ForgotPasswordSendCodeInitial());
+  ForgotPasswordSendCodeCubit(this.authRepo)
+      : super(ForgotPasswordSendCodeInitial());
   final AuthRepo authRepo;
 
   Future<void> forgotPasswordSendCode({
@@ -16,7 +17,8 @@ class ForgotPasswordSendCodeCubit extends Cubit<ForgotPasswordSendCodeState> {
     var result = await authRepo.forgotPasswordSendCode(email: email);
 
     result.fold(
-      (failure) => emit(ForgotPasswordSendCodeFailure(errorMessage: failure.errorMessage)),
+      (failure) => emit(
+          ForgotPasswordSendCodeFailure(errorMessage: failure.errorMessage)),
       (resned) => emit(
         ForgotPasswordSendCodeSuccess(),
       ),

@@ -4,7 +4,6 @@ import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body.dart';
 import 'package:ekhtarly_app/features/search/presentation/view/search_view.dart';
 import 'package:flutter/material.dart';
-
 import '../../../favourite/presentation/view/favourite_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -30,39 +29,40 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
- final items =const <CurvedNavigationBarItem> [
-     CurvedNavigationBarItem(
-              child: Icon(
-            Icons.home,
-            color: kPrimaryColor,
-            size: 30,
-          )),
-           CurvedNavigationBarItem(
-              child: Icon(
-            Icons.search,
-            color: kPrimaryColor,
-            size: 30,
-          )),
-           CurvedNavigationBarItem(
-              child: Icon(
-            Icons.person,
-            color: kPrimaryColor,
-            size: 30,
-          )),
-          CurvedNavigationBarItem(
-              child: Icon(
-            Icons.favorite,
-            color: kPrimaryColor,
-            size: 30,
-          )),
- ];
- 
+  final items = const <CurvedNavigationBarItem>[
+    CurvedNavigationBarItem(
+        child: Icon(
+      Icons.home,
+      color: kPrimaryColor,
+      size: 30,
+    )),
+    CurvedNavigationBarItem(
+        child: Icon(
+      Icons.search,
+      color: kPrimaryColor,
+      size: 30,
+    )),
+    CurvedNavigationBarItem(
+        child: Icon(
+      Icons.person,
+      color: kPrimaryColor,
+      size: 30,
+    )),
+    CurvedNavigationBarItem(
+        child: Icon(
+      Icons.favorite,
+      color: kPrimaryColor,
+      size: 30,
+    )),
+  ];
 
   @override
   Widget build(BuildContext context) {
+    // AuthModel? authModel;
+    // print('${authModel!.token}');
     return SafeArea(
         child: Scaffold(
-        extendBody: true,
+      extendBody: true,
       backgroundColor: const Color(0xffE5E5E5),
       body: screens[selectedTab],
       bottomNavigationBar: CurvedNavigationBar(

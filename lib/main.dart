@@ -12,14 +12,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 void main() {
   setupServiceLocator();
   runApp(
     // DevicePreview(
     //   enabled: true,
-    //   builder: (context) => 
-      const EkhtarlyApp(),);
+    //   builder: (context) =>
+    const EkhtarlyApp(),
+  );
 }
 
 class EkhtarlyApp extends StatelessWidget {
@@ -27,54 +27,53 @@ class EkhtarlyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    MultiBlocProvider(
+    return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => RegisterCubit(
-           getIt.get<AuthRepoImpl>(),
+            getIt.get<AuthRepoImpl>(),
           ),
         ),
         BlocProvider(
           create: (context) => LoginCubit(
-           getIt.get<AuthRepoImpl>(),
+            getIt.get<AuthRepoImpl>(),
           ),
         ),
         BlocProvider(
           create: (context) => OtpCubit(
-           getIt.get<AuthRepoImpl>(),
+            getIt.get<AuthRepoImpl>(),
           ),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => ResnedCubit(
-           getIt.get<AuthRepoImpl>(),
+            getIt.get<AuthRepoImpl>(),
           ),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => ForgotPasswordSendCodeCubit(
-           getIt.get<AuthRepoImpl>(),
+            getIt.get<AuthRepoImpl>(),
           ),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => ForgotPasswordSubmitCodeCubit(
-           getIt.get<AuthRepoImpl>(),
+            getIt.get<AuthRepoImpl>(),
           ),
         ),
         BlocProvider(
           create: (context) => ForgotPasswordChangeCubit(
-           getIt.get<AuthRepoImpl>(),
+            getIt.get<AuthRepoImpl>(),
           ),
         ),
       ],
-      child:
-       MaterialApp.router(
+      child: MaterialApp.router(
         // locale: DevicePreview.locale(context),
         // builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
-        theme: ThemeData(textTheme:GoogleFonts.interTextTheme(),
+        theme: ThemeData(
+          textTheme: GoogleFonts.interTextTheme(),
         ),
-       ),
+      ),
     );
   }
 }

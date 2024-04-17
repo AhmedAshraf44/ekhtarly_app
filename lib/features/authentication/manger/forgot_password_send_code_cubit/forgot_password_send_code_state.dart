@@ -8,10 +8,12 @@ sealed class ForgotPasswordSendCodeState extends Equatable {
 }
 
 final class ForgotPasswordSendCodeInitial extends ForgotPasswordSendCodeState {}
-final class ForgotPasswordSendCodeLoading extends ForgotPasswordSendCodeState {}
-final class ForgotPasswordSendCodeSuccess extends ForgotPasswordSendCodeState {}
-final class ForgotPasswordSendCodeFailure extends ForgotPasswordSendCodeState {
-    final String errorMessage ;
- const ForgotPasswordSendCodeFailure({required this.errorMessage});
-}
 
+final class ForgotPasswordSendCodeLoading extends ForgotPasswordSendCodeState {}
+
+final class ForgotPasswordSendCodeSuccess extends ForgotPasswordSendCodeState {}
+
+final class ForgotPasswordSendCodeFailure extends ForgotPasswordSendCodeState {
+  final String errorMessage;
+  const ForgotPasswordSendCodeFailure({required this.errorMessage});
+}

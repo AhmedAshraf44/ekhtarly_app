@@ -16,12 +16,13 @@ class OtpCubit extends Cubit<OtpState> {
         (otpSuccess) => emit(OtpSuccess()));
   }
 
-
-   Future<void> resendVerifyCode({
+  Future<void> resendVerifyCode({
     required String email,
   }) async {
     emit(OtplLoading());
-    var result = await authRepo.resendVerifyCode(email: email,);
+    var result = await authRepo.resendVerifyCode(
+      email: email,
+    );
     result.fold(
         (failure) => emit(OtpFailure(errorMessage: failure.errorMessage)),
         (otpSuccess) => emit(OtpSuccess()));

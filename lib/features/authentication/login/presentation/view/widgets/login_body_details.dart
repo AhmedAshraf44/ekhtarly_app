@@ -14,7 +14,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../../core/utils/widgets/input_validation_mixin.dart';
 
-class LoginBodyDetails extends StatefulWidget with InputValidationMixin{
+class LoginBodyDetails extends StatefulWidget with InputValidationMixin {
   const LoginBodyDetails({
     super.key,
   });
@@ -29,8 +29,8 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
   bool validate = false;
   bool obscureText = true;
   IconData? suffixIcon = Icons.visibility;
-  String ? email;
-  String ? password;
+  String? email;
+  String? password;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
@@ -56,7 +56,8 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
                   const Spacer(
                     flex: 2,
                   ),
-                  CustomAllContentTextFormField( validator: (email) {
+                  CustomAllContentTextFormField(
+                    validator: (email) {
                       if (email?.isEmpty ?? true) {
                         return 'Email is Required';
                       } else if (!widget.isEmailValid(email.toString())) {
@@ -80,7 +81,7 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
                   const SizedBox(
                     height: 16,
                   ),
-                  CustomAllContentTextFormField( 
+                  CustomAllContentTextFormField(
                     validator: (password) {
                       if (password?.isEmpty ?? true) {
                         return 'Password is Required';
@@ -94,7 +95,7 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
                     topTextFeild: 'Password',
                     colorTopTextFeild: validate ? kSecondaryColor : kBlackColor,
                     onChanged: (value) {
-                      password = value ;
+                      password = value;
                       setState(() {
                         validate = loginFormKey.currentState!.validate();
                       });
@@ -138,7 +139,10 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
                       onPressed: () {
                         if (loginFormKey.currentState!.validate()) {
                           loginFormKey.currentState!.save();
-                         BlocProvider.of<LoginCubit>(context).loginUser(email: email!, password: password!,);
+                          BlocProvider.of<LoginCubit>(context).loginUser(
+                            email: email!,
+                            password: password!,
+                          );
                         } else {
                           setState(() {
                             autovalidateMode = AutovalidateMode.always;

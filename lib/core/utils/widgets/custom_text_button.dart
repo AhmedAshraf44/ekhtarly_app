@@ -19,22 +19,32 @@ class CustomTextButton extends StatelessWidget {
     return TextButton(
       onPressed: onTap,
       style: TextButton.styleFrom(
-        fixedSize: Size(MediaQuery.of(context).size.width , kHeightButton),
-        backgroundColor:colorButton ,
-        shape: RoundedRectangleBorder(borderRadius:  BorderRadius.circular(15),),
+        fixedSize: Size(MediaQuery.of(context).size.width, kHeightButton),
+        backgroundColor: colorButton,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-        Image.asset('assets/images/ic_google.png',width: 20,height: 20,),
-        const SizedBox(
-          width: 24,
-        ),
-        Text(text,style: Styles.textStyle14.copyWith(
-         color: colorText,
-         fontWeight: FontWeight.w700, 
-        ),),
-      ],),
+          Image.asset(
+            'assets/images/ic_google.png',
+            width: 20,
+            height: 20,
+          ),
+          const SizedBox(
+            width: 24,
+          ),
+          Text(
+            text,
+            style: Styles.textStyle14.copyWith(
+              color: colorText,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

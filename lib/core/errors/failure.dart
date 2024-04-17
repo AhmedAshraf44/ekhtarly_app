@@ -41,11 +41,11 @@ class ServerFailure extends Failure {
       log('statusCode : $statusCode');
       log('response : $response');
       return ServerFailure(response['message']);
-    //else if (statusCode == 403) {
-    //   log('response : $response');
-    //   log('statusCode : $statusCode');
-    //   return ServerFailure(response['message']);
-    }else if (statusCode == 404) {
+      //else if (statusCode == 403) {
+      //   log('response : $response');
+      //   log('statusCode : $statusCode');
+      //   return ServerFailure(response['message']);
+    } else if (statusCode == 404) {
       return ServerFailure(response['message']);
       //return ServerFailure('Your request not found, Please try later!');
     } else if (statusCode == 500) {

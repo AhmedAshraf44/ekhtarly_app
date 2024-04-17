@@ -14,26 +14,34 @@ class OtpForgetPasswordView extends StatelessWidget {
     required this.email,
   });
   final String email;
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<ForgotPasswordSubmitCodeCubit, ForgotPasswordSubmitCodeState>(
+      body: BlocConsumer<ForgotPasswordSubmitCodeCubit,
+          ForgotPasswordSubmitCodeState>(
         listener: (context, state) {
-          if ( state is ForgotPasswordSubmitCodeSuccess)
-          {
-             final Model model =Model(email: email, code:  BlocProvider.of<ForgotPasswordSubmitCodeCubit>(context).code!,);
+          if (state is ForgotPasswordSubmitCodeSuccess) {
+            final Model model = Model(
+              email: email,
+              code:
+                  BlocProvider.of<ForgotPasswordSubmitCodeCubit>(context).code!,
+            );
 
-             GoRouter.of(context).push(AppRouter.kChangeNewPasswordView,extra: model,);
-          }else if (state is ForgotPasswordSubmitCodeFailure)
-          {
+            GoRouter.of(context).push(
+              AppRouter.kChangeNewPasswordView,
+              extra: model,
+            );
+          } else if (state is ForgotPasswordSubmitCodeFailure) {
             showSnackBar(context, state.errorMessage);
           }
         },
         builder: (context, state) {
           return ModalProgressHUD(
-            inAsyncCall: state is ForgotPasswordSubmitCodeLoading,
-            child: OtpForgetPasswordViewBody(email: email,));
+              inAsyncCall: state is ForgotPasswordSubmitCodeLoading,
+              child: OtpForgetPasswordViewBody(
+                email: email,
+              ));
         },
       ),
     );

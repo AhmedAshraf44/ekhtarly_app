@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-
 class OtpViewBody extends StatelessWidget {
   const OtpViewBody({
     super.key,
@@ -28,9 +27,8 @@ class OtpViewBody extends StatelessWidget {
       },
       builder: (context, state) => ModalProgressHUD(
         inAsyncCall: state is OtplLoading,
-        child:OtpViewBodyDetails(email: email),
+        child: OtpViewBodyDetails(email: email),
       ),
     );
   }
 }
-

@@ -9,9 +9,11 @@ import '../../../../../core/utils/app_router.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
+// AuthModel? authModel;
 
   @override
   Widget build(BuildContext context) {
+    //print(authModel!.toJson());
     return Padding(
       padding: const EdgeInsets.only(
         right: 20,
@@ -23,7 +25,7 @@ class HomeViewBody extends StatelessWidget {
         slivers: [
           SliverAppBar(
             backgroundColor: const Color(0xffE5E5E5),
-            leading:const Icon(Icons.menu),
+            leading: const Icon(Icons.menu),
             actions: const [
               CircleAvatar(
                 backgroundColor: kPrimaryColor,
@@ -58,7 +60,7 @@ class HomeViewBody extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: CustomSearch(
-              //  keyboardType: TextInputType.none,
+                //  keyboardType: TextInputType.none,
                 onTap: () {
                   GoRouter.of(context).push(AppRouter.kSearchView);
                 },
@@ -102,27 +104,27 @@ class HomeViewBody extends StatelessWidget {
   }
 }
 
-            //floating: true,
-            //  expandedHeight: 150,
-            //   flexibleSpace: FlexibleSpaceBar(
-            //     title:  Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
-            //   child: CustomSearch(),
-            // ),
-            //   ),
-      //  const SliverToBoxAdapter(
-      //       child: Padding(
-      //     padding: EdgeInsets.only(
-      //       right: 20,
-      //       left: 20,
-      //       bottom: 40,
-      //       ),
-      //     child: CustomTipsGridView(),
-      //   )),
+//floating: true,
+//  expandedHeight: 150,
+//   flexibleSpace: FlexibleSpaceBar(
+//     title:  Padding(
+//   padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
+//   child: CustomSearch(),
+// ),
+//   ),
+//  const SliverToBoxAdapter(
+//       child: Padding(
+//     padding: EdgeInsets.only(
+//       right: 20,
+//       left: 20,
+//       bottom: 40,
+//       ),
+//     child: CustomTipsGridView(),
+//   )),
 
-                //   SliverToBoxAdapter(
-          //     child:  Padding(
-          //     padding: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-          //     child: CustomAppBar(),
-          //   ),
-          //   ),
+//   SliverToBoxAdapter(
+//     child:  Padding(
+//     padding: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+//     child: CustomAppBar(),
+//   ),
+//   ),

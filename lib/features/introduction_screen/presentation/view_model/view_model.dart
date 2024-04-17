@@ -1,5 +1,4 @@
-
-// class ViewModel 
+// class ViewModel
 // {
 // final String textBody;
 // final String text;
@@ -7,4 +6,3 @@
 
 // ViewModel({required this.textBody,required this.text,required this.image});
 // }
-

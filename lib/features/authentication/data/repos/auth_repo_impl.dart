@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ekhtarly_app/core/errors/failure.dart';
 import 'package:ekhtarly_app/core/utils/api_service.dart';
+import 'package:ekhtarly_app/features/authentication/data/models/auth_model/auth_model.dart';
 import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
@@ -36,7 +37,7 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, dynamic>> loginUser(
+  Future<Either<Failure, AuthModel>> loginUser(
       {required String email, required String password}) async {
     try {
       var data = await apiService.post(
@@ -47,7 +48,7 @@ class AuthRepoImpl implements AuthRepo {
         },
       );
       log('$data');
-      return right(data);
+      return right(AuthModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.formDioError(e));
@@ -111,11 +112,15 @@ class AuthRepoImpl implements AuthRepo {
       }
     }
   }
-  
+
   @override
-  Future<Either<Failure, dynamic>> forgotPasswordSubmitCode({required String email, required String code,}) async{
+  Future<Either<Failure, dynamic>> forgotPasswordSubmitCode({
+    required String email,
+    required String code,
+  }) async {
     try {
-      var data = await apiService.post(endpoint: 'forgotPassword-submitCode', data: {
+      var data =
+          await apiService.post(endpoint: 'forgotPassword-submitCode', data: {
         'email': email,
         'code': code,
       });
@@ -128,15 +133,18 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failure, dynamic>> forgotPasswordChange({required String email, required String code, required String password}) async{
-     
+  Future<Either<Failure, dynamic>> forgotPasswordChange(
+      {required String email,
+      required String code,
+      required String password}) async {
     try {
-      var data = await apiService.patch(endpoint: 'forgotPassword-change', data: {
+      var data =
+          await apiService.patch(endpoint: 'forgotPassword-change', data: {
         'email': email,
         'code': code,
-        'password' : password ,
+        'password': password,
       });
       log('$data');
       return right(data);
