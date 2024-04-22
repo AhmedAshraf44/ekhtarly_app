@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ekhtarly_app/core/errors/failure.dart';
@@ -26,7 +24,7 @@ class AuthRepoImpl implements AuthRepo {
         },
       );
 
-      log('true data :$data');
+     // log('true data :$data');
       return right(data);
     } catch (e) {
       if (e is DioException) {
@@ -47,7 +45,7 @@ class AuthRepoImpl implements AuthRepo {
           "password": password,
         },
       );
-      log('$data');
+     // log('$data');
       return right(AuthModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
@@ -65,7 +63,7 @@ class AuthRepoImpl implements AuthRepo {
         'email': email,
         'code': code,
       });
-      log('$data');
+      //log('$data');
       return right(data);
     } catch (e) {
       if (e is DioException) {
@@ -124,7 +122,7 @@ class AuthRepoImpl implements AuthRepo {
         'email': email,
         'code': code,
       });
-      log('$data');
+    //  log('$data');
       return right(data);
     } catch (e) {
       if (e is DioException) {
@@ -146,7 +144,7 @@ class AuthRepoImpl implements AuthRepo {
         'code': code,
         'password': password,
       });
-      log('$data');
+     // log('$data');
       return right(data);
     } catch (e) {
       if (e is DioException) {

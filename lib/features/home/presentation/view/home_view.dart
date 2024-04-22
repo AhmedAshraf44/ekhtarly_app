@@ -1,9 +1,11 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:ekhtarly_app/constants.dart';
+import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body.dart';
 import 'package:ekhtarly_app/features/search/presentation/view/search_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../favourite/presentation/view/favourite_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -27,6 +29,11 @@ class _HomeViewState extends State<HomeView> {
     setState(() {
       selectedTab = index;
     });
+  }
+  @override
+  void initState() {
+     BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
+    super.initState();
   }
 
   final items = const <CurvedNavigationBarItem>[
@@ -58,12 +65,10 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    // AuthModel? authModel;
-    // print('${authModel!.token}');
     return SafeArea(
         child: Scaffold(
       extendBody: true,
-      backgroundColor: const Color(0xffE5E5E5),
+      backgroundColor: kBackgroundColor,
       body: screens[selectedTab],
       bottomNavigationBar: CurvedNavigationBar(
         buttonBackgroundColor: Colors.blueAccent.shade100,

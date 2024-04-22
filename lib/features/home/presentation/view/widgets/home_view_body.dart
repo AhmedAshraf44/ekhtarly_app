@@ -1,9 +1,12 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
+import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
+import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_state.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_search.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_tips_slider.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body_details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_router.dart';
 
@@ -13,7 +16,6 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //print(authModel!.toJson());
     return Padding(
       padding: const EdgeInsets.only(
         right: 20,
@@ -84,7 +86,7 @@ class HomeViewBody extends StatelessWidget {
                       top: 20,
                       bottom: 62,
                     ),
-                    child: CustomTipsSlider(),
+                    child: CustomTipsSlider(checkPage: true,),
                   ),
                   Text('Newest Laptop', style: Styles.googleFontsPoppins),
                   //  HomeViewBodyDetails(),
@@ -92,7 +94,20 @@ class HomeViewBody extends StatelessWidget {
               ),
             ),
           ),
-          const CustomTipsGridView(),
+         // make in bloc
+          BlocBuilder<NewestLaptopsCubit,NewestLaptopsState>(
+            builder: (context, state) {
+             if (state is NewestLaptopsFailure){
+                 return SliverToBoxAdapter(child: Center(child: Text(state.errorMessage),));
+              }else if (state is  NewestLaptopsSuccess)
+              {
+               return  CustomTipsGridView(newestLaptop:state.laptops,);
+              }else {
+                 return const SliverToBoxAdapter(child:  Center(child: CircularProgressIndicator()));
+              }
+            },
+          ),
+        
           const SliverToBoxAdapter(
             child: SizedBox(
               height: 75,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -25,7 +23,7 @@ class ApiService {
         'Content-Type': 'application/json',
       });
     }
-    log('data = $data token =$token');
+   // log('data = $data token =$token');
     //         var headers = {
     //   'Content-Type': 'application/json',
     // };
@@ -60,7 +58,7 @@ class ApiService {
         'Content-Type': 'application/json',
       });
     }
-    log('token =$token');
+   // log('token =$token');
   var response = await _dio.get('$_baseUri$endpoint',options: Options(headers: headers));
   return response.data;
 }

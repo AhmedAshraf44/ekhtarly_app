@@ -1,9 +1,10 @@
+import 'package:ekhtarly_app/features/home/data/model/newest_laptop/newest_laptop_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/widgets/custom_sliver_list_item.dart';
 
 class CustomTipsGridView extends StatelessWidget {
-  const CustomTipsGridView({super.key});
-
+  const CustomTipsGridView({super.key, required this.newestLaptop});
+final NewestLaptopModel  newestLaptop;
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
@@ -14,8 +15,8 @@ class CustomTipsGridView extends StatelessWidget {
         mainAxisExtent: MediaQuery.of(context).size.height * .27,
       ),
       delegate: SliverChildBuilderDelegate(
-        childCount: 6,
-        (context, index) => const CustomSliverListItem(),
+        childCount: newestLaptop.length,
+        (context, index) => CustomSliverListItem(result:newestLaptop.result![index] ,),
       ),
     );
   }

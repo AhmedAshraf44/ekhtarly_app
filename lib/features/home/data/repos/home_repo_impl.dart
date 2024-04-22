@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ekhtarly_app/core/errors/failure.dart';
@@ -14,7 +13,7 @@ class HomeRepoImpl implements HomeRepo
   Future<Either<Failure, NewestLaptopModel>> getNewestLaptops() async{
     try {
     var data = await apiService.get(endpoint: 'api/laptops',);
-    log('true data :$data');
+    //log('true data :$data');
     return right(NewestLaptopModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {

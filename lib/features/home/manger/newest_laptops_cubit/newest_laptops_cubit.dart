@@ -15,9 +15,12 @@ class NewestLaptopsCubit extends Cubit<NewestLaptopsState> {
           errorMessage: failure.errorMessage,
         ),
       ),
-      (laptops) => emit(
-        NewestLaptopsSuccess(),
-      ),
+      (laptops) {
+         emit(
+        NewestLaptopsSuccess(laptops: laptops),
+      );
+      }
     );
+
   }
 }

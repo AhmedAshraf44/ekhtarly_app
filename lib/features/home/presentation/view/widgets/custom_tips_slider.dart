@@ -1,25 +1,30 @@
 import 'dart:async';
 
 import 'package:ekhtarly_app/constants.dart';
+import 'package:ekhtarly_app/features/home/presentation/view_models/laptops_image_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomTipsSlider extends StatefulWidget {
-  const CustomTipsSlider({super.key});
-
+  const CustomTipsSlider({super.key, required this.checkPage});
+  final bool checkPage;
   @override
   State<CustomTipsSlider> createState() => _CustomTipsSliderState();
 }
 
 class _CustomTipsSliderState extends State<CustomTipsSlider> {
   late final PageController pageController;
-  int pageNumber = 0;
 
   Timer? carouselTimer;
-
+  List<LaptopsImageModel> laptopsImageList = [
+    LaptopsImageModel(image: 'assets/images/macbook1.png'),
+    LaptopsImageModel(image: 'assets/images/macbook2.png'),
+    LaptopsImageModel(image: 'assets/images/macbook3.png'),
+  ];
+  int pageNumber = 0;
   getTimer() {
     return Timer.periodic(const Duration(seconds: 3), (timer) {
       // pageNumber == 4
-      if (pageNumber > 4) {
+      if (pageNumber > laptopsImageList.length - 1 ) {
         pageNumber = 0;
       }
       if (pageController.hasClients) {
@@ -59,12 +64,15 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
               setState(() {});
             },
             controller: pageController,
-            itemCount: 5,
+            itemCount: widget.checkPage == true ? 5 : laptopsImageList.length ,
             itemBuilder: (context, index) {
               return AnimatedBuilder(
                 animation: pageController,
                 builder: (context, child) {
-                  return child!;
+                  return widget.checkPage == true
+                      ? child!
+                      : ImagelaptopSlider(
+                          laptopsImage: laptopsImageList[index]);
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
@@ -76,11 +84,7 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
                     onPanCancel: () {
                       carouselTimer = getTimer();
                     },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: kPrimaryColor,
-                          borderRadius: BorderRadius.circular(25)),
-                    ),
+                    child: const CustomHomeSlider(),
                   ),
                 ),
               );
@@ -90,24 +94,79 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
         const SizedBox(
           height: 20,
         ),
-        Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              5,
-              (index) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2),
-                child: Icon(
-                  Icons.circle,
-                  size: 12,
-                  color: pageNumber == index
-                      ? kPrimaryColor
-                      : const Color(0xff95969D),
-                  //kAlternateButtonColor,
-                  //Colors.grey.shade300,
-                ),
-              ),
-            )),
+        CustomPointSlider(pageNumber: pageNumber,number:  widget.checkPage == true? 5 : laptopsImageList.length ,),
       ],
+    );
+  }
+}
+
+class CustomPointSlider extends StatelessWidget {
+  const CustomPointSlider({
+    super.key,
+    required this.pageNumber, required this.number,
+  });
+
+  final int pageNumber;
+  final int number;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        number,
+        (index) => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2),
+          child: Icon(
+            Icons.circle,
+            size: 12,
+            color:
+                pageNumber == index ? kPrimaryColor : const Color(0xff95969D),
+            //kAlternateButtonColor,
+            //Colors.grey.shade300,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomHomeSlider extends StatelessWidget {
+  const CustomHomeSlider({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: kPrimaryColor, borderRadius: BorderRadius.circular(25)),
+    );
+  }
+}
+
+class ImagelaptopSlider extends StatelessWidget {
+  const ImagelaptopSlider({super.key, required this.laptopsImage});
+  final LaptopsImageModel laptopsImage;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      child: Container(
+        decoration: const BoxDecoration(
+            //color: kBackgroundColor,
+            borderRadius: BorderRadius.all(Radius.circular(15))),
+        child: AspectRatio(
+          aspectRatio: 6 / 4,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset(
+              laptopsImage.image,
+              fit: BoxFit.contain,
+              //  height: MediaQuery.of(context).size.height * .15,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

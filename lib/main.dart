@@ -8,6 +8,8 @@ import 'package:ekhtarly_app/features/authentication/manger/resend_cubit/resned_
 import 'package:ekhtarly_app/features/authentication/manger/login_cubit/login_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cubit/otp_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/register_cubit/register_cubit.dart';
+import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,6 +64,11 @@ class EkhtarlyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ForgotPasswordChangeCubit(
             getIt.get<AuthRepoImpl>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => NewestLaptopsCubit(
+            getIt.get<HomeRepoImpl>(),
           ),
         ),
       ],

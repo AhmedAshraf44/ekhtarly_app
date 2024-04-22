@@ -1,5 +1,6 @@
 import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/otp_view.dart';
 import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
+import 'package:ekhtarly_app/features/home/data/model/newest_laptop/result.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
@@ -10,6 +11,7 @@ import '../../features/authentication/forget_password/presentation/view_models/m
 import '../../features/authentication/login/presentation/view/login_view.dart';
 import '../../features/favourite/presentation/view/favourite_view.dart';
 import '../../features/authentication/forget_password/presentation/view/forget_passwoed_view.dart';
+import '../../features/home/presentation/view/newest_laptops_view.dart';
 import '../../features/search/presentation/view/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
@@ -26,6 +28,8 @@ abstract class AppRouter {
   static const kFavouriteView = '/FavouriteView';
   static const kOtpView = '/OtpView';
   static const kOtpForgetPasswordView = '/OtpForgetPasswordView';
+    static const kNewestLaptopsView = '/NewestLaptopsView';
+
 
   static final router = GoRouter(routes: [
     GoRoute(
@@ -91,5 +95,12 @@ abstract class AppRouter {
             email: email!,
           );
         }),
+        GoRoute(
+      path: kNewestLaptopsView,
+
+      builder: (context, state) {
+        final  result = state.extra as Result;
+        return NewestLaptopsView(result: result,);},
+    ),
   ]);
 }

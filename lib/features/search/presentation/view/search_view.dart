@@ -1,3 +1,4 @@
+import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_search.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class SearchView extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        backgroundColor: const Color(0xffE5E5E5),
+        backgroundColor: kBackgroundColor,
         body: const CustomSearch(),
       ),
     );
