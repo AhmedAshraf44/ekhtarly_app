@@ -16,7 +16,7 @@ final NewestLaptopModel  newestLaptop;
       ),
       delegate: SliverChildBuilderDelegate(
         childCount: newestLaptop.length,
-        (context, index) => CustomSliverListItem(result:newestLaptop.result![index] ,),
+        (context, index) => CustomSliverListItem(laptops:newestLaptop.laptops![index] ,),
       ),
     );
   }

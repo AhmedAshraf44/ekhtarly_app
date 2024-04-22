@@ -1,16 +1,18 @@
-import 'package:ekhtarly_app/features/home/data/model/newest_laptop/result.dart';
+import 'package:ekhtarly_app/features/home/data/model/newest_laptop/laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/newest_laptops_details.dart';
 import 'package:flutter/material.dart';
 
 class NewestLaptopsView extends StatelessWidget {
-  const NewestLaptopsView({super.key, required this.result});
- final Result result;
+  const NewestLaptopsView({super.key, required this.laptops});
+  final Laptops laptops;
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body:  NewestLaptopsDetails(result: result,),
+        body: NewestLaptopsDetails(
+          laptops: laptops,
+        ),
       ),
     );
   }

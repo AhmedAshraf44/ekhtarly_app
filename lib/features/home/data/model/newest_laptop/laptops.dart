@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Result extends Equatable {
+class Laptops extends Equatable {
   final String? id;
   final String? brand;
   final String? name;
@@ -20,7 +20,7 @@ class Result extends Equatable {
   final int? warranty;
   final String? type;
 
-  const Result({
+  const Laptops({
     this.id,
     this.brand,
     this.name,
@@ -41,7 +41,7 @@ class Result extends Equatable {
     this.type,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory Laptops.fromJson(Map<String, dynamic> json) => Laptops(
         id: json['_id'] as String?,
         brand: json['brand'] as String?,
         name: json['name'] as String?,

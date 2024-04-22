@@ -3,11 +3,11 @@ import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../constants.dart';
-import '../../../features/home/data/model/newest_laptop/result.dart';
+import '../../../features/home/data/model/newest_laptop/laptops.dart';
 
 class CustomSliverListItem extends StatefulWidget {
-  const CustomSliverListItem({super.key, required this.result,});
-  final Result result;
+  const CustomSliverListItem({super.key, required this.laptops,});
+  final Laptops laptops;
   @override
   State<CustomSliverListItem> createState() => _CustomSliverListItemState();
 }
@@ -19,7 +19,7 @@ class _CustomSliverListItemState extends State<CustomSliverListItem> {
     return GestureDetector(
       onTap: ()
       {
-      GoRouter.of(context).push(AppRouter.kNewestLaptopsView,extra: widget.result);
+      GoRouter.of(context).push(AppRouter.kNewestLaptopsView,extra: widget.laptops);
       },
       child: Container(
         decoration: const BoxDecoration(
@@ -60,7 +60,7 @@ class _CustomSliverListItemState extends State<CustomSliverListItem> {
               child: Padding(
                 padding:const EdgeInsets.symmetric(horizontal: 10, ),
                 child: Text(
-                  widget.result.name.toString(),
+                  widget.laptops.name.toString(),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   style: Styles.textStyle14,
@@ -74,7 +74,7 @@ class _CustomSliverListItemState extends State<CustomSliverListItem> {
               child: Row(
                 children: [
                   Text(
-                    'EGP ${widget.result.price}',
+                    'EGP ${widget.laptops.price}',
                     style: Styles.textStyle14.copyWith(
                       color: kThridColor,
                     ),

@@ -1,12 +1,12 @@
 import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/features/home/data/model/newest_laptop/result.dart';
+import 'package:ekhtarly_app/features/home/data/model/newest_laptop/laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_app_bar_newest_laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_tips_slider.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
 class NewestLaptopsDetails extends StatelessWidget {
-  const NewestLaptopsDetails({super.key, required this.result});
-  final Result result;
+  const NewestLaptopsDetails({super.key, required this.laptops});
+  final Laptops laptops;
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
@@ -154,9 +154,10 @@ class CustomDescrptionNewestLaptopitem extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
+                   border: Border.all(color: kPrimaryColor),
                     borderRadius: BorderRadius.all(Radius.circular(15))),
                 height: 80,
-                child: Column(
+                child:const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('name'),
@@ -164,21 +165,24 @@ class CustomDescrptionNewestLaptopitem extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+           const SizedBox(
               width: 15,
             ),
             Expanded(
               flex: 2,
               child: Container(
-                decoration: BoxDecoration(
+                decoration:const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(15))),
                 height: 80,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('MacBook Pro 14 inch Laptop'),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('MacBook Pro 14 inch Laptop'),
+                    ],
+                  ),
                 ),
               ),
             )
