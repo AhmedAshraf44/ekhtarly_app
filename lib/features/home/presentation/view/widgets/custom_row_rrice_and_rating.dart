@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../data/model/newest_laptop/laptops.dart';
+import '../../../../../core/models/newest_laptops_details_model/laptops.dart';
 
 class CustomRowPriceAndRating extends StatelessWidget {
   const CustomRowPriceAndRating({
@@ -29,11 +29,10 @@ class CustomRowPriceAndRating extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text('Price:  ',
-                      style: Styles.textStyle14
-                          .copyWith(color: Colors.white)),
+                      style: Styles.textStyle14.copyWith(color: Colors.white)),
                   Text('EGP ${laptops.price}',
-                      style: Styles.textStyle16Smei
-                          .copyWith(color: Colors.white)),
+                      style:
+                          Styles.textStyle16Smei.copyWith(color: Colors.white)),
                 ],
               ),
             ),
@@ -55,8 +54,7 @@ class CustomRowPriceAndRating extends StatelessWidget {
                     color: Colors.amber,
                   ),
                   Text(laptops.specRating!.toStringAsFixed(1),
-                      style: Styles.textStyle14
-                          .copyWith(color: Colors.white)),
+                      style: Styles.textStyle14.copyWith(color: Colors.white)),
                 ],
               ),
             ),

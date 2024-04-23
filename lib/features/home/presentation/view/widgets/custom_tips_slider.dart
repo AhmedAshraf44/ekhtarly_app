@@ -24,7 +24,7 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
   getTimer() {
     return Timer.periodic(const Duration(seconds: 3), (timer) {
       // pageNumber == 4
-      if (pageNumber > laptopsImageList.length - 1 ) {
+      if (pageNumber > laptopsImageList.length - 1) {
         pageNumber = 0;
       }
       if (pageController.hasClients) {
@@ -64,7 +64,7 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
               setState(() {});
             },
             controller: pageController,
-            itemCount: widget.checkPage == true ? 5 : laptopsImageList.length ,
+            itemCount: widget.checkPage == true ? 5 : laptopsImageList.length,
             itemBuilder: (context, index) {
               return AnimatedBuilder(
                 animation: pageController,
@@ -94,7 +94,10 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
         const SizedBox(
           height: 20,
         ),
-        CustomPointSlider(pageNumber: pageNumber,number:  widget.checkPage == true? 5 : laptopsImageList.length ,),
+        CustomPointSlider(
+          pageNumber: pageNumber,
+          number: widget.checkPage == true ? 5 : laptopsImageList.length,
+        ),
       ],
     );
   }
@@ -103,7 +106,8 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
 class CustomPointSlider extends StatelessWidget {
   const CustomPointSlider({
     super.key,
-    required this.pageNumber, required this.number,
+    required this.pageNumber,
+    required this.number,
   });
 
   final int pageNumber;

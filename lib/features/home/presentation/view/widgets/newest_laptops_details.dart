@@ -1,5 +1,5 @@
 import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/features/home/data/model/newest_laptop/laptops.dart';
+import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_app_bar_newest_laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_newest_laptop_details_slider.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_row_rrice_and_rating.dart';
@@ -24,8 +24,6 @@ class NewestLaptopsDetails extends StatelessWidget {
     );
   }
 }
-
-
 
 class NewestLaptopDetailsDescrption extends StatelessWidget {
   const NewestLaptopDetailsDescrption({super.key, required this.laptops});
@@ -76,23 +74,6 @@ class NewestLaptopDetailsDescrption extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // class CustomDescrptionNewestLaptop extends StatelessWidget {
 //   const CustomDescrptionNewestLaptop({super.key});
@@ -244,7 +225,6 @@ class NewestLaptopDetailsDescrption extends StatelessWidget {
 //     ]);
 //   }
 // }
-
 
 // image
 // class CustomImageNewestLaptop extends StatelessWidget {

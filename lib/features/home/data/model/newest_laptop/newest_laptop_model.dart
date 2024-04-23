@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'laptops.dart';
+import '../../../../../core/models/newest_laptops_details_model/laptops.dart';
 
 class NewestLaptopModel extends Equatable {
   final String? state;
@@ -9,7 +9,8 @@ class NewestLaptopModel extends Equatable {
 
   const NewestLaptopModel({this.state, this.length, this.laptops});
 
-  factory NewestLaptopModel.fromJson(Map<String, dynamic> json) => NewestLaptopModel(
+  factory NewestLaptopModel.fromJson(Map<String, dynamic> json) =>
+      NewestLaptopModel(
         state: json['state'] as String?,
         length: json['length'] as int?,
         laptops: (json['Laptops'] as List<dynamic>?)

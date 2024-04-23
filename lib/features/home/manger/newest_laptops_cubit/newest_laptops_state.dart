@@ -1,4 +1,3 @@
-
 import '../../data/model/newest_laptop/newest_laptop_model.dart';
 
 abstract class NewestLaptopsState {}

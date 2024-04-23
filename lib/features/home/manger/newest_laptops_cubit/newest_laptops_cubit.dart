@@ -10,17 +10,14 @@ class NewestLaptopsCubit extends Cubit<NewestLaptopsState> {
     emit(NewestLaptopsLoading());
     var result = await homeRepo.getNewestLaptops();
     result.fold(
-      (failure) => emit(
-        NewestLaptopsFailure(
-          errorMessage: failure.errorMessage,
-        ),
-      ),
-      (laptops) {
-         emit(
+        (failure) => emit(
+              NewestLaptopsFailure(
+                errorMessage: failure.errorMessage,
+              ),
+            ), (laptops) {
+      emit(
         NewestLaptopsSuccess(laptops: laptops),
       );
-      }
-    );
-
+    });
   }
 }

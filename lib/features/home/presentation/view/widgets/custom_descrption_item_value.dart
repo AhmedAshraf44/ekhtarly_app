@@ -26,7 +26,15 @@ class CustomDescrptionItemValue extends StatelessWidget {
         height: 80,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: Center(child: Text(textValue,style: Styles.textStyle15,textAlign: TextAlign.center,maxLines: 3,overflow: TextOverflow.ellipsis,),),
+          child: Center(
+            child: Text(
+              textValue,
+              style: Styles.textStyle15,
+              textAlign: TextAlign.center,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ),
       ),
     );

@@ -4,7 +4,7 @@ import 'newest_laptops_item.dart';
 
 class HomeViewBodyDetails extends StatelessWidget {
   const HomeViewBodyDetails({super.key, required this.newestLaptop});
-final NewestLaptopModel  newestLaptop;
+  final NewestLaptopModel newestLaptop;
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
@@ -16,7 +16,9 @@ final NewestLaptopModel  newestLaptop;
       ),
       delegate: SliverChildBuilderDelegate(
         childCount: newestLaptop.length,
-        (context, index) => NewestLaptopsItem(laptops:newestLaptop.laptops![index] ,),
+        (context, index) => NewestLaptopsItem(
+          laptops: newestLaptop.laptops![index],
+        ),
       ),
     );
   }

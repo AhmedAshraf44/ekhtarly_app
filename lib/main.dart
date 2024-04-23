@@ -5,14 +5,16 @@ import 'package:ekhtarly_app/features/authentication/manger/forgot_password_chan
 import 'package:ekhtarly_app/features/authentication/manger/forgot_password_send_code_cubit/forgot_password_send_code_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/forgot_password_submit_code_cubit/forgot_password_submit_code_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/resend_cubit/resned_cubit.dart';
-import 'package:ekhtarly_app/features/authentication/manger/login_cubit/login_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cubit/otp_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/register_cubit/register_cubit.dart';
+import 'package:ekhtarly_app/features/favourite/manger/add_favourite_cubit/add_favourite_cubit.dart';
 import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'features/favourite/data/repos/favourite_repo_impl.dart';
 
 void main() {
   setupServiceLocator();
@@ -33,11 +35,6 @@ class EkhtarlyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => RegisterCubit(
-            getIt.get<AuthRepoImpl>(),
-          ),
-        ),
-        BlocProvider(
-          create: (context) => LoginCubit(
             getIt.get<AuthRepoImpl>(),
           ),
         ),
@@ -69,6 +66,11 @@ class EkhtarlyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => NewestLaptopsCubit(
             getIt.get<HomeRepoImpl>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => AddFavouriteCubit(
+            getIt.get<FavouriteRepoImpl>(),
           ),
         ),
       ],

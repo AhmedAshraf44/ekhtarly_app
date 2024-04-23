@@ -1,4 +1,4 @@
-import 'package:ekhtarly_app/features/home/data/model/newest_laptop/laptops.dart';
+import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/newest_laptops_details.dart';
 import 'package:flutter/material.dart';
 
@@ -18,24 +18,24 @@ class NewestLaptopsView extends StatelessWidget {
   }
 }
 
-        // appBar: AppBar(
-        //   backgroundColor: Colors.transparent,
-        //     actions:const [
-        //     Padding(
-        //       padding: EdgeInsets.symmetric(horizontal: 20),
-        //       child: CircleAvatar(
-        //         radius: 25,
-        //       //    backgroundColor:kBackgroundColor,
-        //       backgroundColor: Colors.white,
-        //           child: IconButton(
-        //             icon: Icon(
-        //               Icons.favorite_border,
-        //               size: 25,
-        //               color: kBlackColor,
-        //             ),
-        //             onPressed: null,
-        //           ),
-        //         ),
-        //     ),
-        //     ],
-        // ),
+// appBar: AppBar(
+//   backgroundColor: Colors.transparent,
+//     actions:const [
+//     Padding(
+//       padding: EdgeInsets.symmetric(horizontal: 20),
+//       child: CircleAvatar(
+//         radius: 25,
+//       //    backgroundColor:kBackgroundColor,
+//       backgroundColor: Colors.white,
+//           child: IconButton(
+//             icon: Icon(
+//               Icons.favorite_border,
+//               size: 25,
+//               color: kBlackColor,
+//             ),
+//             onPressed: null,
+//           ),
+//         ),
+//     ),
+//     ],
+// ),

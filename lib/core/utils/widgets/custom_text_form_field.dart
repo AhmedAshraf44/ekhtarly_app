@@ -29,20 +29,6 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
-      // validator: (value) {
-      //   if (value?.isEmpty ?? true) {
-      //     return 'Feiled is Required';
-      //   }else  if (!isEmailValid(value.toString())){
-      //    return 'Enter a valid email address';
-
-      //   }else if(!isPasswordValid(value.toString()))
-      //   {
-      //   return 'Enter a valid password';
-      //   }else {
-      //    return null;
-      //   }
-      // },
-      // onSaved: (value) {},
       onChanged: onChanged,
       obscureText: obscureText,
       decoration: InputDecoration(

@@ -33,8 +33,16 @@ class _CustomAppBarNewestLaptopDetailsState
             backgroundColor: Colors.white,
             child: IconButton(
               icon: iconColor
-                  ? const Icon(Icons.favorite, color: Colors.red,size: 25,)
-                  : const Icon(Icons.favorite_border, color: kBlackColor,size: 25,),
+                  ? const Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                      size: 25,
+                    )
+                  : const Icon(
+                      Icons.favorite_border,
+                      color: kBlackColor,
+                      size: 25,
+                    ),
               onPressed: () {
                 setState(() {
                   iconColor = !iconColor;

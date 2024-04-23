@@ -2,7 +2,7 @@
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_descrption_item.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/model/newest_laptop/laptops.dart';
+import '../../../../../core/models/newest_laptops_details_model/laptops.dart';
 
 class NewestLaptopDetailsDescrptionItem extends StatelessWidget {
   const NewestLaptopDetailsDescrptionItem({super.key, required this.laptops});
@@ -101,9 +101,6 @@ class NewestLaptopDetailsDescrptionItem extends StatelessWidget {
                 text: 'Type',
                 textValue: laptops.type!,
               ),
-        const SizedBox(
-          height: 15,
-        ),
       ],
     );
   }

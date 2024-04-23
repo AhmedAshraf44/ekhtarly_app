@@ -1,6 +1,6 @@
 import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/otp_view.dart';
 import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
-import 'package:ekhtarly_app/features/home/data/model/newest_laptop/laptops.dart';
+import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
@@ -28,8 +28,7 @@ abstract class AppRouter {
   static const kFavouriteView = '/FavouriteView';
   static const kOtpView = '/OtpView';
   static const kOtpForgetPasswordView = '/OtpForgetPasswordView';
-    static const kNewestLaptopsView = '/NewestLaptopsView';
-
+  static const kNewestLaptopsView = '/NewestLaptopsView';
 
   static final router = GoRouter(routes: [
     GoRoute(
@@ -95,12 +94,14 @@ abstract class AppRouter {
             email: email!,
           );
         }),
-        GoRoute(
+    GoRoute(
       path: kNewestLaptopsView,
-
       builder: (context, state) {
-        final  laptops = state.extra as Laptops;
-        return NewestLaptopsView(laptops: laptops,);},
+        final laptops = state.extra as Laptops;
+        return NewestLaptopsView(
+          laptops: laptops,
+        );
+      },
     ),
   ]);
 }

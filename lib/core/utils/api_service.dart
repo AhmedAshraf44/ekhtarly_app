@@ -23,7 +23,7 @@ class ApiService {
         'Content-Type': 'application/json',
       });
     }
-   // log('data = $data token =$token');
+    // log('data = $data token =$token');
     //         var headers = {
     //   'Content-Type': 'application/json',
     // };
@@ -43,12 +43,13 @@ class ApiService {
         data: data, options: Options(headers: headers));
     return response.data;
   }
+
   Future<Map<String, dynamic>> get({
-  required String endpoint,
-}) async {
-  Map<String, dynamic> headers = {};
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  var token = prefs.getString('token');
+    required String endpoint,
+  }) async {
+    Map<String, dynamic> headers = {};
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
     if (prefs.getString('token') == null) {
       prefs.setString('token', '');
     } else {
@@ -58,10 +59,9 @@ class ApiService {
         'Content-Type': 'application/json',
       });
     }
-   // log('token =$token');
-  var response = await _dio.get('$_baseUri$endpoint',options: Options(headers: headers));
-  return response.data;
+    // log('token =$token');
+    var response = await _dio.get('$_baseUri$endpoint',
+        options: Options(headers: headers));
+    return response.data;
+  }
 }
-
-}
-

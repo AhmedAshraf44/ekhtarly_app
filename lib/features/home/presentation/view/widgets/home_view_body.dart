@@ -84,7 +84,9 @@ class HomeViewBody extends StatelessWidget {
                       top: 20,
                       bottom: 62,
                     ),
-                    child: CustomTipsSlider(checkPage: true,),
+                    child: CustomTipsSlider(
+                      checkPage: true,
+                    ),
                   ),
                   Text('Newest Laptop', style: Styles.googleFontsPoppins),
                   //  HomeViewBodyDetails(),
@@ -92,20 +94,25 @@ class HomeViewBody extends StatelessWidget {
               ),
             ),
           ),
-         // make in bloc
-          BlocBuilder<NewestLaptopsCubit,NewestLaptopsState>(
+          // make in bloc
+          BlocBuilder<NewestLaptopsCubit, NewestLaptopsState>(
             builder: (context, state) {
-             if (state is NewestLaptopsFailure){
-                 return SliverToBoxAdapter(child: Center(child: Text(state.errorMessage),));
-              }else if (state is  NewestLaptopsSuccess)
-              {
-               return  HomeViewBodyDetails(newestLaptop:state.laptops,);
-              }else {
-                 return const SliverToBoxAdapter(child:  Center(child: CircularProgressIndicator()));
+              if (state is NewestLaptopsFailure) {
+                return SliverToBoxAdapter(
+                    child: Center(
+                  child: Text(state.errorMessage),
+                ));
+              } else if (state is NewestLaptopsSuccess) {
+                return HomeViewBodyDetails(
+                  newestLaptop: state.laptops,
+                );
+              } else {
+                return const SliverToBoxAdapter(
+                    child: Center(child: CircularProgressIndicator()));
               }
             },
           ),
-        
+
           const SliverToBoxAdapter(
             child: SizedBox(
               height: 75,
