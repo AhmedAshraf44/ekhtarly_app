@@ -11,13 +11,29 @@ class FavouriteRepoImpl implements FavouriteRepo {
 
   FavouriteRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, FavouriteModel>> addToFavourite() async {
+  Future<Either<Failure, FavouriteModel>> getFavourite() async {
     try {
       var data = await apiService.get(
         endpoint: 'api/favorite',
       );
       //log(data.toString());
       return right(FavouriteModel.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, dynamic>> addToFavourite({required int id}) async{
+    try {
+      var data = await apiService.patch(
+        endpoint: 'api/favorite/$id',
+      );
+      //log(data.toString());
+      return right(data);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.formDioError(e));

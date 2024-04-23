@@ -3,5 +3,6 @@ import '../../../../core/errors/failure.dart';
 import '../model/favourite_model/favourite_model.dart';
 
 abstract class FavouriteRepo {
-  Future<Either<Failure, FavouriteModel>> addToFavourite();
+  Future<Either<Failure, FavouriteModel>> getFavourite();
+  Future<Either<Failure, dynamic>> addToFavourite({required int id});
 }

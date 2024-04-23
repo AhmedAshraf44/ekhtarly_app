@@ -59,7 +59,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, dynamic>> otpVerifyEmail(
       {required String email, required String code}) async {
     try {
-      var data = await apiService.patch(endpoint: 'verify', data: {
+      var data = await apiService.patch(endpoint: 'auth/verify', data: {
         'email': email,
         'code': code,
       });
@@ -139,7 +139,7 @@ class AuthRepoImpl implements AuthRepo {
       required String password}) async {
     try {
       var data =
-          await apiService.patch(endpoint: 'forgotPassword-change', data: {
+          await apiService.patch(endpoint: 'auth/forgotPassword-change', data: {
         'email': email,
         'code': code,
         'password': password,

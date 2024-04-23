@@ -1,5 +1,5 @@
-import 'package:ekhtarly_app/features/favourite/manger/add_favourite_cubit/add_favourite_cubit.dart';
-import 'package:ekhtarly_app/features/favourite/manger/add_favourite_cubit/add_favourite_state.dart';
+import 'package:ekhtarly_app/features/favourite/manger/get_favourite_cubit/get_favourite_cubit.dart';
+import 'package:ekhtarly_app/features/favourite/manger/get_favourite_cubit/get_favourite_state.dart';
 import 'package:ekhtarly_app/features/favourite/presentation/view/widgets/favourite_grid_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +8,7 @@ class FavouriteViewBody extends StatelessWidget {
   const FavouriteViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddFavouriteCubit, AddFavouriteState>(
+    return BlocBuilder<FavouriteCubit, FavouriteState>(
         builder: (context, state) {
       if (state is AddFavouritFailure) {
         return Center(child: Text(state.errorMessage));

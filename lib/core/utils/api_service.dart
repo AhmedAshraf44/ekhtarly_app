@@ -34,12 +34,21 @@ class ApiService {
 
   Future<Map<String, dynamic>> patch({
     required String endpoint,
-    required Map<String, String>? data,
+     Map<String, String>? data,
   }) async {
-    var headers = {
-      'Content-Type': 'application/json',
-    };
-    var response = await _dio.patch('$_baseUri$_baseUriAuth$endpoint',
+     Map<String, dynamic> headers = {};
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    if (prefs.getString('token') == null) {
+      prefs.setString('token', '');
+    } else {
+      // var token = prefs.getString('token');
+      headers.addAll({
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      });
+    }
+    var response = await _dio.patch('$_baseUri$endpoint',
         data: data, options: Options(headers: headers));
     return response.data;
   }

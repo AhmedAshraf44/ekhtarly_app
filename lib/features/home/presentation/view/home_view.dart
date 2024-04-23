@@ -1,7 +1,7 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/features/favourite/manger/add_favourite_cubit/add_favourite_cubit.dart';
+import 'package:ekhtarly_app/features/favourite/manger/get_favourite_cubit/get_favourite_cubit.dart';
 import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body.dart';
 import 'package:ekhtarly_app/features/search/presentation/view/search_view.dart';
@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
-    BlocProvider.of<AddFavouriteCubit>(context).addToFavorites();
+    BlocProvider.of<FavouriteCubit>(context).addToFavorites();
     super.initState();
   }
 
