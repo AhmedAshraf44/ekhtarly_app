@@ -81,8 +81,6 @@ class HomeViewBody extends StatelessWidget {
                   ),
                   const Padding(
                     padding: EdgeInsets.only(
-                      //right: 10,
-                      // left: 10,
                       top: 20,
                       bottom: 62,
                     ),
@@ -101,7 +99,7 @@ class HomeViewBody extends StatelessWidget {
                  return SliverToBoxAdapter(child: Center(child: Text(state.errorMessage),));
               }else if (state is  NewestLaptopsSuccess)
               {
-               return  CustomTipsGridView(newestLaptop:state.laptops,);
+               return  HomeViewBodyDetails(newestLaptop:state.laptops,);
               }else {
                  return const SliverToBoxAdapter(child:  Center(child: CircularProgressIndicator()));
               }

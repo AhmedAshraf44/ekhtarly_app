@@ -2,17 +2,17 @@ import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../constants.dart';
-import '../../../features/home/data/model/newest_laptop/laptops.dart';
+import '../../../../../constants.dart';
+import '../../../data/model/newest_laptop/laptops.dart';
 
-class CustomSliverListItem extends StatefulWidget {
-  const CustomSliverListItem({super.key, required this.laptops,});
+class NewestLaptopsItem extends StatefulWidget {
+  const NewestLaptopsItem({super.key, required this.laptops,});
   final Laptops laptops;
   @override
-  State<CustomSliverListItem> createState() => _CustomSliverListItemState();
+  State<NewestLaptopsItem> createState() => _NewestLaptopsItemState();
 }
 
-class _CustomSliverListItemState extends State<CustomSliverListItem> {
+class _NewestLaptopsItemState extends State<NewestLaptopsItem> {
   bool iconColor = false;
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ class _CustomSliverListItemState extends State<CustomSliverListItem> {
       },
       child: Container(
         decoration: const BoxDecoration(
-          color: kAlternateButtonColor,
-         // color: Color(0xffFFFFFF),
+         // color: kAlternateButtonColor,
+          color: Color(0xffFFFFFF),
          // color: Color(0xffF2F5FA),
           borderRadius: BorderRadius.all(
             Radius.circular(20),
@@ -42,7 +42,7 @@ class _CustomSliverListItemState extends State<CustomSliverListItem> {
                   width:double.infinity,
                  // color: Color(0xffF2F5FA),
                   color: Colors.white,
-                  //color:kAlternateButtonColor ,
+                  //color:kAlternateButtonColor,
                   child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Image.asset(
@@ -51,7 +51,8 @@ class _CustomSliverListItemState extends State<CustomSliverListItem> {
                       height: MediaQuery.of(context).size.height * .15,
                     ),
                   ),
-                ),),
+                ),
+                ),
             const SizedBox(
               height: 10,
             ),
