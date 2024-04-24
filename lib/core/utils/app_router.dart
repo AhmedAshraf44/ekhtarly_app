@@ -3,6 +3,7 @@ import 'package:ekhtarly_app/features/authentication/registration/presentation/v
 import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/setting.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
@@ -31,13 +32,14 @@ abstract class AppRouter {
   static const kOtpForgetPasswordView = '/OtpForgetPasswordView';
   static const kNewestLaptopsView = '/NewestLaptopsView';
   static const kProfile = '/Profile';
+  static const kSetting = '/setting';
 
 
 
   static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const HomeView(),
+      builder: (context, state) => const SplashView(),
     ),
     GoRoute(
       path: kIntroductionView,
@@ -58,6 +60,10 @@ abstract class AppRouter {
     GoRoute(
       path: kHomeView,
       builder: (context, state) => const HomeView(),
+    ),
+     GoRoute(
+      path: kSetting,
+      builder: (context, state) => const SettingScreen(),
     ),
     GoRoute(
       path: kForgetPasswordView,

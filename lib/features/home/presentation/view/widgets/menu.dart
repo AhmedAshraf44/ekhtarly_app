@@ -50,17 +50,22 @@ class MyDrawer extends StatelessWidget {
                   size: 20,
                 ),
               ),
-              const ListTile(
-                title: Text(
-                  'Setting',
-                  style: TextStyle(
-                      color: Color(0xff0D0D26),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15),
-                ),
-                leading: Icon(
-                  FontAwesomeIcons.gear,
-                  size: 20,
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kSetting);
+                },
+                child: const ListTile(
+                  title: Text(
+                    'Setting',
+                    style: TextStyle(
+                        color: Color(0xff0D0D26),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15),
+                  ),
+                  leading: Icon(
+                    FontAwesomeIcons.gear,
+                    size: 20,
+                  ),
                 ),
               ),
               const ListTile(
@@ -86,8 +91,9 @@ class MyDrawer extends StatelessWidget {
 class MyHeader extends StatelessWidget {
   const MyHeader({
     super.key,
+    this.textcolor
   });
-
+  final Color? textcolor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -110,9 +116,9 @@ class MyHeader extends StatelessWidget {
               fontSize: 20,
               fontWeight: FontWeight.w500),
         ),
-        const Text(
+         Text(
           'jonsina@gmail.com',
-          style: TextStyle(color: Color(0xff95969D)),
+          style: TextStyle(color: textcolor??const Color(0xff95969D)),
         ),
       ]),
     );
