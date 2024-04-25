@@ -1,7 +1,6 @@
 import 'dart:ui';
-
 import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/core/utils/styles.dart';
+import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ class _SettingScreenState extends State<SettingScreen> {
             GoRouter.of(context).pop();
           },
         ),
-        title: Text('Setting'),
+        title: const Text('Setting'),
         centerTitle: true,
       ),
       body: Padding(
@@ -40,10 +39,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 borderRadius: BorderRadius.circular(12),
                 child: Container(
                     color: kSecondaryColor,
-                    child: MyHeader(
+                    child: const MyHeader(
                       textcolor: Colors.black,
                     ))),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Card(
@@ -53,14 +52,17 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Column(
                 children: [
                   InkWell(
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kchangePassword);
+                    },
                     onLongPress: () {},
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(Icons.lock),
                       title: Text('Change Password'),
                       trailing: Icon(Icons.keyboard_arrow_right),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
                     child: Divider(
                       height: 8,
@@ -68,7 +70,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   ),
                   InkWell(
                     onLongPress: () {},
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(Icons.language),
                       title: Text('Change Language'),
                       trailing: Icon(Icons.keyboard_arrow_right),
@@ -77,18 +79,18 @@ class _SettingScreenState extends State<SettingScreen> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
-            Text(
+            const Text(
               'Preferences',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SwitchListTile(
-              title: Text(
+              title: const Text(
                 'Dark Mode',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),

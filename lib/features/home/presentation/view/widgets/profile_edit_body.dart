@@ -1,20 +1,21 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
-class AccountProfileBody extends StatelessWidget {
-  const AccountProfileBody({super.key});
+class ProfileEditBody extends StatelessWidget {
+  const ProfileEditBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Profile'),
+        title: const Text('Edit Profile'),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.keyboard_arrow_left),
@@ -40,7 +41,7 @@ class AccountProfileBody extends StatelessWidget {
             const SizedBox(
               height: 22,
             ),
-            Text(
+            const Text(
               'Name',
               style: TextStyle(
                   fontSize: 16,
@@ -50,11 +51,16 @@ class AccountProfileBody extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            Details_Field(text: 'Jon Sina'),
+            CutsomTextForm(
+              text: 'Jon Sina',
+            ),
             const SizedBox(
               height: 12,
             ),
-            Text(
+            const SizedBox(
+              height: 12,
+            ),
+            const Text(
               'Email',
               style: TextStyle(
                   fontSize: 16,
@@ -64,7 +70,9 @@ class AccountProfileBody extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            Details_Field(text: 'jonsina@gmail.com'),
+            CutsomTextForm(
+              text: 'jonsina@gmail.com',
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -78,17 +86,19 @@ class AccountProfileBody extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            const Details_Field(text: '**********'),
+            GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kchangePassword);
+                },
+                child: const Details_Field(text: '**********')),
             const SizedBox(
               height: 40,
             ),
             CustomButton(
-              onPressed: () {
-                GoRouter.of(context).push(AppRouter.kprofileedit);
-              },
+              onPressed: () {},
               colorButton: kButtonColor,
               colorText: Colors.white,
-              text: 'Edit',
+              text: 'Save Now',
             ),
           ]),
         ),
@@ -97,31 +107,27 @@ class AccountProfileBody extends StatelessWidget {
   }
 }
 
-class Details_Field extends StatelessWidget {
-  const Details_Field({
+class CutsomTextForm extends StatelessWidget {
+  const CutsomTextForm({
     super.key,
     required this.text,
+    this.onTap,
   });
   final String text;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 50,
-      decoration: BoxDecoration(
-          color: const Color(0xffF7F7F9),
-          borderRadius: BorderRadius.circular(8)),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 14, top: 15, bottom: 15),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text(
-            text,
-            style: const TextStyle(
-                fontWeight: FontWeight.w600, color: Color(0xff2B2B2B)),
-          ),
-          Opacity(opacity: 0.7, child: Icon(Icons.edit_note)),
-        ]),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: TextField(
+        onTap: onTap,
+        decoration: InputDecoration(
+            hintText: text,
+            hintStyle: TextStyle(color: Color(0xff2B2B2B).withOpacity(0.8)),
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            fillColor: Color(0xffF7F7F9),
+            filled: true),
       ),
     );
   }
