@@ -4,6 +4,7 @@ import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/features/favourite/manger/get_favourite_cubit/get_favourite_cubit.dart';
 import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/menu.dart';
 import 'package:ekhtarly_app/features/search/presentation/view/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,6 +72,7 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
         child: Scaffold(
       extendBody: true,
+      drawer: MyDrawer(),
       backgroundColor: kBackgroundColor,
       body: screens[selectedTab],
       bottomNavigationBar: CurvedNavigationBar(

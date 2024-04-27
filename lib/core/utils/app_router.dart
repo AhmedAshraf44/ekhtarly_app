@@ -2,6 +2,10 @@ import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentati
 import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
 import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/setting.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
@@ -29,6 +33,10 @@ abstract class AppRouter {
   static const kOtpView = '/OtpView';
   static const kOtpForgetPasswordView = '/OtpForgetPasswordView';
   static const kNewestLaptopsView = '/NewestLaptopsView';
+  static const kProfile = '/Profile';
+  static const kSetting = '/setting';
+  static const kprofileedit = '/profileedit';
+  static const kchangePassword = '/changePassword';
 
   static final router = GoRouter(routes: [
     GoRoute(
@@ -44,12 +52,24 @@ abstract class AppRouter {
       builder: (context, state) => const LoginView(),
     ),
     GoRoute(
+      path: kProfile,
+      builder: (context, state) => const AccountProfileBody(),
+    ),
+    GoRoute(
       path: kRegisterView,
       builder: (context, state) => const RegisterView(),
     ),
     GoRoute(
       path: kHomeView,
       builder: (context, state) => const HomeView(),
+    ),
+    GoRoute(
+      path: kSetting,
+      builder: (context, state) => const SettingScreen(),
+    ),
+    GoRoute(
+      path: kchangePassword,
+      builder: (context, state) => const ChangePassowrd(),
     ),
     GoRoute(
       path: kForgetPasswordView,
@@ -77,6 +97,10 @@ abstract class AppRouter {
     GoRoute(
       path: kFavouriteView,
       builder: (context, state) => const FavouriteView(),
+    ),
+    GoRoute(
+      path: kprofileedit,
+      builder: (context, state) => const ProfileEditBody(),
     ),
     GoRoute(
         path: kOtpView,
