@@ -4,5 +4,5 @@ import '../model/favourite_model/favourite_model.dart';
 
 abstract class FavouriteRepo {
   Future<Either<Failure, FavouriteModel>> getFavourite();
-  Future<Either<Failure, dynamic>> addToFavourite({required int id});
+  Future<Either<Failure, dynamic>> addToFavourite({required String id});
 }

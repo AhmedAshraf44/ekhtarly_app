@@ -10,17 +10,18 @@ class FavouriteViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FavouriteCubit, FavouriteState>(
         builder: (context, state) {
-      if (state is AddFavouritFailure) {
+      if (state is FavouritFailure) {
         return Center(child: Text(state.errorMessage));
-      } else if (state is AddFavouritSuccess) {
+      } else if (state is FavouritSuccess) {
         return state.favourite.favoriteList == null
             ? const Center(
                 child: Text('There are no items in your favorites'),
               )
             : Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 28),
+                    const EdgeInsets.symmetric(horizontal: 20,),
                 child: GridView.builder(
+                  physics: const BouncingScrollPhysics(),
                   itemCount: state.favourite.favoriteList?.length ?? 0,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,

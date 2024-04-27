@@ -48,6 +48,7 @@ class _NewestLaptopsItemState extends State<NewestLaptopsItem> {
             CustomPriceNewestLaptopsItem(
               price: widget.laptops.price!,
               onPressed: () {
+               // BlocProvider.of<FavouriteCubit>(context).addToFavorites(id:widget.laptops.id!);
                 setState(() {
                   iconColor = !iconColor;
                 });

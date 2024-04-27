@@ -4,7 +4,7 @@ import 'newest_laptops_state.dart';
 
 class NewestLaptopsCubit extends Cubit<NewestLaptopsState> {
   NewestLaptopsCubit(this.homeRepo) : super(NewestLaptopsInitial());
-
+   
   final HomeRepo homeRepo;
   Future<void> getNewestLaptops() async {
     emit(NewestLaptopsLoading());

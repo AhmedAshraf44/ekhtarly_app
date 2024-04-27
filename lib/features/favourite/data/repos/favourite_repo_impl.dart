@@ -27,7 +27,7 @@ class FavouriteRepoImpl implements FavouriteRepo {
   }
   
   @override
-  Future<Either<Failure, dynamic>> addToFavourite({required int id}) async{
+  Future<Either<Failure, dynamic>> addToFavourite({required String id}) async{
     try {
       var data = await apiService.patch(
         endpoint: 'api/favorite/$id',

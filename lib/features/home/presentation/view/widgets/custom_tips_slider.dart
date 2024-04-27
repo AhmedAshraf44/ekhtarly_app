@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ekhtarly_app/constants.dart';
+import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:ekhtarly_app/features/home/presentation/view_models/laptops_image_model.dart';
 import 'package:flutter/material.dart';
 
@@ -143,7 +144,11 @@ class CustomHomeSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: kPrimaryColor, borderRadius: BorderRadius.circular(25)),
+        image:const DecorationImage(image: AssetImage('assets/images/lap4.jpg'), fit: BoxFit.cover,opacity: .5),
+          // color: kPrimaryColor, 
+          borderRadius: BorderRadius.circular(25),
+          ),
+          child: Center(child: Text('LLLLLLLLLLLLLLLLLLLLLLLLLLLL',style: Styles.textStyle16Smei.copyWith(color: Colors.white))),
     );
   }
 }
@@ -156,6 +161,7 @@ class ImagelaptopSlider extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 6),
       child: Container(
+               
         decoration: const BoxDecoration(
             //color: kBackgroundColor,
             borderRadius: BorderRadius.all(Radius.circular(15))),

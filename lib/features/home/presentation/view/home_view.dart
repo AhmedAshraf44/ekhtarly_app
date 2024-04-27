@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
-    BlocProvider.of<FavouriteCubit>(context).addToFavorites();
+    BlocProvider.of<FavouriteCubit>(context).getFavorites();
     super.initState();
   }
 
