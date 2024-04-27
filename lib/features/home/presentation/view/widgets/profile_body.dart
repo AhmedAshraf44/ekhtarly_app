@@ -1,9 +1,7 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AccountProfileBody extends StatelessWidget {
@@ -40,7 +38,7 @@ class AccountProfileBody extends StatelessWidget {
             const SizedBox(
               height: 22,
             ),
-            Text(
+           const  Text(
               'Name',
               style: TextStyle(
                   fontSize: 16,
@@ -50,11 +48,11 @@ class AccountProfileBody extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            Details_Field(text: 'Jon Sina'),
+           const DetailsField(text: 'Jon Sina'),
             const SizedBox(
               height: 12,
             ),
-            Text(
+           const Text(
               'Email',
               style: TextStyle(
                   fontSize: 16,
@@ -64,7 +62,7 @@ class AccountProfileBody extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            Details_Field(text: 'jonsina@gmail.com'),
+           const DetailsField(text: 'jonsina@gmail.com'),
             const SizedBox(
               height: 30,
             ),
@@ -78,7 +76,7 @@ class AccountProfileBody extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            const Details_Field(text: '**********'),
+            const DetailsField(text: '**********'),
             const SizedBox(
               height: 40,
             ),
@@ -97,8 +95,8 @@ class AccountProfileBody extends StatelessWidget {
   }
 }
 
-class Details_Field extends StatelessWidget {
-  const Details_Field({
+class DetailsField extends StatelessWidget {
+  const DetailsField({
     super.key,
     required this.text,
   });
@@ -120,7 +118,7 @@ class Details_Field extends StatelessWidget {
             style: const TextStyle(
                 fontWeight: FontWeight.w600, color: Color(0xff2B2B2B)),
           ),
-          Opacity(opacity: 0.7, child: Icon(Icons.edit_note)),
+          const Opacity(opacity: 0.7, child: Icon(Icons.edit_note)),
         ]),
       ),
     );

@@ -92,15 +92,15 @@ class NewestLaptopDetailsDescrptionItem extends StatelessWidget {
           text: 'Operating System',
           textValue: laptops.os!,
         ),
-        const SizedBox(
-          height: 15,
-        ),
-        laptops.type! == 'trend'
-            ? const SizedBox()
-            : CustomDescrptionItem(
-                text: 'Type',
-                textValue: laptops.type!,
-              ),
+        // const SizedBox(
+        //   height: 15,
+        // ),
+        // laptops.type! == 'trend'
+        //     ? const SizedBox()
+        //     : CustomDescrptionItem(
+        //         text: 'Type',
+        //         textValue: laptops.type!,
+        //       ),
       ],
     );
   }

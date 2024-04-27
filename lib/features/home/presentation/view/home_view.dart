@@ -72,7 +72,7 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
         child: Scaffold(
       extendBody: true,
-      drawer: MyDrawer(),
+      drawer:const MyDrawer(),
       backgroundColor: kBackgroundColor,
       body: screens[selectedTab],
       bottomNavigationBar: CurvedNavigationBar(

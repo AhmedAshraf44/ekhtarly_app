@@ -1,7 +1,6 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -49,7 +48,7 @@ class ChangePassowrd extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            CutsomTextForm(
+           const CutsomTextForm(
               text: '********',
             ),
             const SizedBox(
@@ -68,7 +67,7 @@ class ChangePassowrd extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            CutsomTextForm(
+           const CutsomTextForm(
               text: '********',
             ),
             const SizedBox(
@@ -84,7 +83,7 @@ class ChangePassowrd extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            CutsomTextForm(
+           const CutsomTextForm(
               text: '********',
             ),
             const SizedBox(
