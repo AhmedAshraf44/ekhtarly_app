@@ -27,7 +27,11 @@ class HomeViewBody extends StatelessWidget {
         slivers: [
           SliverAppBar(
             backgroundColor: const Color(0xffE5E5E5),
-            leading: const Icon(Icons.menu),
+            leading: GestureDetector(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: const Icon(Icons.menu)),
             actions: const [
               CircleAvatar(
                 backgroundColor: kPrimaryColor,
