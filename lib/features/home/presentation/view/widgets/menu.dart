@@ -52,6 +52,24 @@ class MyDrawer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
+                  GoRouter.of(context).push(AppRouter.kComprasion);
+                },
+                child: const ListTile(
+                  title: Text(
+                    'Comprasion',
+                    style: TextStyle(
+                        color: Color(0xff0D0D26),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15),
+                  ),
+                  leading: Icon(
+                    FontAwesomeIcons.scaleBalanced,
+                    size: 20,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
                   GoRouter.of(context).push(AppRouter.kSetting);
                 },
                 child: const ListTile(
@@ -89,10 +107,7 @@ class MyDrawer extends StatelessWidget {
 }
 
 class MyHeader extends StatelessWidget {
-  const MyHeader({
-    super.key,
-    this.textcolor
-  });
+  const MyHeader({super.key, this.textcolor});
   final Color? textcolor;
   @override
   Widget build(BuildContext context) {
@@ -116,9 +131,9 @@ class MyHeader extends StatelessWidget {
               fontSize: 20,
               fontWeight: FontWeight.w500),
         ),
-         Text(
+        Text(
           'jonsina@gmail.com',
-          style: TextStyle(color: textcolor??const Color(0xff95969D)),
+          style: TextStyle(color: textcolor ?? const Color(0xff95969D)),
         ),
       ]),
     );

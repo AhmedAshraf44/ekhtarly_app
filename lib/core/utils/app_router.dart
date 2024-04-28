@@ -1,6 +1,7 @@
 import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/otp_view.dart';
 import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
 import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
+import 'package:ekhtarly_app/features/comprasion/presentation/views/comprasion_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
@@ -37,6 +38,7 @@ abstract class AppRouter {
   static const kSetting = '/setting';
   static const kprofileedit = '/profileedit';
   static const kchangePassword = '/changePassword';
+  static const kComprasion = '/comprasion';
 
   static final router = GoRouter(routes: [
     GoRoute(
@@ -66,6 +68,10 @@ abstract class AppRouter {
     GoRoute(
       path: kSetting,
       builder: (context, state) => const SettingScreen(),
+    ),
+    GoRoute(
+      path: kComprasion,
+      builder: (context, state) => const ComprasionView(),
     ),
     GoRoute(
       path: kchangePassword,
