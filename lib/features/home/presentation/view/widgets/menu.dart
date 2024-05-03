@@ -36,7 +36,6 @@ class _MyDrawerState extends State<MyDrawer> {
               BlocBuilder<ProfileCubit, ProfileState>(
                 builder: (context, state) {
                   if (state is ProfileSuccess) {
-                    print('success');
                     return MyHeader(
                       profile: state.profile,
                     );
