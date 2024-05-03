@@ -77,26 +77,7 @@ class profileEditBody extends StatelessWidget {
             height: 12,
           ),
           CutsomTextForm(
-            text: profile.name?? 'Jon Sina',
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          const Text(
-            'Email',
-            style: TextStyle(
-                fontSize: 16,
-                color: Color(0xff707B81),
-                fontWeight: FontWeight.w500),
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          CutsomTextForm(
-            text: profile.email!,
+            text: profile.name ?? 'Jon Sina',
           ),
           const SizedBox(
             height: 30,
