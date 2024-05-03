@@ -1,10 +1,12 @@
 import 'dart:ui';
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
+import 'package:ekhtarly_app/features/home/data/model/profile.dart';
+import 'package:ekhtarly_app/features/home/manger/cubit/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/menu.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -37,11 +39,20 @@ class _SettingScreenState extends State<SettingScreen> {
           children: [
             ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Container(
-                    color: kSecondaryColor,
-                    child: const MyHeader(
-                      textcolor: Colors.black,
-                    ))),
+                child: BlocBuilder<ProfileCubit, ProfileState>(
+                  builder: (context, state) {
+                    if (state is ProfileSuccess) {
+                      return Container(
+                          color: kSecondaryColor,
+                          child: MyHeader(
+                            profile: state.profile,
+                            textcolor: Colors.black,
+                          ));
+                    } else {
+                      return Container();
+                    }
+                  },
+                )),
             const SizedBox(
               height: 20,
             ),
