@@ -13,7 +13,7 @@ class ComprasionView extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
-        title: Text(
+        title: const Text(
           'Comparison',
           style: Styles.textStyle20,
         ),
@@ -44,7 +44,7 @@ class ComprasionBox extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             color: kThridColor, borderRadius: BorderRadius.circular(8)),
-        height: 200,
+        height: MediaQuery.of(context).size.height * 0.25,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

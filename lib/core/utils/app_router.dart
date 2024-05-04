@@ -6,7 +6,7 @@ import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
-import 'package:ekhtarly_app/features/home/presentation/view/widgets/setting.dart';
+import 'package:ekhtarly_app/features/settings/presentation/views/setting.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
@@ -55,7 +55,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kProfile,
-      builder: (context, state) => const AccountProfileBody(),
+      builder: (context, state) => AccountProfileBody(),
     ),
     GoRoute(
       path: kRegisterView,
@@ -75,7 +75,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kchangePassword,
-      builder: (context, state) => const ChangePassowrd(),
+      builder: (context, state) =>  ChangePassowrd(),
     ),
     GoRoute(
       path: kForgetPasswordView,

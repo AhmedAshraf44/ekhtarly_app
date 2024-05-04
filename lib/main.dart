@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/service_locator.dart';
 import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo_impl.dart';
@@ -9,7 +10,11 @@ import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cub
 import 'package:ekhtarly_app/features/authentication/manger/register_cubit/register_cubit.dart';
 import 'package:ekhtarly_app/features/favourite/manger/get_favourite_cubit/get_favourite_cubit.dart';
 import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:ekhtarly_app/features/home/manger/change_password/change_password_cubit.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,12 +23,10 @@ import 'features/favourite/data/repos/favourite_repo_impl.dart';
 
 void main() {
   setupServiceLocator();
-  runApp(
-    // DevicePreview(
-    //   enabled: true,
-    //   builder: (context) =>
-    const EkhtarlyApp(),
-  );
+  runApp(DevicePreview(
+    enabled: true,
+    builder: (context) => const EkhtarlyApp(),
+  ));
 }
 
 class EkhtarlyApp extends StatelessWidget {
@@ -68,6 +71,16 @@ class EkhtarlyApp extends StatelessWidget {
             getIt.get<HomeRepoImpl>(),
           ),
         ),
+          BlocProvider(
+          create: (context) => ProfileCubit(
+            getIt.get<HomeRepoImpl>(),
+          ),
+        ),
+         BlocProvider(
+          create: (context) => ChangePasswordCubit(
+            getIt.get<HomeRepoImpl>(),
+          ),
+        ),
         BlocProvider(
           create: (context) => FavouriteCubit(
             getIt.get<FavouriteRepoImpl>(),
@@ -75,8 +88,8 @@ class EkhtarlyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-        // locale: DevicePreview.locale(context),
-        // builder: DevicePreview.appBuilder,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
         theme: ThemeData(
