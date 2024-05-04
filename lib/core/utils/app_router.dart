@@ -75,7 +75,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kchangePassword,
-      builder: (context, state) => const ChangePassowrd(),
+      builder: (context, state) =>  ChangePassowrd(),
     ),
     GoRoute(
       path: kForgetPasswordView,

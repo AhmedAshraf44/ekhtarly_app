@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/features/home/data/model/profile.dart';
-import 'package:ekhtarly_app/features/home/manger/cubit/profile_cubit.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

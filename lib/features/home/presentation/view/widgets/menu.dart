@@ -1,6 +1,6 @@
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/features/home/data/model/profile.dart';
-import 'package:ekhtarly_app/features/home/manger/cubit/profile_cubit.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

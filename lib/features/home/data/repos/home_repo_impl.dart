@@ -39,4 +39,22 @@ class HomeRepoImpl implements HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> changePassword(
+      Map<String, String> body) async {
+    try {
+
+      var data =
+          await apiService.patch(endpoint: 'auth/change-password', data: body);
+      Map<String, dynamic> message;
+      message = data ;
+      return Right(message);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }
