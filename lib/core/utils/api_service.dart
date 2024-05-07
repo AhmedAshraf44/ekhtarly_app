@@ -73,4 +73,27 @@ class ApiService {
         options: Options(headers: headers));
     return response.data;
   }
+
+
+
+  Future<Map<String, dynamic>> delete({
+    required String endpoint,
+  }) async {
+    Map<String, dynamic> headers = {};
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    if (prefs.getString('token') == null) {
+      prefs.setString('token', '');
+    } else {
+      // var token = prefs.getString('token');
+      headers.addAll({
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      });
+    }
+    // log('token =$token');
+    var response = await _dio.delete('$_baseUri$endpoint',
+        options: Options(headers: headers));
+    return response.data;
+  }
 }

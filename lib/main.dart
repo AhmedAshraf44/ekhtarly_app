@@ -7,13 +7,13 @@ import 'package:ekhtarly_app/features/authentication/manger/forgot_password_subm
 import 'package:ekhtarly_app/features/authentication/manger/resend_cubit/resned_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cubit/otp_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/register_cubit/register_cubit.dart';
-import 'package:ekhtarly_app/features/favourite/presentation/manger/get_favourite_cubit/get_favourite_cubit.dart';
 import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'features/favourite/data/repos/favourite_repo_impl.dart';
+import 'features/favourite/presentation/manger/add_favourite_cubit/add_favourite_cubit.dart';
 
 void main() {
   setupServiceLocator();
