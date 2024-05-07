@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
-import 'package:ekhtarly_app/features/home/presentation/view_models/laptops_image_model.dart';
+import 'package:ekhtarly_app/features/home/data/model/laptops_image_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomTipsSlider extends StatefulWidget {

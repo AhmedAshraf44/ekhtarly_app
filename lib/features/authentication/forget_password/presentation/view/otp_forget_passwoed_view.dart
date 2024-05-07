@@ -1,5 +1,5 @@
 import 'package:ekhtarly_app/core/functions/show_snack_bar.dart';
-import 'package:ekhtarly_app/features/authentication/forget_password/presentation/view_models/model.dart';
+import 'package:ekhtarly_app/features/authentication/data/models/person_model.dart';
 import 'package:ekhtarly_app/features/authentication/manger/forgot_password_submit_code_cubit/forgot_password_submit_code_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

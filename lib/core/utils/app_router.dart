@@ -11,7 +11,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
 import '../../features/authentication/forget_password/presentation/view/otp_forget_passwoed_view.dart';
 import '../../features/authentication/forget_password/presentation/view/success_view.dart';
-import '../../features/authentication/forget_password/presentation/view_models/model.dart';
+import '../../features/authentication/data/models/person_model.dart';
 import '../../features/authentication/login/presentation/view/login_view.dart';
 import '../../features/favourite/presentation/view/favourite_view.dart';
 import '../../features/authentication/forget_password/presentation/view/forget_passwoed_view.dart';

@@ -1,4 +1,4 @@
-import '../../data/model/favourite_model/favourite_model.dart';
+import '../../../data/model/favourite_model/favourite_model.dart';
 
 abstract class FavouriteState {}
 
