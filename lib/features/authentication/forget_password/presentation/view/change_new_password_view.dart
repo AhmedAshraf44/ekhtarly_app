@@ -6,7 +6,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../core/utils/app_router.dart';
 import '../../../manger/forgot_password_change_cubit/forgot_password_change_cubit.dart';
-import '../view_models/model.dart';
+import '../../../data/models/person_model.dart';
 import 'widgets/change_new_password_body.dart';
 
 class ChangeNewPasswordView extends StatelessWidget {

@@ -1,30 +1,29 @@
+import 'package:ekhtarly_app/features/comprasion/presentation/views/widget/customDescriptionItemBoxValue.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_descrption_item_value.dart';
-
-class CustomDescrptionItem extends StatelessWidget {
-  CustomDescrptionItem({
+class CustomDescrptionItemBox extends StatelessWidget {
+  CustomDescrptionItemBox({
     super.key,
     required this.textValue,
-     this.text,
+    this.text,  this.secand=false,
   });
   String? text;
   final String textValue;
+  final bool secand ;
   @override
   Widget build(BuildContext context) {
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        text == null
+        secand 
             ? Container()
-            : CustomDescrptionItemValue(
+            : CustomDescrptionItemBoxValue(
                 textValue: text!,
               ),
         const SizedBox(
           width: 15,
         ),
-        CustomDescrptionItemValue(
-          flex: 2,
+        CustomDescrptionItemBoxValue(
           textValue: textValue,
         ),
       ],

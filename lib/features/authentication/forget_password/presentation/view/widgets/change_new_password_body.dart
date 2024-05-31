@@ -7,7 +7,7 @@ import '../../../../../../core/utils/styles.dart';
 import '../../../../../../core/utils/widgets/custom_all_content_text_form_field.dart';
 import '../../../../../../core/utils/widgets/custom_button.dart';
 import '../../../../manger/forgot_password_change_cubit/forgot_password_change_cubit.dart';
-import '../../view_models/model.dart';
+import '../../../../data/models/person_model.dart';
 import 'custom_text_forget_password.dart';
 
 class ChangeNewPasswordBody extends StatefulWidget with InputValidationMixin {

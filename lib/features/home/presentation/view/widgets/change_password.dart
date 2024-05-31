@@ -3,7 +3,7 @@ import 'package:ekhtarly_app/core/functions/show_snack_bar.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/features/authentication/login/presentation/view/login_view.dart';
-import 'package:ekhtarly_app/features/home/manger/change_password/change_password_cubit.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/change_password/change_password_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

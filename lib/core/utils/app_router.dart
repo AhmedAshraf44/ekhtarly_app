@@ -6,13 +6,13 @@ import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
-import 'package:ekhtarly_app/features/settings/presentation/views/setting.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/setting.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
 import '../../features/authentication/forget_password/presentation/view/otp_forget_passwoed_view.dart';
 import '../../features/authentication/forget_password/presentation/view/success_view.dart';
-import '../../features/authentication/forget_password/presentation/view_models/model.dart';
+import '../../features/authentication/data/models/person_model.dart';
 import '../../features/authentication/login/presentation/view/login_view.dart';
 import '../../features/favourite/presentation/view/favourite_view.dart';
 import '../../features/authentication/forget_password/presentation/view/forget_passwoed_view.dart';
@@ -34,7 +34,7 @@ abstract class AppRouter {
   static const kOtpView = '/OtpView';
   static const kOtpForgetPasswordView = '/OtpForgetPasswordView';
   static const kNewestLaptopsView = '/NewestLaptopsView';
-  static const kProfile = '/Profile';
+ static const kProfile = '/Profile';
   static const kSetting = '/setting';
   static const kprofileedit = '/profileedit';
   static const kchangePassword = '/changePassword';
@@ -55,7 +55,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kProfile,
-      builder: (context, state) => AccountProfileBody(),
+      builder: (context, state) =>  AccountProfileBody(),
     ),
     GoRoute(
       path: kRegisterView,
@@ -65,7 +65,7 @@ abstract class AppRouter {
       path: kHomeView,
       builder: (context, state) => const HomeView(),
     ),
-    GoRoute(
+   GoRoute(
       path: kSetting,
       builder: (context, state) => const SettingScreen(),
     ),

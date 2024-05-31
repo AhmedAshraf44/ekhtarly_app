@@ -13,7 +13,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, NewestLaptopModel>> getNewestLaptops() async {
     try {
       var data = await apiService.get(
-        endpoint: 'api/laptops',
+        endpoint: 'api/laptops?page=1&limit=8',
       );
       //log('true data :$data');
       return right(NewestLaptopModel.fromJson(data));
@@ -24,8 +24,7 @@ class HomeRepoImpl implements HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-
-  @override
+   @override
   Future<Either<Failure, Profile>> getprofile() async {
     try {
       var data = await apiService.get(

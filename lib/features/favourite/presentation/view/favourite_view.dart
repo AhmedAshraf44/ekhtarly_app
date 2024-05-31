@@ -12,9 +12,8 @@ class FavouriteView extends StatelessWidget {
     return const Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(vertical: 28, horizontal: 20),
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           child: Row(
-            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Spacer(),
               Text(
@@ -32,7 +31,6 @@ class FavouriteView extends StatelessWidget {
                   onPressed: null,
                 ),
               ),
-              // Spacer()
             ],
           ),
         ),
