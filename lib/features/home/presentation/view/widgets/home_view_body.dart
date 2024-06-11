@@ -86,10 +86,9 @@ class HomeViewBody extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(
                       top: 20,
-                      bottom: 62,
+                      bottom: 30,
                     ),
                     child: CustomTipsSlider(
-                      checkPage: true,
                     ),
                   ),
                   Text('Newest Laptop', style: Styles.googleFontsPoppins),

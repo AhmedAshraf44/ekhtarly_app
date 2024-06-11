@@ -1,32 +1,24 @@
 import 'dart:async';
-
-import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/model_view/tips_model_view.dart';
 import 'package:flutter/material.dart';
-
-import '../../view_models/laptops_image_model.dart';
+import '../../../data/model/tips_model.dart';
 
 class CustomTipsSlider extends StatefulWidget {
-  const CustomTipsSlider({super.key, required this.checkPage});
-  final bool checkPage;
+  const CustomTipsSlider({super.key});
   @override
   State<CustomTipsSlider> createState() => _CustomTipsSliderState();
 }
 
 class _CustomTipsSliderState extends State<CustomTipsSlider> {
   late final PageController pageController;
-
+  final TipsModelView items=TipsModelView();
   Timer? carouselTimer;
-  List<LaptopsImageModel> laptopsImageList = [
-    LaptopsImageModel(image: 'assets/images/macbook1.png'),
-    LaptopsImageModel(image: 'assets/images/macbook2.png'),
-    LaptopsImageModel(image: 'assets/images/macbook3.png'),
-  ];
   int pageNumber = 0;
   getTimer() {
     return Timer.periodic(const Duration(seconds: 3), (timer) {
       // pageNumber == 4
-      if (pageNumber > laptopsImageList.length - 1) {
+      if (pageNumber > items.itemTipsList.length - 1) {
         pageNumber = 0;
       }
       if (pageController.hasClients) {
@@ -58,7 +50,7 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
     return Column(
       children: [
         SizedBox(
-          height: 200,
+          height: 240,
           child: PageView.builder(
             physics: const BouncingScrollPhysics(),
             onPageChanged: (index) {
@@ -66,15 +58,12 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
               setState(() {});
             },
             controller: pageController,
-            itemCount: widget.checkPage == true ? 5 : laptopsImageList.length,
+            itemCount: items.itemTipsList.length,
             itemBuilder: (context, index) {
               return AnimatedBuilder(
                 animation: pageController,
                 builder: (context, child) {
-                  return widget.checkPage == true
-                      ? child!
-                      : ImagelaptopSlider(
-                          laptopsImage: laptopsImageList[index]);
+                  return child!;
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
@@ -86,20 +75,20 @@ class _CustomTipsSliderState extends State<CustomTipsSlider> {
                     onPanCancel: () {
                       carouselTimer = getTimer();
                     },
-                    child: const CustomHomeSlider(),
+                    child:  CustomHomeSlider(itemTips:items.itemTipsList[index],number: items.itemTipsList.length,pageNumber: pageNumber,),
                   ),
                 ),
               );
             },
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
-        CustomPointSlider(
-          pageNumber: pageNumber,
-          number: widget.checkPage == true ? 5 : laptopsImageList.length,
-        ),
+        // const SizedBox(
+        //   height: 20,
+        // ),
+        //  CustomPointSlider(
+        //                   pageNumber: pageNumber,
+        //                   number:  number ,
+        //                 ),
       ],
     );
   }
@@ -126,7 +115,7 @@ class CustomPointSlider extends StatelessWidget {
             Icons.circle,
             size: 12,
             color:
-                pageNumber == index ? kPrimaryColor : const Color(0xff95969D),
+                pageNumber == index ?const Color(0xffFFFFFF): const Color(0xff95969D),
             //kAlternateButtonColor,
             //Colors.grey.shade300,
           ),
@@ -138,46 +127,96 @@ class CustomPointSlider extends StatelessWidget {
 
 class CustomHomeSlider extends StatelessWidget {
   const CustomHomeSlider({
-    super.key,
+    super.key, required this.itemTips, required this.pageNumber, required this.number,
   });
-
+final TipsModel itemTips;
+  final int pageNumber;
+  final int number;
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image:const DecorationImage(image: AssetImage('assets/images/lap4.jpg'), fit: BoxFit.cover,opacity: .5),
-          // color: kPrimaryColor, 
-          borderRadius: BorderRadius.circular(25),
-          ),
-          child: Center(child: Text('LLLLLLLLLLLLLLLLLLLLLLLLLLLL',style: Styles.textStyle16Smei.copyWith(color: Colors.white))),
-    );
-  }
-}
-
-class ImagelaptopSlider extends StatelessWidget {
-  const ImagelaptopSlider({super.key, required this.laptopsImage});
-  final LaptopsImageModel laptopsImage;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      child: Container(
-               
-        decoration: const BoxDecoration(
-            //color: kBackgroundColor,
-            borderRadius: BorderRadius.all(Radius.circular(15))),
-        child: AspectRatio(
-          aspectRatio: 6 / 4,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(itemTips.image), fit: BoxFit.cover,),
+            //color: kPrimaryColor, 
+            borderRadius: BorderRadius.circular(25),
+            ),
+        child:AspectRatio(
+          aspectRatio: 4 / 2,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
-              laptopsImage.image,
-              fit: BoxFit.contain,
-              //  height: MediaQuery.of(context).size.height * .15,
-            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+                        Padding(
+                padding: const EdgeInsets.only(left: 20,right: 20,top: 50),
+                child: Center(child: Text(itemTips.textTips,style: Styles.textStyle20.copyWith(color: const Color(0xffFFFFFF),),textAlign: TextAlign.center,maxLines: 4,)),
+              ),
+                              const SizedBox(
+                  height: 5,
+                ),
+              CustomPointSlider(
+                        pageNumber: pageNumber,
+                        number:  number ,
+                      ),
+                                      const SizedBox(
+                  height: 10,
+                ), 
+          ],
+        ),
           ),
         ),
-      ),
-    );
+          );
   }
 }
+// AspectRatio(
+//           aspectRatio: 4 / 2,
+//           child: ClipRRect(
+//             borderRadius: BorderRadius.circular(15),
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.end,
+//               children: [
+//                 Text(
+//                   sliderModel.tittle,
+//                   style:
+//                       AppStyle.styleSemiBold24.copyWith(color: kSecondaryColor),
+//                   maxLines: 2,
+//                 ),
+//                 const SizedBox(
+//                   height: 5,
+//                 ),
+//                 CustomPointSlider(
+//                   pageNumber: pageNumber,
+//                   number: sliderLength,
+//                 ),
+//                 const SizedBox(
+//                   height: 10,
+//                 ),
+
+// class ImagelaptopSlider extends StatelessWidget {
+//   const ImagelaptopSlider({super.key, required this.laptopsImage});
+//   final LaptopsImageModel laptopsImage;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(horizontal: 6),
+//       child: Container(
+               
+//         decoration: const BoxDecoration(
+//             //color: kBackgroundColor,
+//             borderRadius: BorderRadius.all(Radius.circular(15))),
+//         child: AspectRatio(
+//           aspectRatio: 6 / 4,
+//           child: ClipRRect(
+//             borderRadius: BorderRadius.circular(15),
+//             child: Image.asset(
+//               laptopsImage.image,
+//               fit: BoxFit.contain,
+//               //  height: MediaQuery.of(context).size.height * .15,
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

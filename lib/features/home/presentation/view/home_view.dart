@@ -54,13 +54,13 @@ class _HomeViewState extends State<HomeView> {
       size: 30,
     )),
     CurvedNavigationBarItem(
-        child: Icon(
+      child: Icon(
       Icons.person,
       color: kPrimaryColor,
       size: 30,
     )),
     CurvedNavigationBarItem(
-        child: Icon(
+      child: Icon(
       Icons.favorite,
       color: kPrimaryColor,
       size: 30,
