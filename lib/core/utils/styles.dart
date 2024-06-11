@@ -59,4 +59,9 @@ abstract class Styles {
     fontSize: 16,
     color: const Color(0xff0D0D26),
   );
+    static const TextStyle styleSemiBold24 = TextStyle(
+    fontSize: 24,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+    );
 }

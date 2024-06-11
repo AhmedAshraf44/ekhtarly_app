@@ -9,7 +9,6 @@ class CustomNewestLaptopDetailsSlider extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(30.0),
       child: CustomTipsSlider(
-        checkPage: false,
       ),
     );
   }

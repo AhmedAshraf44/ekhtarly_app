@@ -1,7 +1,7 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
-import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
-import 'package:ekhtarly_app/features/home/manger/newest_laptops_cubit/newest_laptops_state.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_state.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_search.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_tips_slider.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body_details.dart';
@@ -86,10 +86,9 @@ class HomeViewBody extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(
                       top: 20,
-                      bottom: 62,
+                      bottom: 30,
                     ),
                     child: CustomTipsSlider(
-                      checkPage: true,
                     ),
                   ),
                   Text('Newest Laptop', style: Styles.googleFontsPoppins),

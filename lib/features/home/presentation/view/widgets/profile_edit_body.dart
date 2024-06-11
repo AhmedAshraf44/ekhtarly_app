@@ -2,9 +2,7 @@ import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfileEditBody extends StatelessWidget {
@@ -51,7 +49,7 @@ class ProfileEditBody extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            CutsomTextForm(
+           const CutsomTextForm(
               text: 'Jon Sina',
             ),
             const SizedBox(
@@ -70,7 +68,7 @@ class ProfileEditBody extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            CutsomTextForm(
+           const CutsomTextForm(
               text: 'jonsina@gmail.com',
             ),
             const SizedBox(
@@ -90,7 +88,7 @@ class ProfileEditBody extends StatelessWidget {
                 onTap: () {
                   GoRouter.of(context).push(AppRouter.kchangePassword);
                 },
-                child: const Details_Field(text: '**********')),
+                child: const DetailsField(text: '**********')),
             const SizedBox(
               height: 40,
             ),
@@ -123,10 +121,10 @@ class CutsomTextForm extends StatelessWidget {
         onTap: onTap,
         decoration: InputDecoration(
             hintText: text,
-            hintStyle: TextStyle(color: Color(0xff2B2B2B).withOpacity(0.8)),
+            hintStyle: TextStyle(color:const Color(0xff2B2B2B).withOpacity(0.8)),
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,
-            fillColor: Color(0xffF7F7F9),
+            fillColor:const Color(0xffF7F7F9),
             filled: true),
       ),
     );
