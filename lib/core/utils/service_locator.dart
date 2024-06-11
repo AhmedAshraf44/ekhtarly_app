@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:ekhtarly_app/core/utils/api_service.dart';
-import 'package:ekhtarly_app/features/favourite/data/repos/favourite_repo.dart';
 import 'package:ekhtarly_app/features/favourite/data/repos/favourite_repo_impl.dart';
 import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:get_it/get_it.dart';

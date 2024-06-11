@@ -3,21 +3,23 @@ import 'package:flutter/material.dart';
 import 'custom_descrption_item_value.dart';
 
 class CustomDescrptionItem extends StatelessWidget {
-  const CustomDescrptionItem({
+  CustomDescrptionItem({
     super.key,
     required this.textValue,
-    required this.text,
+     this.text,
   });
-  final String text;
+  String? text;
   final String textValue;
   @override
   Widget build(BuildContext context) {
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CustomDescrptionItemValue(
-          textValue: text,
-        ),
+        text == null
+            ? Container()
+            : CustomDescrptionItemValue(
+                textValue: text!,
+              ),
         const SizedBox(
           width: 15,
         ),

@@ -19,8 +19,9 @@ class Laptops extends Equatable {
   final String? os;
   final int? warranty;
   final String? type;
+  bool isCompared = false;
 
-  const Laptops({
+   Laptops({
     this.id,
     this.brand,
     this.name,

@@ -1,11 +1,13 @@
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/custom_image_newest_laptops_item.dart';
 import '../../../../../core/utils/widgets/custom_price_newest_laptops_item.dart';
 import '../../../../../core/utils/widgets/custom_tittle_newest_laptops_item.dart';
 import '../../../../../core/models/newest_laptops_details_model/laptops.dart';
+import '../../../../favourite/presentation/manger/add_favourite_cubit/add_favourite_cubit.dart';
 
 class NewestLaptopsItem extends StatefulWidget {
   const NewestLaptopsItem({
@@ -48,6 +50,7 @@ class _NewestLaptopsItemState extends State<NewestLaptopsItem> {
             CustomPriceNewestLaptopsItem(
               price: widget.laptops.price!,
               onPressed: () {
+               BlocProvider.of<FavouriteCubit>(context).addToFavorites(id:widget.laptops.id!);
                 setState(() {
                   iconColor = !iconColor;
                 });

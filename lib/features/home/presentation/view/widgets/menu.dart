@@ -1,15 +1,30 @@
 import 'package:ekhtarly_app/core/utils/app_router.dart';
+import 'package:ekhtarly_app/features/home/data/model/profile.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({
     super.key,
   });
 
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ProfileCubit>(context).getProfile();
+  }
+
+  Profile? profile;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +33,17 @@ class MyDrawer extends StatelessWidget {
           elevation: 0,
           child: ListView(
             children: [
-              const MyHeader(),
+              BlocBuilder<ProfileCubit, ProfileState>(
+                builder: (context, state) {
+                  if (state is ProfileSuccess) {
+                    return MyHeader(
+                      profile: state.profile,
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
+              ),
               GestureDetector(
                 onTap: () {
                   GoRouter.of(context).push(AppRouter.kProfile);
@@ -48,6 +73,24 @@ class MyDrawer extends StatelessWidget {
                 leading: Icon(
                   FontAwesomeIcons.heart,
                   size: 20,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kComprasion);
+                },
+                child: const ListTile(
+                  title: Text(
+                    'Comprasion',
+                    style: TextStyle(
+                        color: Color(0xff0D0D26),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15),
+                  ),
+                  leading: Icon(
+                    FontAwesomeIcons.scaleBalanced,
+                    size: 20,
+                  ),
                 ),
               ),
               GestureDetector(
@@ -89,11 +132,10 @@ class MyDrawer extends StatelessWidget {
 }
 
 class MyHeader extends StatelessWidget {
-  const MyHeader({
-    super.key,
-    this.textcolor
-  });
+  MyHeader({super.key, this.textcolor, this.profile});
   final Color? textcolor;
+
+  Profile? profile;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -109,16 +151,16 @@ class MyHeader extends StatelessWidget {
               image: DecorationImage(
                   image: AssetImage('assets/images/profile.png'))),
         ),
-        const Text(
-          'Jon Sina',
+        Text(
+          profile?.name ?? 'Jon Sina',
           style: TextStyle(
               color: Color(0xff0D0D26),
               fontSize: 20,
               fontWeight: FontWeight.w500),
         ),
-         Text(
-          'jonsina@gmail.com',
-          style: TextStyle(color: textcolor??const Color(0xff95969D)),
+        Text(
+          profile?.email ?? 'jonsina@gmail.com',
+          style: TextStyle(color: textcolor ?? const Color(0xff95969D)),
         ),
       ]),
     );
