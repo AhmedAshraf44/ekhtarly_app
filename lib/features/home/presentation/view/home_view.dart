@@ -4,6 +4,7 @@ import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/menu.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
 import 'package:ekhtarly_app/features/search/presentation/view/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,11 +21,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int selectedTab = 0;
 
-  List screens = const [
-    HomeViewBody(),
-    SearchView(),
-    HomeViewBody(),
-    FavouriteView(),
+  List screens = [
+    const HomeViewBody(),
+    AccountProfileBody(),
+    const FavouriteView(),
   ];
 
   changeTab(int index) {
@@ -49,12 +49,6 @@ class _HomeViewState extends State<HomeView> {
     )),
     CurvedNavigationBarItem(
         child: Icon(
-      Icons.search,
-      color: kPrimaryColor,
-      size: 30,
-    )),
-    CurvedNavigationBarItem(
-        child: Icon(
       Icons.person,
       color: kPrimaryColor,
       size: 30,
@@ -72,7 +66,7 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
         child: Scaffold(
       extendBody: true,
-      drawer:const MyDrawer(),
+      drawer: const MyDrawer(),
       backgroundColor: kBackgroundColor,
       body: screens[selectedTab],
       bottomNavigationBar: CurvedNavigationBar(

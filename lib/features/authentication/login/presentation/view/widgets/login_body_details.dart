@@ -37,7 +37,7 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
       listener: (context, state) {
         if (state is LoginSuccess) {
           //showSnackBar(context, 'sucess');
-          GoRouter.of(context).push(AppRouter.kHomeView);
+          GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
         } else if (state is LoginFailure) {
           showSnackBar(context, state.errorMessage);
         }

@@ -2,7 +2,7 @@ import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_state.dart';
-import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_search.dart';
+import 'package:ekhtarly_app/features/search/presentation/view/custom_search.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_tips_slider.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body_details.dart';
 import 'package:flutter/material.dart';
@@ -62,17 +62,7 @@ class HomeViewBody extends StatelessWidget {
             pinned: true,
             // floating: true,
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: CustomSearch(
-                //  keyboardType: TextInputType.none,
-                onTap: () {
-                  GoRouter.of(context).push(AppRouter.kSearchView);
-                },
-              ),
-            ),
-          ),
+
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
@@ -86,18 +76,37 @@ class HomeViewBody extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(
                       top: 20,
-                      bottom: 62,
+                      bottom: 25,
                     ),
                     child: CustomTipsSlider(
                       checkPage: true,
                     ),
-                  ),
-                  Text('Newest Laptop', style: Styles.googleFontsPoppins),
-                  //  HomeViewBodyDetails(),
+                  ), //  HomeViewBodyDetails(),
                 ],
               ),
             ),
           ),
+
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: ElevatedButton(
+                  onPressed: () {
+                    GoRouter.of(context).push(AppRouter.kSearchView);
+                  },
+                  child: Text(
+                    'Generate Your Laptop',
+                    style: TextStyle(color: kBlackColor),
+                  )),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Text('Newest Laptop', style: Styles.googleFontsPoppins),
+            ),
+          ),
+
           // make in bloc
           BlocBuilder<NewestLaptopsCubit, NewestLaptopsState>(
             builder: (context, state) {

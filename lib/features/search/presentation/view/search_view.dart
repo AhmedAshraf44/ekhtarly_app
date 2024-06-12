@@ -1,5 +1,5 @@
 import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_search.dart';
+import 'package:ekhtarly_app/features/search/presentation/view/custom_search.dart';
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
@@ -11,14 +11,14 @@ class SearchView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          leading: const Icon(Icons.close_rounded),
+          leading: const BackButton(),
           title: const Text(
             'Search',
           ),
           centerTitle: true,
         ),
         backgroundColor: kBackgroundColor,
-        body: const CustomSearch(),
+        body: CustomSearch(),
       ),
     );
   }
