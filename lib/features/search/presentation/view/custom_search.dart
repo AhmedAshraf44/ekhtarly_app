@@ -18,7 +18,6 @@ class CustomSearch extends StatefulWidget {
 class _CustomSearchState extends State<CustomSearch> {
   var selecting = <String>{};
 
-  final TextEditingController _controller = TextEditingController();
   @override
   void initState() {
     super.initState();
