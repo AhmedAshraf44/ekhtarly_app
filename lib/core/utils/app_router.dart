@@ -6,6 +6,9 @@ import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentati
 import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
 import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/comprasion/presentation/views/comprasion_view.dart';
+import 'package:ekhtarly_app/features/home/data/repos/home_repo.dart';
+import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
@@ -71,7 +74,10 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kHomeView,
-      builder: (context, state) => const HomeView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => ProfileCubit(HomeRepoImpl(ApiService(Dio()))),
+        child: const HomeView(),
+      ),
     ),
     GoRoute(
       path: kSetting,
@@ -106,10 +112,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kSearchView,
-      builder: (context, state) => BlocProvider(
-        create: (context) => SearchCubit(getIt.get<SearchImpl>()),
-        child: const SearchView(),
-      ),
+      builder: (context, state) => const SearchView(),
     ),
     GoRoute(
       path: kFavouriteView,

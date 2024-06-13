@@ -10,8 +10,8 @@ class SearchView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
-          leading: const BackButton(),
           title: const Text(
             'Search',
           ),

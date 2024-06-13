@@ -9,23 +9,24 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.searchRepo) : super(SearchInitial());
   final SearchRepo searchRepo;
-    List<ProgramModel> programss = [];
 
   Future<void> getPrograms() async {
-    var result = await searchRepo.getProgram();
-    result.fold((failure) {
-      print(failure.errorMessage);
-      emit(
-        SearchFaluire(
-          messsage: failure.errorMessage,
-        ),
-      );
-    }, (programs) {
-      programss.clear();
-      programss = programs;
-      emit(
-        SearchSuccess(programs: programs),
-      );
-    });
+    try {
+      emit(SearchLoading());
+      var result = await searchRepo.getProgram();
+      result.fold((failure) {
+        emit(
+          SearchFaluire(
+            messsage: failure.errorMessage,
+          ),
+        );
+      }, (programs) {
+        emit(
+          SearchSuccess(programs: programs),
+        );
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 }

@@ -1,13 +1,14 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/functions/build_border.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
+import 'package:ekhtarly_app/features/search/data/model/program_model.dart';
 import 'package:ekhtarly_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class CustomSearch extends StatefulWidget {
- const CustomSearch({
+  const CustomSearch({
     super.key,
   });
 
@@ -18,11 +19,6 @@ class CustomSearch extends StatefulWidget {
 class _CustomSearchState extends State<CustomSearch> {
   var selecting = <String>{};
 
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<SearchCubit>(context).getPrograms();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,40 +32,12 @@ class _CustomSearchState extends State<CustomSearch> {
                 if (state is SearchSuccess) {
                   return TypeAheadField(
                     suggestionsCallback: (search) {
-                      return state.programs
-                          .where((element) => element.name!
-                              .toLowerCase()
-                              .contains(search.toLowerCase()))
-                          .toList();
+                      return suggestionCallBack(state, search);
                     },
                     builder: (context, controller, focusNode) {
-                      return TextField(
+                      return CustomTextField(
                         controller: controller,
-                        autofocus: true,
                         focusNode: focusNode,
-                        decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.all(10),
-                            prefixIcon: const Padding(
-                              padding: EdgeInsets.only(left: 27, right: 5),
-                              child: Icon(Icons.search),
-                            ),
-                            prefixIconColor: kSecondaryColor,
-                            hintText: 'Search',
-                            hintStyle: Styles.textStyle12.copyWith(
-                              color: kSecondaryColor,
-                            ),
-                            border: buildBorder(
-                                color: const Color(0xffE6E7E9),
-                                borderRadius: 15),
-                            enabledBorder: buildBorder(
-                                color: const Color(0xffE6E7E9),
-                                borderRadius: 15),
-                            focusedBorder: buildBorder(
-                                color: kPrimaryColor, borderRadius: 15),
-                            filled: true,
-                            fillColor: kAlternateButtonColor
-                            // const Color(0xffE6E7E9),
-                            ),
                       );
                     },
                     itemBuilder: (context, value) {
@@ -80,9 +48,7 @@ class _CustomSearchState extends State<CustomSearch> {
                     },
                     onSelected: (value) {
                       {
-                        setState(() {
-                          selecting.add(value.name!);
-                        });
+                        onSelected(value);
                       }
                     },
                   );
@@ -98,26 +64,7 @@ class _CustomSearchState extends State<CustomSearch> {
             ),
             selecting.isEmpty
                 ? const Center(child: Text('No Selected Program'))
-                : Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: selecting
-                        .map((e) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 4),
-                              child: Chip(
-                                  onDeleted: () {
-                                    selecting.remove(e);
-                                    setState(() {});
-                                  },
-                                  label: Text(e),
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 216, 213, 213),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                      side: BorderSide.none)),
-                            ))
-                        .toList()),
+                : wrapping(),
             const SizedBox(
               height: 20,
             ),
@@ -136,6 +83,77 @@ class _CustomSearchState extends State<CustomSearch> {
           ],
         ),
       ),
+    );
+  }
+
+  Wrap wrapping() {
+    return Wrap(
+        spacing: 10,
+        runSpacing: 10,
+        children: selecting
+            .map((e) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Chip(
+                      onDeleted: () {
+                        selecting.remove(e);
+                        setState(() {});
+                      },
+                      label: Text(e),
+                      backgroundColor: const Color.fromARGB(255, 216, 213, 213),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          side: BorderSide.none)),
+                ))
+            .toList());
+  }
+
+  void onSelected(ProgramModel value) {
+    return setState(() {
+      selecting.add(value.name!);
+    });
+  }
+
+  List<ProgramModel> suggestionCallBack(SearchSuccess state, String search) {
+    return state.programs
+        .where((element) =>
+            element.name!.toLowerCase().contains(search.toLowerCase()))
+        .toList();
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
+    super.key,
+    required this.controller,
+    required this.focusNode,
+  });
+  final TextEditingController controller;
+  final FocusNode focusNode;
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      autofocus: true,
+      focusNode: focusNode,
+      decoration: InputDecoration(
+          contentPadding: const EdgeInsets.all(10),
+          prefixIcon: const Padding(
+            padding: EdgeInsets.only(left: 27, right: 5),
+            child: Icon(Icons.search),
+          ),
+          prefixIconColor: kSecondaryColor,
+          hintText: 'Search',
+          hintStyle: Styles.textStyle12.copyWith(
+            color: kSecondaryColor,
+          ),
+          border: buildBorder(color: const Color(0xffE6E7E9), borderRadius: 15),
+          enabledBorder:
+              buildBorder(color: const Color(0xffE6E7E9), borderRadius: 15),
+          focusedBorder: buildBorder(color: kPrimaryColor, borderRadius: 15),
+          filled: true,
+          fillColor: kAlternateButtonColor
+          // const Color(0xffE6E7E9),
+          ),
     );
   }
 }
