@@ -19,6 +19,7 @@ class Laptops extends Equatable {
   final String? os;
   final int? warranty;
   final String? type;
+  final bool? isFavorite;
 
   const Laptops({
     this.id,
@@ -39,6 +40,7 @@ class Laptops extends Equatable {
     this.os,
     this.warranty,
     this.type,
+    this.isFavorite,
   });
 
   factory Laptops.fromJson(Map<String, dynamic> json) => Laptops(
@@ -60,6 +62,7 @@ class Laptops extends Equatable {
         os: json['OS'] as String?,
         warranty: json['warranty'] as int?,
         type: json['type'] as String?,
+        isFavorite: json['isFavorite'] as bool?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -81,6 +84,7 @@ class Laptops extends Equatable {
         'OS': os,
         'warranty': warranty,
         'type': type,
+        'isFavorite': isFavorite,
       };
 
   @override
@@ -104,6 +108,7 @@ class Laptops extends Equatable {
       os,
       warranty,
       type,
+      isFavorite,
     ];
   }
 }

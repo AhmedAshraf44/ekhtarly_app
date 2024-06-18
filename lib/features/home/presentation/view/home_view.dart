@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
     HomeViewBody(),
     SearchView(),
     HomeViewBody(),
-    FavouriteView(),
+     FavouriteView(),
   ];
 
   changeTab(int index) {

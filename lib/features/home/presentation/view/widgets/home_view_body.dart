@@ -10,10 +10,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_router.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
-// AuthModel? authModel;
 
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+ @override
+  void initState() {
+    BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
+   super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -126,28 +135,3 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
-
-//floating: true,
-//  expandedHeight: 150,
-//   flexibleSpace: FlexibleSpaceBar(
-//     title:  Padding(
-//   padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
-//   child: CustomSearch(),
-// ),
-//   ),
-//  const SliverToBoxAdapter(
-//       child: Padding(
-//     padding: EdgeInsets.only(
-//       right: 20,
-//       left: 20,
-//       bottom: 40,
-//       ),
-//     child: CustomTipsGridView(),
-//   )),
-
-//   SliverToBoxAdapter(
-//     child:  Padding(
-//     padding: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-//     child: CustomAppBar(),
-//   ),
-//   ),

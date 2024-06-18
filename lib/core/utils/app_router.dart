@@ -1,6 +1,5 @@
 import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/otp_view.dart';
 import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
-import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
@@ -18,6 +17,7 @@ import '../../features/authentication/forget_password/presentation/view/forget_p
 import '../../features/home/presentation/view/newest_laptops_view.dart';
 import '../../features/search/presentation/view/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
+import '../models/newest_laptops_details_model/laptops.dart';
 
 abstract class AppRouter {
   static const kIntroductionView = '/IntroductionView';

@@ -3,24 +3,24 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ekhtarly_app/core/errors/failure.dart';
-import 'package:ekhtarly_app/features/favourite/data/model/favourite_model/favourite_model.dart';
 import 'package:ekhtarly_app/features/favourite/data/repos/favourite_repo.dart';
 import '../../../../core/utils/api_service.dart';
 import '../model/add_favotite_model.dart';
 import '../model/delete_favorite_model.dart';
+import '../model/diaplay_favorite_model/diaplay_favorite_model.dart';
 
 class FavouriteRepoImpl implements FavouriteRepo {
   final ApiService apiService;
 
   FavouriteRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, FavouriteModel>> displayFavourite() async {
+  Future<Either<Failure, DisplayFavoriteModel>> displayFavourite() async {
     try {
       var data = await apiService.get(
         endpoint: 'api/favorite',
       );
-      log(data.toString());
-      return right(FavouriteModel.fromJson(data));
+      //log(data.toString());
+      return right(DisplayFavoriteModel.fromJson(data));
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.formDioError(e));

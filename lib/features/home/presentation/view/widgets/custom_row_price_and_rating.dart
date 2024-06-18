@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/styles.dart';
 import '../../../../../core/models/newest_laptops_details_model/laptops.dart';
+import '../../../../../core/utils/styles.dart';
 
 class CustomRowPriceAndRating extends StatelessWidget {
   const CustomRowPriceAndRating({

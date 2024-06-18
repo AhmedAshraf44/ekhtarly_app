@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 
 abstract class Failure {
-  final String errorMessage;
+  final dynamic errorMessage;
 
   const Failure(this.errorMessage);
 }
