@@ -8,9 +8,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class AccountProfileBody extends StatelessWidget {
+class AccountProfileBody extends StatefulWidget {
   AccountProfileBody({super.key});
+
+  @override
+  State<AccountProfileBody> createState() => _AccountProfileBodyState();
+}
+
+class _AccountProfileBodyState extends State<AccountProfileBody> {
   Profile? profile;
+  @override
+  void initState() {
+    BlocProvider.of<ProfileCubit>(context).getProfile();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +43,12 @@ class AccountProfileBody extends StatelessWidget {
           child: BlocBuilder<ProfileCubit, ProfileState>(
             builder: (context, state) {
               if (state is ProfileSuccess) {
+                print('hii');
+
                 return ProfileBody(profile: state.profile);
               } else {
+                print('fa');
+
                 return Container();
               }
             },

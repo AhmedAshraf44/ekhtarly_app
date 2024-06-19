@@ -85,7 +85,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kComprasion,
-      builder: (context, state) => const ComprasionView(),
+      builder: (context, state) =>  ComprasionView(),
     ),
     GoRoute(
       path: kchangePassword,

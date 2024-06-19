@@ -1,6 +1,6 @@
 import '../../../data/model/add_favotite_model.dart';
 import '../../../data/model/delete_favorite_model.dart';
-import '../../../data/model/favourite_model/favourite_model.dart';
+import '../../../data/model/diaplay_favorite_model/diaplay_favorite_model.dart';
 
 abstract class FavouriteState {
   const FavouriteState();
@@ -11,7 +11,7 @@ final class FavouriteInitial extends FavouriteState {}
 //final class FavouritLoading extends AddFavouriteState {}
 
 final class DisplayFavourite extends FavouriteState {
-  final FavouriteModel favoriteList;
+  final DisplayFavoriteModel favoriteList;
   const DisplayFavourite({required this.favoriteList});
 }
 

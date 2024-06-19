@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../../../core/models/newest_laptops_details_model/laptops.dart';
-
+// 3
 class FavouriteModel extends Equatable {
   final String? state;
   final List<Laptops>? favoriteList;

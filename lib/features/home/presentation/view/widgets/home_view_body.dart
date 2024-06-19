@@ -79,7 +79,6 @@ class HomeViewBody extends StatelessWidget {
                       bottom: 25,
                     ),
                     child: CustomTipsSlider(
-                      checkPage: true,
                     ),
                   ), //  HomeViewBodyDetails(),
                 ],
@@ -87,19 +86,6 @@ class HomeViewBody extends StatelessWidget {
             ),
           ),
 
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: ElevatedButton(
-                  onPressed: () {
-                    GoRouter.of(context).push(AppRouter.kSearchView);
-                  },
-                  child: Text(
-                    'Generate Your Laptop',
-                    style: TextStyle(color: kBlackColor),
-                  )),
-            ),
-          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),

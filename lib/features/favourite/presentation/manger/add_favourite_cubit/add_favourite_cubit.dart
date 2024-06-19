@@ -14,7 +14,8 @@ Future<void> displayFavourite() async {
         FavouriteFailure(errorMessage: failure.errorMessage),
       ),
       (favourite) {
-        log('true');
+        log('true , display suceessfuly');
+      //  log("${favourite.laptops}");
         return emit(
         DisplayFavourite(favoriteList: favourite),
       );
@@ -22,16 +23,16 @@ Future<void> displayFavourite() async {
     );
   }
 
-
 Future<void> addToFavorites({required String id}) async {
-    log(id);
+  
     var result = await favouriteRepo.addToFavourite(id: id);
     result.fold(
        (failure) => emit(
         FavouriteFailure(errorMessage: failure.errorMessage),
       ),
       (favourite) {
-        log('true');
+        log('true , AddFavourite sucessfully , id: $id');
+        log('true favourite, AddFavourite sucessfully , id: $favourite');
         return emit(
         AddFavourite(addFavotiteModel:favourite ),
       );
@@ -41,14 +42,14 @@ Future<void> addToFavorites({required String id}) async {
 
 
   Future<void> deleteToFavourite({required String id}) async {
-    log(id);
     var result = await favouriteRepo.deleteToFavourite(id: id);
     result.fold(
        (failure) => emit(
         FavouriteFailure(errorMessage: failure.errorMessage),
       ),
       (favourite) {
-        log('true');
+        log('true , deleted sucessfully , id: $id');
+        log('true favourite, deleted sucessfully , id: $favourite');
         return emit(
         DeleteFavourite(deleteFavoriteModel: favourite),
       );
