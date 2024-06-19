@@ -20,8 +20,10 @@ class Laptops extends Equatable {
   final int? warranty;
   final String? type;
   final bool? isFavorite;
+  bool isCompared=false;
 
-  const Laptops({
+
+   Laptops({
     this.id,
     this.brand,
     this.name,

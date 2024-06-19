@@ -6,15 +6,15 @@ import '../../../constants.dart';
 class CustomPriceNewestLaptopsItem extends StatelessWidget {
   const CustomPriceNewestLaptopsItem(
       {super.key,
-      required this.price, this.onPressed,required this.iconColor,
-
-      });
+      required this.price,
+       this.onPressed,
+      required this.iconColor});
   final int price;
- final void Function()? onPressed;
- final Icon iconColor;
+  final void Function()? onPressed;
+  final Icon iconColor;
   @override
   Widget build(BuildContext context) {
-    return   Padding(
+    return Padding(
       padding: const EdgeInsets.only(
         left: 10,
         right: 10,

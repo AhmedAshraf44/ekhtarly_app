@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../../../../core/models/newest_laptops_details_model/laptops.dart';
 
 class NewestLaptopModel extends Equatable {

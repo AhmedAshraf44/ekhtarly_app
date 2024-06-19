@@ -7,8 +7,13 @@ import 'package:ekhtarly_app/features/authentication/manger/forgot_password_subm
 import 'package:ekhtarly_app/features/authentication/manger/resend_cubit/resned_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cubit/otp_cubit.dart';
 import 'package:ekhtarly_app/features/authentication/manger/register_cubit/register_cubit.dart';
+import 'package:ekhtarly_app/features/comprasion/presentation/view_model/cubit/comprasion_cubit.dart';
 import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/change_password/change_password_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
+import 'package:ekhtarly_app/features/search/data/repo/search_repositert_implementation.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,9 +73,25 @@ class EkhtarlyApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
+          create: (context) => ProfileCubit(
+            getIt.get<HomeRepoImpl>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ChangePasswordCubit(
+            getIt.get<HomeRepoImpl>(),
+          ),
+        ),
+        BlocProvider(
           create: (context) => FavouriteCubit(
             getIt.get<FavouriteRepoImpl>(),
           ),
+        ),
+        BlocProvider(
+          create: (context) => ComprasionCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SearchCubit(getIt.get<SearchImpl>()),
         ),
       ],
       child: MaterialApp.router(

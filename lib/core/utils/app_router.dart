@@ -1,11 +1,24 @@
+import 'package:dio/dio.dart';
+import 'package:ekhtarly_app/core/utils/api_service.dart';
+import 'package:ekhtarly_app/core/utils/service_locator.dart';
+import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo_impl.dart';
 import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/otp_view.dart';
 import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
+import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
+import 'package:ekhtarly_app/features/comprasion/presentation/views/comprasion_view.dart';
+import 'package:ekhtarly_app/features/home/data/repos/home_repo.dart';
+import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/setting.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
+import 'package:ekhtarly_app/features/search/data/repo/search_repositert_implementation.dart';
+import 'package:ekhtarly_app/features/search/data/repo/search_repsitery.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/search_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
 import '../../features/authentication/forget_password/presentation/view/otp_forget_passwoed_view.dart';
@@ -17,7 +30,6 @@ import '../../features/authentication/forget_password/presentation/view/forget_p
 import '../../features/home/presentation/view/newest_laptops_view.dart';
 import '../../features/search/presentation/view/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
-import '../models/newest_laptops_details_model/laptops.dart';
 
 abstract class AppRouter {
   static const kIntroductionView = '/IntroductionView';
@@ -37,6 +49,7 @@ abstract class AppRouter {
   static const kSetting = '/setting';
   static const kprofileedit = '/profileedit';
   static const kchangePassword = '/changePassword';
+  static const kComprasion = '/comprasion';
 
   static final router = GoRouter(routes: [
     GoRoute(
@@ -53,7 +66,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kProfile,
-      builder: (context, state) => const AccountProfileBody(),
+      builder: (context, state) => AccountProfileBody(),
     ),
     GoRoute(
       path: kRegisterView,
@@ -61,15 +74,22 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kHomeView,
-      builder: (context, state) => const HomeView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => ProfileCubit(HomeRepoImpl(ApiService(Dio()))),
+        child: const HomeView(),
+      ),
     ),
     GoRoute(
       path: kSetting,
       builder: (context, state) => const SettingScreen(),
     ),
     GoRoute(
+      path: kComprasion,
+      builder: (context, state) =>  ComprasionView(),
+    ),
+    GoRoute(
       path: kchangePassword,
-      builder: (context, state) => const ChangePassowrd(),
+      builder: (context, state) => ChangePassowrd(),
     ),
     GoRoute(
       path: kForgetPasswordView,

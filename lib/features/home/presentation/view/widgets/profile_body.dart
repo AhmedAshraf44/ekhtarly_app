@@ -1,11 +1,27 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
+import 'package:ekhtarly_app/features/home/data/model/profile.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class AccountProfileBody extends StatelessWidget {
-  const AccountProfileBody({super.key});
+class AccountProfileBody extends StatefulWidget {
+  AccountProfileBody({super.key});
+
+  @override
+  State<AccountProfileBody> createState() => _AccountProfileBodyState();
+}
+
+class _AccountProfileBodyState extends State<AccountProfileBody> {
+  Profile? profile;
+  @override
+  void initState() {
+    BlocProvider.of<ProfileCubit>(context).getProfile();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,79 +40,104 @@ class AccountProfileBody extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const SizedBox(
-              height: 40,
-            ),
-            const Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/profile.png'),
-                radius: 40,
-              ),
-            ),
-            const SizedBox(
-              height: 22,
-            ),
-           const  Text(
-              'Name',
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xff707B81),
-                  fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-           const DetailsField(text: 'Jon Sina'),
-            const SizedBox(
-              height: 12,
-            ),
-           const Text(
-              'Email',
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xff707B81),
-                  fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-           const DetailsField(text: 'jonsina@gmail.com'),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              'Password',
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xff707B81),
-                  fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            const DetailsField(text: '**********'),
-            const SizedBox(
-              height: 40,
-            ),
-            CustomButton(
-              onPressed: () {
-                GoRouter.of(context).push(AppRouter.kprofileedit);
-              },
-              colorButton: kButtonColor,
-              colorText: Colors.white,
-              text: 'Edit',
-            ),
-          ]),
+          child: BlocBuilder<ProfileCubit, ProfileState>(
+            builder: (context, state) {
+              if (state is ProfileSuccess) {
+                print('hii');
+
+                return ProfileBody(profile: state.profile);
+              } else {
+                print('fa');
+
+                return Container();
+              }
+            },
+          ),
         ),
       ),
     );
   }
 }
 
-class DetailsField extends StatelessWidget {
-  const DetailsField({
+class ProfileBody extends StatelessWidget {
+  const ProfileBody({
+    super.key,
+    required this.profile,
+  });
+
+  final Profile? profile;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const SizedBox(
+        height: 40,
+      ),
+      const Center(
+        child: CircleAvatar(
+          backgroundImage: AssetImage('assets/images/profile.png'),
+          radius: 40,
+        ),
+      ),
+      const SizedBox(
+        height: 22,
+      ),
+      Text(
+        'Name',
+        style: TextStyle(
+            fontSize: 16,
+            color: Color(0xff707B81),
+            fontWeight: FontWeight.w500),
+      ),
+      const SizedBox(
+        height: 12,
+      ),
+      Details_Field(text: profile?.name ?? 'Jon Sina'),
+      const SizedBox(
+        height: 12,
+      ),
+      Text(
+        'Email',
+        style: TextStyle(
+            fontSize: 16,
+            color: Color(0xff707B81),
+            fontWeight: FontWeight.w500),
+      ),
+      const SizedBox(
+        height: 12,
+      ),
+      Details_Field(text: profile?.email ?? 'jonsina@gmail.com'),
+      const SizedBox(
+        height: 30,
+      ),
+      const Text(
+        'Password',
+        style: TextStyle(
+            fontSize: 16,
+            color: Color(0xff707B81),
+            fontWeight: FontWeight.w500),
+      ),
+      const SizedBox(
+        height: 12,
+      ),
+      const Details_Field(text: '**********'),
+      const SizedBox(
+        height: 40,
+      ),
+      CustomButton(
+        onPressed: () {
+          GoRouter.of(context).push(AppRouter.kprofileedit);
+        },
+        colorButton: kButtonColor,
+        colorText: Colors.white,
+        text: 'Edit',
+      ),
+    ]);
+  }
+}
+
+class Details_Field extends StatelessWidget {
+  const Details_Field({
     super.key,
     required this.text,
   });
@@ -118,7 +159,7 @@ class DetailsField extends StatelessWidget {
             style: const TextStyle(
                 fontWeight: FontWeight.w600, color: Color(0xff2B2B2B)),
           ),
-          const Opacity(opacity: 0.7, child: Icon(Icons.edit_note)),
+          Opacity(opacity: 0.7, child: Icon(Icons.edit_note)),
         ]),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_state.dart';
-import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_search.dart';
+import 'package:ekhtarly_app/features/search/presentation/view/custom_search.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_tips_slider.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body_details.dart';
 import 'package:flutter/material.dart';
@@ -10,19 +10,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_router.dart';
 
-class HomeViewBody extends StatefulWidget {
+class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
+// AuthModel? authModel;
 
-  @override
-  State<HomeViewBody> createState() => _HomeViewBodyState();
-}
-
-class _HomeViewBodyState extends State<HomeViewBody> {
- @override
-  void initState() {
-    BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
-   super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -71,17 +62,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             pinned: true,
             // floating: true,
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: CustomSearch(
-                //  keyboardType: TextInputType.none,
-                onTap: () {
-                  GoRouter.of(context).push(AppRouter.kSearchView);
-                },
-              ),
-            ),
-          ),
+
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
@@ -95,17 +76,23 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   const Padding(
                     padding: EdgeInsets.only(
                       top: 20,
-                      bottom: 30,
+                      bottom: 25,
                     ),
                     child: CustomTipsSlider(
                     ),
-                  ),
-                  Text('Newest Laptop', style: Styles.googleFontsPoppins),
-                  //  HomeViewBodyDetails(),
+                  ), //  HomeViewBodyDetails(),
                 ],
               ),
             ),
           ),
+
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Text('Newest Laptop', style: Styles.googleFontsPoppins),
+            ),
+          ),
+
           // make in bloc
           BlocBuilder<NewestLaptopsCubit, NewestLaptopsState>(
             builder: (context, state) {
@@ -135,3 +122,28 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     );
   }
 }
+
+//floating: true,
+//  expandedHeight: 150,
+//   flexibleSpace: FlexibleSpaceBar(
+//     title:  Padding(
+//   padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
+//   child: CustomSearch(),
+// ),
+//   ),
+//  const SliverToBoxAdapter(
+//       child: Padding(
+//     padding: EdgeInsets.only(
+//       right: 20,
+//       left: 20,
+//       bottom: 40,
+//       ),
+//     child: CustomTipsGridView(),
+//   )),
+
+//   SliverToBoxAdapter(
+//     child:  Padding(
+//     padding: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+//     child: CustomAppBar(),
+//   ),
+//   ),

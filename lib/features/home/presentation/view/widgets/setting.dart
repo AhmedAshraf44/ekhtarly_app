@@ -36,7 +36,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 borderRadius: BorderRadius.circular(12),
                 child: Container(
                     color: kSecondaryColor,
-                    child: const MyHeader(
+                    child:  MyHeader(
                       textcolor: Colors.black,
                     ))),
             const SizedBox(

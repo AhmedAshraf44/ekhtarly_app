@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:ekhtarly_app/core/utils/styles.dart';
-import 'package:ekhtarly_app/features/home/presentation/view/model_view/tips_model_view.dart';
+import 'package:ekhtarly_app/features/home/presentation/view_models/tips_model_view.dart';
 import 'package:flutter/material.dart';
 import '../../../data/model/tips_model.dart';
 
