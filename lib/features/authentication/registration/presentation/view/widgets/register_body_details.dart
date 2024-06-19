@@ -61,147 +61,179 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
         //  IconData? suffixIcon = BlocProvider.of<RegisterCubit>(context).suffixIcon;
         return ModalProgressHUD(
           inAsyncCall: state is RegisterLoading,
-          child: Form(
-            key: registerFormKey,
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Spacer(
-                    flex: 2,
-                  ),
-                  CustomAllContentTextFormField(
-                    validator: (name) {
-                      if (name?.isEmpty ?? true) {
-                        return 'Name is Required';
-                      } else {
-                        return null;
-                      }
-                    },
-                    textFormField: 'Enter your full name ',
-                    topTextFeild: 'Full Name',
-                    colorTopTextFeild: validate ? kSecondaryColor : kBlackColor,
-                    onChanged: (value) {
-                      name = value;
-                      validate = registerFormKey.currentState!.validate();
-                      setState(() {});
-                    },
-                    icon: Icons.person_2_rounded,
-                    prefixIconColor: validate ? kSecondaryColor : kBlackColor,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  CustomAllContentTextFormField(
-                    validator: (email) {
-                      if (email?.isEmpty ?? true) {
-                        return 'Email is Required';
-                      } else if (!widget.isEmailValid(email.toString())) {
-                        return 'Email address is invalid, Please enter a valid email';
-                      } else {
-                        return null;
-                      }
-                    },
-                    textFormField: 'Eg namaemail@emailkamu.com ',
-                    topTextFeild: 'Email address',
-                    colorTopTextFeild: validate ? kSecondaryColor : kBlackColor,
-                    onChanged: (value) {
-                      email = value;
-                      validate = registerFormKey.currentState!.validate();
-                      setState(() {});
-                    },
-                    icon: Icons.email_outlined,
-                    prefixIconColor: validate ? kSecondaryColor : kBlackColor,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  CustomAllContentTextFormField(
-                    validator: (password) {
-                      if (password?.isEmpty ?? true) {
-                        return 'Password is Required';
-                      } else if (!widget.isPasswordValid(password.toString())) {
-                        return 'At least 8 characters, Please enter a valid password';
-                      } else {
-                        return null;
-                      }
-                    },
-                    textFormField: '**** **** **** ',
-                    topTextFeild: 'Password',
-                    colorTopTextFeild: validate ? kSecondaryColor : kBlackColor,
-                    onChanged: (value) {
-                      password = value;
-                      validate = registerFormKey.currentState!.validate();
-                      setState(() {});
-                    },
-                    icon: Icons.password,
-                    prefixIconColor: validate ? kSecondaryColor : kBlackColor,
-                    obscureText: obscureText,
-                    suffixIcon: suffixIcon,
-                    suffixIconColor:
-                        obscureText ? kSecondaryColor : kBlackColor,
-                    onPressed: () {
-                      obscureText = !obscureText;
-                      suffixIcon =
-                          obscureText ? Icons.visibility : Icons.visibility_off;
-                      setState(() {});
-                    },
-                  ),
-                  const SizedBox(
-                    height: 34,
-                  ),
-                  Center(
-                      child: CustomButton(
-                          onPressed: () {
-                            setState(() {
-                              validate =
-                                  registerFormKey.currentState!.validate();
-                            });
-                            if (registerFormKey.currentState!.validate()) {
-                              registerFormKey.currentState!.save();
-                              //validate = true;
-                              // BlocProvider.of<RegisterCubit>(context).authRepo.registerUser(name: name!, email: email!, password: password!);
-                              BlocProvider.of<RegisterCubit>(context)
-                                  .registerUser(
-                                      name: name!,
-                                      email: email!,
-                                      password: password!);
-                            } else {
-                              autovalidateMode = AutovalidateMode.always;
-                              validate = false;
-                            }
-                          },
-                          text: 'Registration',
-                          colorButton:
-                              validate ? kPrimaryColor : kAlternateButtonColor,
-                          colorText: validate ? Colors.white : kButtonColor)),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Center(
-                    child: CustomTextButton(
-                      onTap: () {},
-                      text: 'Sign up with Google',
-                      colorText: kBlackColor,
-                      colorButton: kAlternateButtonColor,
+          child: SingleChildScrollView(
+            child: Form(
+              key: registerFormKey,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: Center(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Register Account !',
+                            style: Styles.textStyle28,
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            'Fill your details or continue with  \n social media',
+                            style: Styles.textStyle16Smei
+                                .copyWith(color: Color(0xff707B81)),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      )),
                     ),
-                  ),
-                  const Spacer(),
-                  CustomWidgetRowText(
-                    text: 'Already Have Account? ',
-                    textColor: kThridColor,
-                    featureText: 'Login',
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    onTap: () {
-                      GoRouter.of(context).push(AppRouter.kLoginView);
-                    },
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                ],
+                    SizedBox(
+                      height: 20,
+                    ),
+                    CustomAllContentTextFormField(
+                      validator: (name) {
+                        if (name?.isEmpty ?? true) {
+                          return 'Name is Required';
+                        } else {
+                          return null;
+                        }
+                      },
+                      textFormField: 'Enter your full name ',
+                      topTextFeild: 'Full Name',
+                      colorTopTextFeild:
+                          validate ? kSecondaryColor : kBlackColor,
+                      onChanged: (value) {
+                        name = value;
+                        validate = registerFormKey.currentState!.validate();
+                        setState(() {});
+                      },
+                      icon: Icons.person_2_rounded,
+                      prefixIconColor: validate ? kSecondaryColor : kBlackColor,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    CustomAllContentTextFormField(
+                      validator: (email) {
+                        if (email?.isEmpty ?? true) {
+                          return 'Email is Required';
+                        } else if (!widget.isEmailValid(email.toString())) {
+                          return 'Email address is invalid, Please enter a valid email';
+                        } else {
+                          return null;
+                        }
+                      },
+                      textFormField: 'Eg namaemail@emailkamu.com ',
+                      topTextFeild: 'Email address',
+                      colorTopTextFeild:
+                          validate ? kSecondaryColor : kBlackColor,
+                      onChanged: (value) {
+                        email = value;
+                        validate = registerFormKey.currentState!.validate();
+                        setState(() {});
+                      },
+                      icon: Icons.email_outlined,
+                      prefixIconColor: validate ? kSecondaryColor : kBlackColor,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    CustomAllContentTextFormField(
+                      validator: (password) {
+                        if (password?.isEmpty ?? true) {
+                          return 'Password is Required';
+                        } else if (!widget
+                            .isPasswordValid(password.toString())) {
+                          return 'At least 8 characters, Please enter a valid password';
+                        } else {
+                          return null;
+                        }
+                      },
+                      textFormField: '**** **** **** ',
+                      topTextFeild: 'Password',
+                      colorTopTextFeild:
+                          validate ? kSecondaryColor : kBlackColor,
+                      onChanged: (value) {
+                        password = value;
+                        validate = registerFormKey.currentState!.validate();
+                        setState(() {});
+                      },
+                      icon: Icons.password,
+                      prefixIconColor: validate ? kSecondaryColor : kBlackColor,
+                      obscureText: obscureText,
+                      suffixIcon: suffixIcon,
+                      suffixIconColor:
+                          obscureText ? kSecondaryColor : kBlackColor,
+                      onPressed: () {
+                        obscureText = !obscureText;
+                        suffixIcon = obscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off;
+                        setState(() {});
+                      },
+                    ),
+                    const SizedBox(
+                      height: 34,
+                    ),
+                    Center(
+                        child: CustomButton(
+                            onPressed: () {
+                              setState(() {
+                                validate =
+                                    registerFormKey.currentState!.validate();
+                              });
+                              if (registerFormKey.currentState!.validate()) {
+                                registerFormKey.currentState!.save();
+                                //validate = true;
+                                // BlocProvider.of<RegisterCubit>(context).authRepo.registerUser(name: name!, email: email!, password: password!);
+                                BlocProvider.of<RegisterCubit>(context)
+                                    .registerUser(
+                                        name: name!,
+                                        email: email!,
+                                        password: password!);
+                              } else {
+                                autovalidateMode = AutovalidateMode.always;
+                                validate = false;
+                              }
+                            },
+                            text: 'Registration',
+                            colorButton: validate
+                                ? kPrimaryColor
+                                : kAlternateButtonColor,
+                            colorText: validate ? Colors.white : kButtonColor)),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Center(
+                      child: CustomTextButton(
+                        onTap: () {},
+                        text: 'Sign up with Google',
+                        colorText: kBlackColor,
+                        colorButton: kAlternateButtonColor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.050,
+                    ),
+                    CustomWidgetRowText(
+                      text: 'Already Have Account? ',
+                      textColor: kThridColor,
+                      featureText: 'Login',
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kLoginView);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

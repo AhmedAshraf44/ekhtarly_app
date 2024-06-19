@@ -111,18 +111,23 @@ class _MyDrawerState extends State<MyDrawer> {
                   ),
                 ),
               ),
-              const ListTile(
-                title: Text(
-                  'Logout',
-                  style: TextStyle(
-                      color: Color(0xffE30000),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15),
-                ),
-                leading: Icon(
-                  FontAwesomeIcons.arrowRightFromBracket,
-                  size: 20,
-                  color: Color(0xffE30000),
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
+                },
+                child: const ListTile(
+                  title: Text(
+                    'Logout',
+                    style: TextStyle(
+                        color: Color(0xffE30000),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15),
+                  ),
+                  leading: Icon(
+                    FontAwesomeIcons.arrowRightFromBracket,
+                    size: 20,
+                    color: Color(0xffE30000),
+                  ),
                 ),
               )
             ],
