@@ -18,10 +18,8 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
               emit(ChangePasswordfailure(message: failure.errorMessage)),
           (message) {
         if (message['state'] == 'Fail') {
-          print('fail');
           emit(ChangePasswordfailure(message: message['message']!));
         } else {
-          print('success');
           emit(ChangePasswordSuccess(message: message['message']!));
         }
       });

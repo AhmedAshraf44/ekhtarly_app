@@ -54,11 +54,16 @@ class _CustomSearchState extends State<CustomSearch> {
             const SizedBox(
               height: 20,
             ),
-            Text(
-              'Your Budget ',
-              style: Styles.textStyle16Regular,
-            ),
             slider(),
+            Text.rich(TextSpan(children: [
+              TextSpan(text: 'Your Budget : ', style: Styles.textStyle15),
+              TextSpan(
+                  text: '${sliderValue.toInt()}',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            ])),
+            SizedBox(
+              height: 10,
+            ),
             selecting.isNotEmpty
                 ? ElevatedButton(
                     onPressed: () {
@@ -117,7 +122,6 @@ class _CustomSearchState extends State<CustomSearch> {
             return SliverToBoxAdapter(
                 child: Center(child: CircularProgressIndicator()));
           } else if (state is GetLaptopsFaluire) {
-            print('failure');
             return SliverToBoxAdapter(child: Text(state.messsage));
           } else {
             return SliverToBoxAdapter(child: Container());
@@ -129,42 +133,42 @@ class _CustomSearchState extends State<CustomSearch> {
 
   Slider slider() {
     return Slider(
-            max: 200000,
-            value: sliderValue,
-            onChanged: (value) {
-              setState(() {
-                sliderValue = value;
-              });
-            },
-            label: sliderValue.round().toString(),
-            divisions: 1000,
-            min: 2000,
-          );
+      max: 200000,
+      value: sliderValue,
+      onChanged: (value) {
+        setState(() {
+          sliderValue = value;
+        });
+      },
+      label: sliderValue.round().toString(),
+      divisions: 1000,
+      min: 2000,
+    );
   }
 
   TypeAheadField<ProgramModel> searchBar(SearchSuccess state) {
     return TypeAheadField(
-                  suggestionsCallback: (search) {
-                    return suggestionCallBack(state, search);
-                  },
-                  builder: (context, controller, focusNode) {
-                    return CustomTextField(
-                      controller: controller,
-                      focusNode: focusNode,
-                    );
-                  },
-                  itemBuilder: (context, value) {
-                    return ListTile(
-                      title: Text(value.name ?? ""),
-                      subtitle: Text(value.name ?? ""),
-                    );
-                  },
-                  onSelected: (value) {
-                    {
-                      onSelected(value);
-                    }
-                  },
-                );
+      suggestionsCallback: (search) {
+        return suggestionCallBack(state, search);
+      },
+      builder: (context, controller, focusNode) {
+        return CustomTextField(
+          controller: controller,
+          focusNode: focusNode,
+        );
+      },
+      itemBuilder: (context, value) {
+        return ListTile(
+          title: Text(value.name ?? ""),
+          subtitle: Text(value.name ?? ""),
+        );
+      },
+      onSelected: (value) {
+        {
+          onSelected(value);
+        }
+      },
+    );
   }
 
   Wrap wrapping() {

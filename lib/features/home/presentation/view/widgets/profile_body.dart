@@ -43,11 +43,9 @@ class _AccountProfileBodyState extends State<AccountProfileBody> {
           child: BlocBuilder<ProfileCubit, ProfileState>(
             builder: (context, state) {
               if (state is ProfileSuccess) {
-                print('hii');
 
                 return ProfileBody(profile: state.profile);
               } else {
-                print('fa');
 
                 return Container();
               }

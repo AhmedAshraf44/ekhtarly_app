@@ -23,7 +23,6 @@ class SearchImpl extends SearchRepo {
         program.add(ProgramModel.fromjson(element));
       }
 
-      print('successs');
       return Right(program);
     } catch (e) {
       if (e is DioException) {
@@ -48,7 +47,6 @@ class SearchImpl extends SearchRepo {
         laptops.add(Laptops.fromJson(element));
       }
 
-      print('successs laptops');
       return Right(laptops);
     } catch (e) {
       if (e is DioException) {
