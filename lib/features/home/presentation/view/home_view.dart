@@ -6,7 +6,7 @@ import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cu
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/menu.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
-import 'package:ekhtarly_app/features/search/presentation/cubit/search_cubit.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/search/search_cubit.dart';
 import 'package:ekhtarly_app/features/search/presentation/view/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

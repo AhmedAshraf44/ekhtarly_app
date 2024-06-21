@@ -17,7 +17,8 @@ import 'package:ekhtarly_app/features/home/presentation/view/widgets/setting.dar
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
 import 'package:ekhtarly_app/features/search/data/repo/search_repositert_implementation.dart';
 import 'package:ekhtarly_app/features/search/data/repo/search_repsitery.dart';
-import 'package:ekhtarly_app/features/search/presentation/cubit/search_cubit.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/get_laptops/get_laptops_cubit.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/search/search_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
@@ -85,7 +86,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kComprasion,
-      builder: (context, state) =>  ComprasionView(),
+      builder: (context, state) => ComprasionView(),
     ),
     GoRoute(
       path: kchangePassword,

@@ -4,7 +4,7 @@ class Laptops extends Equatable {
   final String? id;
   final String? brand;
   final String? name;
-  final int? price;
+  final double? price;
   final double? specRating;
   final String? processor;
   final String? cpu;
@@ -49,7 +49,7 @@ class Laptops extends Equatable {
         id: json['_id'] as String?,
         brand: json['brand'] as String?,
         name: json['name'] as String?,
-        price: json['price'] as int?,
+        price: json['price'] as double?,
         specRating: (json['spec_rating'] as num?)?.toDouble(),
         processor: json['processor'] as String?,
         cpu: json['CPU'] as String?,

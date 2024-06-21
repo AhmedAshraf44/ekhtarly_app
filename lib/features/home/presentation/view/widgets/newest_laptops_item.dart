@@ -17,10 +17,11 @@ import '../../../data/model/laptops_image_model.dart';
 class NewestLaptopsItem extends StatefulWidget {
   const NewestLaptopsItem({
     super.key,
-    required this.laptops,  required this.image,
+    required this.laptops,
+    required this.image,
   });
   final Laptops laptops;
-final LaptopsImageModel image ;
+  final LaptopsImageModel image;
 
   @override
   State<NewestLaptopsItem> createState() => _NewestLaptopsItemState();
@@ -30,7 +31,7 @@ class _NewestLaptopsItemState extends State<NewestLaptopsItem> {
   bool value = false;
   @override
   Widget build(BuildContext context) {
-    value = widget.laptops.isFavorite!;
+    value = widget.laptops.isFavorite??false;
     return GestureDetector(
       onTap: () {
         GoRouter.of(context)
@@ -49,8 +50,8 @@ class _NewestLaptopsItemState extends State<NewestLaptopsItem> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomImageNewestLaptopsItem(
-            image:widget.image ,
-           ),
+              image: widget.image,
+            ),
             const SizedBox(
               height: 8,
             ),
@@ -59,46 +60,46 @@ class _NewestLaptopsItemState extends State<NewestLaptopsItem> {
                 title: widget.laptops.name.toString()),
             BlocListener<FavouriteCubit, FavouriteState>(
               listener: (context, state) {
-                if (state is AddFavourite)
-                {
-                 value = true ;
-                BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
-                }else if (state is DeleteFavourite)
-                {
-                value = false ;
-                 BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
+                if (state is AddFavourite) {
+                  value = true;
+                  BlocProvider.of<NewestLaptopsCubit>(context)
+                      .getNewestLaptops();
+                } else if (state is DeleteFavourite) {
+                  value = false;
+                  BlocProvider.of<NewestLaptopsCubit>(context)
+                      .getNewestLaptops();
                 }
               },
-              child: 
-              CustomPriceNewestLaptopsItem(
-                  price: widget.laptops.price!,
-                  onPressed: () {
-                    if(widget.laptops.isFavorite! == false)
-                    {
-                        BlocProvider.of<FavouriteCubit>(context).addToFavorites(id:widget.laptops.id!);
-                          // showSnackBar(context, "Added Successfuly"); 
-                      setState(() {
-                        value = true;
-                      });
-                      log("value : $value");
-                     //  BlocProvider.of<FavouriteCubit>(context).displayFavourite();
-                    }else {
-                          BlocProvider.of<FavouriteCubit>(context).deleteToFavourite(id:widget.laptops.id!);
-                     // showSnackBar(context, "Removed Successfuly");
-                        setState(() {
-                        value = false;
-                      });
-                      log("value : $value");
-                      //  BlocProvider.of<FavouriteCubit>(context).displayFavourite();
-                    }
-                  },   
-        
-                  iconColor:  value == true ? const Icon(Icons.favorite, color: Colors.red)
-                      : const Icon(Icons.favorite_border, color: kBlackColor),
-                ),
-           ),
-           
-                  // const Spacer(),
+              child: CustomPriceNewestLaptopsItem(
+                price: widget.laptops.price!.toInt(),
+                onPressed: () {
+                  if (widget.laptops.isFavorite! == false) {
+                    BlocProvider.of<FavouriteCubit>(context)
+                        .addToFavorites(id: widget.laptops.id!);
+                    // showSnackBar(context, "Added Successfuly");
+                    setState(() {
+                      value = true;
+                    });
+                    log("value : $value");
+                    //  BlocProvider.of<FavouriteCubit>(context).displayFavourite();
+                  } else {
+                    BlocProvider.of<FavouriteCubit>(context)
+                        .deleteToFavourite(id: widget.laptops.id!);
+                    // showSnackBar(context, "Removed Successfuly");
+                    setState(() {
+                      value = false;
+                    });
+                    log("value : $value");
+                    //  BlocProvider.of<FavouriteCubit>(context).displayFavourite();
+                  }
+                },
+                iconColor: value == true
+                    ? const Icon(Icons.favorite, color: Colors.red)
+                    : const Icon(Icons.favorite_border, color: kBlackColor),
+              ),
+            ),
+
+            // const Spacer(),
           ],
         ),
       ),

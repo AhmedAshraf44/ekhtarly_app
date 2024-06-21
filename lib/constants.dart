@@ -1,3 +1,4 @@
+import 'package:ekhtarly_app/features/home/data/model/laptops_image_model.dart';
 import 'package:flutter/material.dart';
 
 const Color kPrimaryColor = Color(0xff356899);
@@ -16,3 +17,13 @@ const Color kBlackColor = Color(0xff0D0D26);
 const Color kBackgroundColor = Color(0xffE5E5E5);
 //color: Color(0xffF2F5FA),
 const double kHeightButton = 49;
+final List<LaptopsImageModel> imageList = [
+    LaptopsImageModel(image: 'assets/images/macbook1.png'),
+    LaptopsImageModel(image: 'assets/images/macbook2.png'),
+    LaptopsImageModel(image: 'assets/images/macbook3.png'),
+    LaptopsImageModel(image: 'assets/images/macbook4.webp'),
+    LaptopsImageModel(image: 'assets/images/macbook5.jpeg'),
+    LaptopsImageModel(image: 'assets/images/macbook6.jpeg'),
+    LaptopsImageModel(image: 'assets/images/macbook7.jpeg'),
+    LaptopsImageModel(image: 'assets/images/macbook8.jpeg'),
+  ];

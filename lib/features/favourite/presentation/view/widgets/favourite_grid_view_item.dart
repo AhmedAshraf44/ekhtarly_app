@@ -54,7 +54,7 @@ class FavouriteGridViewItem extends StatelessWidget {
             CustomPriceNewestLaptopsItem(onPressed: (){
               BlocProvider.of<FavouriteCubit>(context).deleteToFavourite(id: laptops.id!);
             },iconColor: const Icon(Icons.favorite, color: Colors.red),
-              price: laptops.price!,
+              price: laptops.price!.toInt(),
             ),
             // const Spacer(),
           ],

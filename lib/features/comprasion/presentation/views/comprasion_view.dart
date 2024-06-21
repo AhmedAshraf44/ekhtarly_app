@@ -14,16 +14,7 @@ import '../../../home/data/model/laptops_image_model.dart';
 class ComprasionView extends StatelessWidget {
    ComprasionView({super.key});
 
-   final List<LaptopsImageModel> imageList = [
-    LaptopsImageModel(image: 'assets/images/macbook1.png'),
-    LaptopsImageModel(image: 'assets/images/macbook2.png'),
-    LaptopsImageModel(image: 'assets/images/macbook3.png'),
-    LaptopsImageModel(image: 'assets/images/macbook4.webp'),
-    LaptopsImageModel(image: 'assets/images/macbook5.jpeg'),
-    LaptopsImageModel(image: 'assets/images/macbook6.jpeg'),
-    LaptopsImageModel(image: 'assets/images/macbook7.jpeg'),
-    LaptopsImageModel(image: 'assets/images/macbook8.jpeg'),
-  ];
+   
   @override
   Widget build(BuildContext context) {
     List<Laptops> laps =

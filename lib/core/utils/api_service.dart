@@ -73,6 +73,32 @@ class ApiService {
         options: Options(headers: headers));
     return response.data;
   }
+    Future<Map<String, dynamic>> getWithList({
+    required String endpoint,required List<String>programs,required int budget
+  }) async {
+    Map<String, dynamic> headers = {};
+    
+    Map<String, dynamic> data = {
+    "programList": programs,
+    "budget": budget
+  };
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    if (prefs.getString('token') == null) {
+      prefs.setString('token', '');
+    } else {
+      // var token = prefs.getString('token');
+      headers.addAll({
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      });
+    }
+    // log('token =$token');
+    var response = await _dio.get('$_baseUri$endpoint',
+       data: data, options: Options(headers: headers));
+    return response.data;
+  }
+
 
 
 

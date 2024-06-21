@@ -1,9 +1,13 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/functions/build_border.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
+import 'package:ekhtarly_app/features/home/presentation/view/widgets/newest_laptops_item.dart';
 import 'package:ekhtarly_app/features/search/data/model/program_model.dart';
-import 'package:ekhtarly_app/features/search/presentation/cubit/search_cubit.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/get_laptops/get_laptops_cubit.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/search/search_cubit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
@@ -17,41 +21,23 @@ class CustomSearch extends StatefulWidget {
 }
 
 class _CustomSearchState extends State<CustomSearch> {
-  var selecting = <String>{};
-
-
+  var selecting = <ProgramModel>{};
+  double sliderValue = 20000;
+  @override
+  late double width;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
+    width = MediaQuery.of(context).size.width;
+    ;
+    return CustomScrollView(slivers: [
+      SliverToBoxAdapter(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(children: [
             BlocBuilder<SearchCubit, SearchState>(
               builder: (context, state) {
                 if (state is SearchSuccess) {
-                  return TypeAheadField(
-                    suggestionsCallback: (search) {
-                      return suggestionCallBack(state, search);
-                    },
-                    builder: (context, controller, focusNode) {
-                      return CustomTextField(
-                        controller: controller,
-                        focusNode: focusNode,
-                      );
-                    },
-                    itemBuilder: (context, value) {
-                      return ListTile(
-                        title: Text(value.name ?? ""),
-                        subtitle: Text(value.name ?? ""),
-                      );
-                    },
-                    onSelected: (value) {
-                      {
-                        onSelected(value);
-                      }
-                    },
-                  );
+                  return searchBar(state);
                 } else if (state is SearchFaluire) {
                   return const Text('There Was An Problem');
                 } else {
@@ -68,9 +54,19 @@ class _CustomSearchState extends State<CustomSearch> {
             const SizedBox(
               height: 20,
             ),
+            Text(
+              'Your Budget ',
+              style: Styles.textStyle16Regular,
+            ),
+            slider(),
             selecting.isNotEmpty
                 ? ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      BlocProvider.of<GetLaptopsCubit>(context)
+                          .recommendedLaptops(
+                              selecting.map((e) => e.id!).toList(),
+                              sliderValue.toInt());
+                    },
                     child: const Text(
                       'Generate Your Laptop',
                       style: TextStyle(color: kBlackColor),
@@ -80,10 +76,95 @@ class _CustomSearchState extends State<CustomSearch> {
             const SizedBox(
               height: 20,
             ),
-          ],
+          ]),
         ),
       ),
-    );
+      BlocBuilder<GetLaptopsCubit, GetLaptopsState>(
+        builder: (context, state) {
+          if (state is GetLaptopsSuccess) {
+            return SliverToBoxAdapter(
+              child: Text(
+                'Your Recommended Laptop',
+                style: Styles.textStyle20,
+                textAlign: TextAlign.center,
+              ),
+            );
+          } else {
+            return SliverToBoxAdapter(child: Container());
+          }
+        },
+      ),
+      BlocBuilder<GetLaptopsCubit, GetLaptopsState>(
+        builder: (context, state) {
+          if (state is GetLaptopsSuccess) {
+            return SliverList.builder(
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10, horizontal: width * 0.2),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.30,
+                    child: NewestLaptopsItem(
+                      image: imageList[index],
+                      laptops: state.laptops[index],
+                    ),
+                  ),
+                );
+              },
+              itemCount: 7,
+            );
+          } else if (state is GetLaptopsLoading) {
+            return SliverToBoxAdapter(
+                child: Center(child: CircularProgressIndicator()));
+          } else if (state is GetLaptopsFaluire) {
+            print('failure');
+            return SliverToBoxAdapter(child: Text(state.messsage));
+          } else {
+            return SliverToBoxAdapter(child: Container());
+          }
+        },
+      ),
+    ]);
+  }
+
+  Slider slider() {
+    return Slider(
+            max: 200000,
+            value: sliderValue,
+            onChanged: (value) {
+              setState(() {
+                sliderValue = value;
+              });
+            },
+            label: sliderValue.round().toString(),
+            divisions: 1000,
+            min: 2000,
+          );
+  }
+
+  TypeAheadField<ProgramModel> searchBar(SearchSuccess state) {
+    return TypeAheadField(
+                  suggestionsCallback: (search) {
+                    return suggestionCallBack(state, search);
+                  },
+                  builder: (context, controller, focusNode) {
+                    return CustomTextField(
+                      controller: controller,
+                      focusNode: focusNode,
+                    );
+                  },
+                  itemBuilder: (context, value) {
+                    return ListTile(
+                      title: Text(value.name ?? ""),
+                      subtitle: Text(value.name ?? ""),
+                    );
+                  },
+                  onSelected: (value) {
+                    {
+                      onSelected(value);
+                    }
+                  },
+                );
   }
 
   Wrap wrapping() {
@@ -98,7 +179,7 @@ class _CustomSearchState extends State<CustomSearch> {
                         selecting.remove(e);
                         setState(() {});
                       },
-                      label: Text(e),
+                      label: Text(e.name!),
                       backgroundColor: const Color.fromARGB(255, 216, 213, 213),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -109,7 +190,7 @@ class _CustomSearchState extends State<CustomSearch> {
 
   void onSelected(ProgramModel value) {
     return setState(() {
-      selecting.add(value.name!);
+      selecting.add(value);
     });
   }
 
