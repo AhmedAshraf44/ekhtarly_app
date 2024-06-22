@@ -1,6 +1,8 @@
-import 'package:bloc/bloc.dart';
+import 'dart:developer';
+
 import 'package:ekhtarly_app/features/home/data/repos/home_repo.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'change_password_state.dart';
 
@@ -18,15 +20,15 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
               emit(ChangePasswordfailure(message: failure.errorMessage)),
           (message) {
         if (message['state'] == 'Fail') {
-          print('fail');
+          log('fail');
           emit(ChangePasswordfailure(message: message['message']!));
         } else {
-          print('success');
+          log('success');
           emit(ChangePasswordSuccess(message: message['message']!));
         }
       });
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
     }
   }
 }

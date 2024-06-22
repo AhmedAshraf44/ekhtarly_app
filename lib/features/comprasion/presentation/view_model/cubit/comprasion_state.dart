@@ -12,7 +12,7 @@ final class ComprasionInitial extends ComprasionState {}
 final class ComprasionSuccess extends ComprasionState {
   final List<Laptops> laps;
 
-  ComprasionSuccess({required this.laps});
+  const ComprasionSuccess({required this.laps});
 }
 
 final class ComprasionLoading extends ComprasionState {}

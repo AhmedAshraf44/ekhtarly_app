@@ -7,9 +7,9 @@ class CustomPriceNewestLaptopsItem extends StatelessWidget {
   const CustomPriceNewestLaptopsItem(
       {super.key,
       required this.price,
-       this.onPressed,
+      this.onPressed,
       required this.iconColor});
-  final int price;
+  final double price;
   final void Function()? onPressed;
   final Icon iconColor;
   @override
@@ -24,7 +24,7 @@ class CustomPriceNewestLaptopsItem extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'EGP $price',
+            'EGP ${price.ceil()}',
             style: Styles.textStyle14.copyWith(
               color: kThridColor,
             ),
@@ -36,7 +36,7 @@ class CustomPriceNewestLaptopsItem extends StatelessWidget {
             backgroundColor: const Color(0xffF7F7F9),
             child: IconButton(
               onPressed: onPressed,
-              icon: iconColor ,
+              icon: iconColor,
             ),
           ),
           const Spacer(),

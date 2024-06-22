@@ -12,7 +12,10 @@ class CustomTextSuccess extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset('assets/images/Success Icon.png'),
+        Image.asset(
+          'assets/images/Success Icon.png',
+          height: 100,
+        ),
         Text(
           'Success',
           style: Styles.textStyle24.copyWith(fontWeight: FontWeight.bold),

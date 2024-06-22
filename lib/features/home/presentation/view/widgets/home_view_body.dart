@@ -1,14 +1,10 @@
-import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_state.dart';
-import 'package:ekhtarly_app/features/search/presentation/view/custom_search.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/custom_tips_slider.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import '../../../../../core/utils/app_router.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -34,31 +30,45 @@ class HomeViewBody extends StatelessWidget {
                 child: const Icon(Icons.menu)),
             actions: const [
               CircleAvatar(
-                backgroundColor: kPrimaryColor,
+                backgroundImage: AssetImage('assets/images/icon_app.jpg'),
               )
             ],
+
             title: Row(
               children: [
                 const Spacer(),
-                Text('E',
-                    style: Styles.textStyle20.copyWith(color: Colors.red)),
-                Text(' k',
-                    style: Styles.textStyle20.copyWith(color: Colors.blue)),
-                Text(' h',
-                    style: Styles.textStyle20.copyWith(color: Colors.yellow)),
-                Text(' t',
-                    style: Styles.textStyle20.copyWith(color: Colors.green)),
-                Text(' a',
-                    style: Styles.textStyle20.copyWith(color: Colors.red)),
-                Text(' r',
-                    style: Styles.textStyle20.copyWith(color: Colors.blue)),
-                Text(' l',
-                    style: Styles.textStyle20.copyWith(color: Colors.yellow)),
-                Text(' y ',
-                    style: Styles.textStyle20.copyWith(color: Colors.green)),
+                Text(
+                  'Ekhtarly',
+                  style: Styles.textStyle24.copyWith(
+                    color: const Color(0xff1E4E71),
+                    letterSpacing: 3,
+                  ),
+                ),
                 const Spacer(),
               ],
             ),
+            //  Row(
+            //   children: [
+            //     const Spacer(),
+            //     Text('E',
+            //         style: Styles.textStyle20.copyWith(color: Colors.red)),
+            //     Text(' k',
+            //         style: Styles.textStyle20.copyWith(color: Colors.blue)),
+            //     Text(' h',
+            //         style: Styles.textStyle20.copyWith(color: Colors.yellow)),
+            //     Text(' t',
+            //         style: Styles.textStyle20.copyWith(color: Colors.green)),
+            //     Text(' a',
+            //         style: Styles.textStyle20.copyWith(color: Colors.red)),
+            //     Text(' r',
+            //         style: Styles.textStyle20.copyWith(color: Colors.blue)),
+            //     Text(' l',
+            //         style: Styles.textStyle20.copyWith(color: Colors.yellow)),
+            //     Text(' y ',
+            //         style: Styles.textStyle20.copyWith(color: Colors.green)),
+            //     const Spacer(),
+            //   ],
+            // ),
             pinned: true,
             // floating: true,
           ),
@@ -78,8 +88,7 @@ class HomeViewBody extends StatelessWidget {
                       top: 20,
                       bottom: 25,
                     ),
-                    child: CustomTipsSlider(
-                    ),
+                    child: CustomTipsSlider(),
                   ), //  HomeViewBodyDetails(),
                 ],
               ),

@@ -4,17 +4,15 @@ import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:ekhtarly_app/features/comprasion/presentation/view_model/cubit/comprasion_cubit.dart';
 import 'package:ekhtarly_app/features/comprasion/presentation/views/widget/comprasionDetails.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/newest_laptops_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../home/data/model/laptops_image_model.dart';
 
 class ComprasionView extends StatelessWidget {
-   ComprasionView({super.key});
+  ComprasionView({super.key});
 
-   final List<LaptopsImageModel> imageList = [
+  final List<LaptopsImageModel> imageList = [
     LaptopsImageModel(image: 'assets/images/macbook1.png'),
     LaptopsImageModel(image: 'assets/images/macbook2.png'),
     LaptopsImageModel(image: 'assets/images/macbook3.png'),
@@ -49,12 +47,12 @@ class ComprasionView extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: laps.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 20,
                       childAspectRatio: 2 / 2.8),
                   itemBuilder: (context, index) => NewestLaptopsItem(
-                    image:imageList[index] ,
+                    image: imageList[index],
                     laptops: laps[index],
                   ),
                 )),

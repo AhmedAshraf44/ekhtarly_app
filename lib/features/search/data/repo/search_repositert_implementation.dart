@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ekhtarly_app/core/errors/failure.dart';
@@ -22,7 +24,7 @@ class SearchImpl extends SearchRepo {
         program.add(ProgramModel.fromjson(element));
       }
 
-      print('successs');
+      log('successs');
       return Right(program);
     } catch (e) {
       if (e is DioException) {

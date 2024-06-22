@@ -35,7 +35,7 @@ class _FavouriteViewState extends State<FavouriteView> {
                   Spacer(),
                   Text(
                     'Favourite',
-                    style: Styles.textStyle14,
+                    style: Styles.textStyle20,
                   ),
                   Spacer(),
                   CircleAvatar(
@@ -43,7 +43,6 @@ class _FavouriteViewState extends State<FavouriteView> {
                     child: IconButton(
                       icon: Icon(Icons.favorite, color: Colors.red),
                       onPressed: null,
-          
                     ),
                   ),
                 ],
@@ -52,7 +51,7 @@ class _FavouriteViewState extends State<FavouriteView> {
           ),
           //Expanded(child: FavouriteViewBody()),
           FavouriteViewBody(),
-           SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: SizedBox(
               height: 75,
             ),

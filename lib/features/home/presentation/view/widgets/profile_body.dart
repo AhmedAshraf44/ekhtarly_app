@@ -1,15 +1,18 @@
+import 'dart:developer';
+
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/features/home/data/model/profile.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/styles.dart';
+
 class AccountProfileBody extends StatefulWidget {
-  AccountProfileBody({super.key});
+  const AccountProfileBody({super.key});
 
   @override
   State<AccountProfileBody> createState() => _AccountProfileBodyState();
@@ -28,7 +31,10 @@ class _AccountProfileBodyState extends State<AccountProfileBody> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Profile'),
+        title: const Text(
+          'Profile',
+          style: Styles.textStyle20,
+        ),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.keyboard_arrow_left),
@@ -43,11 +49,11 @@ class _AccountProfileBodyState extends State<AccountProfileBody> {
           child: BlocBuilder<ProfileCubit, ProfileState>(
             builder: (context, state) {
               if (state is ProfileSuccess) {
-                print('hii');
+                log('hii');
 
                 return ProfileBody(profile: state.profile);
               } else {
-                print('fa');
+                log('fa');
 
                 return Container();
               }
@@ -82,7 +88,7 @@ class ProfileBody extends StatelessWidget {
       const SizedBox(
         height: 22,
       ),
-      Text(
+      const Text(
         'Name',
         style: TextStyle(
             fontSize: 16,
@@ -92,11 +98,11 @@ class ProfileBody extends StatelessWidget {
       const SizedBox(
         height: 12,
       ),
-      Details_Field(text: profile?.name ?? 'Jon Sina'),
+      DetailsField(text: profile?.name ?? 'Jon Sina'),
       const SizedBox(
         height: 12,
       ),
-      Text(
+      const Text(
         'Email',
         style: TextStyle(
             fontSize: 16,
@@ -106,7 +112,7 @@ class ProfileBody extends StatelessWidget {
       const SizedBox(
         height: 12,
       ),
-      Details_Field(text: profile?.email ?? 'jonsina@gmail.com'),
+      DetailsField(text: profile?.email ?? 'jonsina@gmail.com'),
       const SizedBox(
         height: 30,
       ),
@@ -120,7 +126,7 @@ class ProfileBody extends StatelessWidget {
       const SizedBox(
         height: 12,
       ),
-      const Details_Field(text: '**********'),
+      const DetailsField(text: '**********'),
       const SizedBox(
         height: 40,
       ),
@@ -128,7 +134,7 @@ class ProfileBody extends StatelessWidget {
         onPressed: () {
           GoRouter.of(context).push(AppRouter.kprofileedit);
         },
-        colorButton: kButtonColor,
+        colorButton: kPrimaryColor,
         colorText: Colors.white,
         text: 'Edit',
       ),
@@ -136,8 +142,8 @@ class ProfileBody extends StatelessWidget {
   }
 }
 
-class Details_Field extends StatelessWidget {
-  const Details_Field({
+class DetailsField extends StatelessWidget {
+  const DetailsField({
     super.key,
     required this.text,
   });
@@ -159,7 +165,7 @@ class Details_Field extends StatelessWidget {
             style: const TextStyle(
                 fontWeight: FontWeight.w600, color: Color(0xff2B2B2B)),
           ),
-          Opacity(opacity: 0.7, child: Icon(Icons.edit_note)),
+          const Opacity(opacity: 0.7, child: Icon(Icons.edit_note)),
         ]),
       ),
     );

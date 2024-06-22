@@ -1,4 +1,6 @@
 import 'package:ekhtarly_app/features/favourite/presentation/view/widgets/favourite_grid_view_item.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,17 +8,18 @@ import '../../../../../core/functions/show_snack_bar.dart';
 import '../../../../home/data/model/laptops_image_model.dart';
 import '../../manger/add_favourite_cubit/add_favourite_cubit.dart';
 import '../../manger/add_favourite_cubit/add_favourite_state.dart';
-  
- final List<LaptopsImageModel> imageList = [
-    LaptopsImageModel(image: 'assets/images/macbook1.png'),
-    LaptopsImageModel(image: 'assets/images/macbook2.png'),
-    LaptopsImageModel(image: 'assets/images/macbook3.png'),
-    LaptopsImageModel(image: 'assets/images/macbook4.webp'),
-    LaptopsImageModel(image: 'assets/images/macbook5.jpeg'),
-    LaptopsImageModel(image: 'assets/images/macbook6.jpeg'),
-    LaptopsImageModel(image: 'assets/images/macbook7.jpeg'),
-    LaptopsImageModel(image: 'assets/images/macbook8.jpeg'),
-  ];
+
+final List<LaptopsImageModel> imageList = [
+  LaptopsImageModel(image: 'assets/images/macbook1.png'),
+  LaptopsImageModel(image: 'assets/images/macbook2.png'),
+  LaptopsImageModel(image: 'assets/images/macbook3.png'),
+  LaptopsImageModel(image: 'assets/images/macbook4.webp'),
+  LaptopsImageModel(image: 'assets/images/macbook5.jpeg'),
+  LaptopsImageModel(image: 'assets/images/macbook6.jpeg'),
+  LaptopsImageModel(image: 'assets/images/macbook7.jpeg'),
+  LaptopsImageModel(image: 'assets/images/macbook8.jpeg'),
+];
+
 class FavouriteViewBody extends StatelessWidget {
   const FavouriteViewBody({super.key});
   @override
@@ -24,7 +27,29 @@ class FavouriteViewBody extends StatelessWidget {
     return BlocConsumer<FavouriteCubit, FavouriteState>(
         listener: (context, state) {
       if (state is DeleteFavourite) {
-        showSnackBar(context, 'The item has been successfully deleted');
+        showSnackBar(context, 'The item has been successfully deleted',
+            bottom: 12, top: 12);
+
+        // final snackBar = SnackBar(
+        //   duration: Duration(seconds: 2),
+
+        //   /// need to set following properties for best effect of awesome_snackbar_content
+        //   elevation: 0,
+        //   behavior: SnackBarBehavior.floating,
+        //   backgroundColor: Colors.transparent,
+        //   content: AwesomeSnackbarContent(
+        //     title: 'success!',
+        //     message: 'The item has been successfully deleted',
+
+        //     /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+        //     contentType: ContentType.success,
+        //   ),
+        // );
+
+        // ScaffoldMessenger.of(context)
+        //   ..hideCurrentSnackBar()
+        //   ..showSnackBar(snackBar);
+
         BlocProvider.of<FavouriteCubit>(context).displayFavourite();
       }
     }, builder: (context, state) {
@@ -57,11 +82,12 @@ class FavouriteViewBody extends StatelessWidget {
                     id: state.favoriteList.laptops[index].id!);
                 // showSnackBar(context, 'The item has been successfully deleted');
                 //BlocProvider.of<FavouriteCubit>(context).displayFavourite();
+                BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
               },
               child: FavouriteGridViewItem(
-                  laptops: state.favoriteList.laptops[index],
-                  image: imageList[index],
-                  ),
+                laptops: state.favoriteList.laptops[index],
+                image: imageList[index],
+              ),
               //   ),
               // ),
             ),

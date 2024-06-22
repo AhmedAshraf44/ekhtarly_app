@@ -15,7 +15,9 @@ class NewestLaptopsDetails extends StatelessWidget {
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
-        const CustomAppBarNewestLaptopDetails(),
+        CustomAppBarNewestLaptopDetails(
+          isFavorite: laptops.isFavorite ?? false,
+        ),
         const CustomNewestLaptopDetailsSlider(),
         NewestLaptopDetailsDescrption(
           laptops: laptops,

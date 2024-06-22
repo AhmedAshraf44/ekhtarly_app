@@ -1,17 +1,14 @@
 import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/core/functions/show_snack_bar.dart';
-import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/features/authentication/login/presentation/view/login_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/change_password/change_password_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class ChangePassowrd extends StatefulWidget {
-  ChangePassowrd({super.key});
+  const ChangePassowrd({super.key});
 
   @override
   State<ChangePassowrd> createState() => _ChangePassowrdState();
@@ -156,7 +153,7 @@ class _ChangePassowrdState extends State<ChangePassowrd> {
                               content: state.message, onpresed: () {
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: (context) => LoginView(),
+                                builder: (context) => const LoginView(),
                               ),
                             );
                           }, textbutton: 'Sign in');
@@ -187,7 +184,7 @@ class _ChangePassowrdState extends State<ChangePassowrd> {
                             }
                           }
                         },
-                        colorButton: kButtonColor,
+                        colorButton: kPrimaryColor,
                         colorText: Colors.white,
                         text: 'Save Now',
                       ),
@@ -217,7 +214,7 @@ class _ChangePassowrdState extends State<ChangePassowrd> {
               onPressed: onpresed,
               child: Text(
                 textbutton ?? "",
-                style: TextStyle(color: Colors.blueAccent),
+                style: const TextStyle(color: Colors.blueAccent),
               ),
             )
           ],
@@ -250,10 +247,11 @@ class CutsomTextFormField extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
             hintText: text,
-            hintStyle: TextStyle(color: Color(0xff2B2B2B).withOpacity(0.8)),
+            hintStyle:
+                TextStyle(color: const Color(0xff2B2B2B).withOpacity(0.8)),
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,
-            fillColor: Color(0xffF7F7F9),
+            fillColor: const Color(0xffF7F7F9),
             filled: true),
       ),
     );

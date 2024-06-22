@@ -1,4 +1,5 @@
 import 'package:ekhtarly_app/features/favourite/presentation/manger/add_favourite_cubit/add_favourite_cubit.dart';
+import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -8,29 +9,19 @@ import '../../../../../core/utils/widgets/custom_image_newest_laptops_item.dart'
 import '../../../../../core/utils/widgets/custom_price_newest_laptops_item.dart';
 import '../../../../../core/utils/widgets/custom_tittle_newest_laptops_item.dart';
 import '../../../../home/data/model/laptops_image_model.dart';
-// 1 
+
+// 1
 class FavouriteGridViewItem extends StatelessWidget {
-  const FavouriteGridViewItem({super.key, required this.laptops,required this.image});
-   final Laptops laptops;
+  const FavouriteGridViewItem(
+      {super.key, required this.laptops, required this.image});
+  final Laptops laptops;
   final LaptopsImageModel image;
 
   @override
   Widget build(BuildContext context) {
-    return 
-    // Dismissible(
-    //   key: UniqueKey(),
-    //   onDismissed: (direction) {
-    //   //  notes.delete();
-    //     BlocProvider.of<FavouriteCubit>(context).deleteToFavourite(id: laptops.id!);
-    //      showSnackBar(context, 'The note has been successfully deleted');
-    //     BlocProvider.of<FavouriteCubit>(context).displayFavourite();
-       
-    //   },
-      // child: 
-      GestureDetector(
+    return GestureDetector(
       onTap: () {
-        GoRouter.of(context)
-            .push(AppRouter.kNewestLaptopsView, extra: laptops);
+        GoRouter.of(context).push(AppRouter.kNewestLaptopsView, extra: laptops);
       },
       child: Container(
         decoration: const BoxDecoration(
@@ -44,16 +35,22 @@ class FavouriteGridViewItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             CustomImageNewestLaptopsItem(image: image),
+            CustomImageNewestLaptopsItem(image: image),
             const SizedBox(
               height: 10,
             ),
             // Flexble
-            CustomTittleNewestLaptopsItem(
-                title: laptops.name.toString()),
-            CustomPriceNewestLaptopsItem(onPressed: (){
-              BlocProvider.of<FavouriteCubit>(context).deleteToFavourite(id: laptops.id!);
-            },iconColor: const Icon(Icons.favorite, color: Colors.red),
+            CustomTittleNewestLaptopsItem(title: laptops.name.toString()),
+            CustomPriceNewestLaptopsItem(
+              onPressed: () {
+                BlocProvider.of<FavouriteCubit>(context)
+                    .deleteToFavourite(id: laptops.id!);
+                BlocProvider.of<NewestLaptopsCubit>(context).getNewestLaptops();
+              },
+              iconColor: const Icon(
+                Icons.delete_rounded,
+              ),
+              //const Icon(Icons.favorite, color: Colors.red),
               price: laptops.price!,
             ),
             // const Spacer(),

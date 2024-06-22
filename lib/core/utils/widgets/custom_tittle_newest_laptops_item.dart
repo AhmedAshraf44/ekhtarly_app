@@ -14,7 +14,7 @@ class CustomTittleNewestLaptopsItem extends StatelessWidget {
         child: Text(
           title,
           overflow: TextOverflow.ellipsis,
-          maxLines: 1,
+          maxLines: 2,
           style: Styles.textStyle14,
         ),
       ),

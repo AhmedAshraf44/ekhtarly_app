@@ -30,7 +30,7 @@ class CustomRowPriceAndRating extends StatelessWidget {
                 children: [
                   Text('Price:  ',
                       style: Styles.textStyle14.copyWith(color: Colors.white)),
-                  Text('EGP ${laptops.price}',
+                  Text('EGP ${laptops.price!.ceil()}',
                       style:
                           Styles.textStyle16Smei.copyWith(color: Colors.white)),
                 ],

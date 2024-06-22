@@ -36,7 +36,7 @@ class _NewestLaptopsViewState extends State<NewestLaptopsView> {
               setState(() {});
             }
           },
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           backgroundColor: kPrimaryColor,
           child: widget.laptops.isCompared
               ? const Icon(

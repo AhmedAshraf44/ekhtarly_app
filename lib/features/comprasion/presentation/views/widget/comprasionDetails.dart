@@ -15,7 +15,7 @@ class ComprasionDetails extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.55,
             child: ComprasionDetailsColumn(laptops: laptops[0]),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Expanded(

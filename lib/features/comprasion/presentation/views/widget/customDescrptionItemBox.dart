@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ekhtarly_app/features/comprasion/presentation/views/widget/customDescriptionItemBoxValue.dart';
 import 'package:flutter/material.dart';
 
@@ -5,17 +7,18 @@ class CustomDescrptionItemBox extends StatelessWidget {
   CustomDescrptionItemBox({
     super.key,
     required this.textValue,
-    this.text,  this.secand=false,
+    this.text,
+    this.secand = false,
   });
   String? text;
   final String textValue;
-  final bool secand ;
+  final bool secand;
   @override
   Widget build(BuildContext context) {
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        secand 
+        secand
             ? Container()
             : CustomDescrptionItemBoxValue(
                 textValue: text!,

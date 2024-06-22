@@ -1,6 +1,5 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
-import 'package:ekhtarly_app/core/utils/styles.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_all_content_text_form_field.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_featured_text.dart';
@@ -14,6 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../../core/utils/widgets/input_validation_mixin.dart';
+import '../../../../forget_password/presentation/view/widgets/custom_text_forget_password.dart';
 
 class LoginBodyDetails extends StatefulWidget with InputValidationMixin {
   const LoginBodyDetails({
@@ -55,29 +55,46 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: Center(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Welcome To Our App !',
-                            style: Styles.textStyle28,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'Fill your details or continue with  \n social media',
-                            style: Styles.textStyle16Smei
-                                .copyWith(color: Color(0xff707B81)),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      )),
+                    const SizedBox(
+                      height: 60,
                     ),
-                    SizedBox(
+                    // const Spacer(
+                    //   flex: 2,
+                    // ),
+                    const CustomTextForgetPassword(
+                      text: 'Welcome Back To Ekhtarly ',
+                      textDetails: 'please sign in with your mail',
+                    ),
+                    const SizedBox(height: 80),
+                    // const Spacer(
+                    //   flex: 1,
+                    // ),
+                    // const SizedBox(
+                    //   height: 54,
+                    // ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * 0.25,
+                    //   child: Center(
+                    //       child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.end,
+                    //     children: [
+                    //       const Text(
+                    //         'Welcome To Our App !',
+                    //         style: Styles.textStyle28,
+                    //       ),
+                    //       const SizedBox(
+                    //         height: 8,
+                    //       ),
+                    //       Text(
+                    //         'Fill your details or continue with  \n social media',
+                    //         style: Styles.textStyle16Smei
+                    //             .copyWith(color: const Color(0xff707B81)),
+                    //         textAlign: TextAlign.center,
+                    //       )
+                    //     ],
+                    //   )),
+                    // ),
+                    const SizedBox(
                       height: 20,
                     ),
                     CustomAllContentTextFormField(
@@ -161,6 +178,9 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
                     const SizedBox(
                       height: 34,
                     ),
+                    // const Spacer(
+                    //   flex: 1,
+                    // ),
                     Center(
                       child: CustomButton(
                         onPressed: () {
@@ -209,6 +229,9 @@ class _LoginBodyDetailsState extends State<LoginBodyDetails> {
                     const SizedBox(
                       height: 8,
                     ),
+                    // const Spacer(
+                    //   flex: 3,
+                    // ),
                   ],
                 ),
               ),

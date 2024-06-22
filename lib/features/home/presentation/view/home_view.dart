@@ -1,7 +1,6 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:ekhtarly_app/constants.dart';
-import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/home_view_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/menu.dart';
@@ -26,8 +25,8 @@ class _HomeViewState extends State<HomeView> {
   List screens = [
     const HomeViewBody(),
     const SearchView(),
-    AccountProfileBody(),
     const FavouriteView(),
+    const AccountProfileBody(),
   ];
 
   changeTab(int index) {
@@ -60,13 +59,13 @@ class _HomeViewState extends State<HomeView> {
     )),
     CurvedNavigationBarItem(
         child: Icon(
-      Icons.person,
+      Icons.favorite,
       color: kPrimaryColor,
       size: 30,
     )),
     CurvedNavigationBarItem(
         child: Icon(
-      Icons.favorite,
+      Icons.person,
       color: kPrimaryColor,
       size: 30,
     )),

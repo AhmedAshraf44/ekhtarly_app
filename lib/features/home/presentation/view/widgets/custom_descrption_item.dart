@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import 'custom_descrption_item_value.dart';
@@ -6,7 +8,7 @@ class CustomDescrptionItem extends StatelessWidget {
   CustomDescrptionItem({
     super.key,
     required this.textValue,
-     this.text,
+    this.text,
   });
   String? text;
   final String textValue;

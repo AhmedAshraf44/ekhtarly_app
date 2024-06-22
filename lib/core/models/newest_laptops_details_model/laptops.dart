@@ -1,10 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:equatable/equatable.dart';
 
 class Laptops extends Equatable {
   final String? id;
   final String? brand;
   final String? name;
-  final int? price;
+  final double? price;
   final double? specRating;
   final String? processor;
   final String? cpu;
@@ -20,10 +22,9 @@ class Laptops extends Equatable {
   final int? warranty;
   final String? type;
   final bool? isFavorite;
-  bool isCompared=false;
+  bool isCompared = false;
 
-
-   Laptops({
+  Laptops({
     this.id,
     this.brand,
     this.name,
@@ -49,7 +50,7 @@ class Laptops extends Equatable {
         id: json['_id'] as String?,
         brand: json['brand'] as String?,
         name: json['name'] as String?,
-        price: json['price'] as int?,
+        price: json['price'] as double?,
         specRating: (json['spec_rating'] as num?)?.toDouble(),
         processor: json['processor'] as String?,
         cpu: json['CPU'] as String?,

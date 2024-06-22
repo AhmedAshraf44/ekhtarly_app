@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../constants.dart';
 
 class CustomAppBarNewestLaptopDetails extends StatefulWidget {
-  const CustomAppBarNewestLaptopDetails({super.key});
-
+  const CustomAppBarNewestLaptopDetails({super.key, required this.isFavorite});
+  final bool isFavorite;
   @override
   State<CustomAppBarNewestLaptopDetails> createState() =>
       _CustomAppBarNewestLaptopDetailsState();
@@ -12,10 +11,11 @@ class CustomAppBarNewestLaptopDetails extends StatefulWidget {
 
 class _CustomAppBarNewestLaptopDetailsState
     extends State<CustomAppBarNewestLaptopDetails> {
-  bool iconColor = false;
+  bool? iconColor;
 
   @override
   Widget build(BuildContext context) {
+    iconColor = widget.isFavorite;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
@@ -32,7 +32,7 @@ class _CustomAppBarNewestLaptopDetailsState
             //    backgroundColor:kBackgroundColor,
             backgroundColor: Colors.white,
             child: IconButton(
-              icon: iconColor
+              icon: iconColor!
                   ? const Icon(
                       Icons.favorite,
                       color: Colors.red,
@@ -45,7 +45,7 @@ class _CustomAppBarNewestLaptopDetailsState
                     ),
               onPressed: () {
                 setState(() {
-                  iconColor = !iconColor;
+                  iconColor = !iconColor!;
                 });
               },
             ),

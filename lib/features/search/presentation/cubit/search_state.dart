@@ -14,7 +14,7 @@ final class SearchLoading extends SearchState {}
 final class SearchSuccess extends SearchState {
  final  List <ProgramModel> programs;
 
-  SearchSuccess({required this.programs});
+ const SearchSuccess({required this.programs});
 }
 
 final class SearchFaluire extends SearchState {

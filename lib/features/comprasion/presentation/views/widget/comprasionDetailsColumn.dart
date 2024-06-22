@@ -1,11 +1,12 @@
-import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/comprasion/presentation/views/widget/customDescrptionItemBox.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/models/newest_laptops_details_model/laptops.dart';
 
 class ComprasionDetailsColumn extends StatelessWidget {
   const ComprasionDetailsColumn({
     super.key,
-    required this.laptops,  this.secand=false,
+    required this.laptops,
+    this.secand = false,
   });
   final bool secand;
   final Laptops laptops;
@@ -24,8 +25,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'Processor',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.processor!,
         ),
         const SizedBox(
@@ -33,8 +33,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'CPU',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.cpu!,
         ),
         const SizedBox(
@@ -42,8 +41,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'Ram',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.ram!,
         ),
         const SizedBox(
@@ -51,8 +49,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'Ram Type',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.ramType!,
         ),
         const SizedBox(
@@ -60,8 +57,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'ROM',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.rom!,
         ),
         const SizedBox(
@@ -69,8 +65,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'Rom Type',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.romType!,
         ),
         const SizedBox(
@@ -78,8 +73,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'GPU',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.gpu!,
         ),
         const SizedBox(
@@ -87,8 +81,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'Display Size',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.displaySize!.toString(),
         ),
         const SizedBox(
@@ -96,8 +89,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'Resolution Width',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.resolutionWidth!.toString(),
         ),
         const SizedBox(
@@ -105,8 +97,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'Resolution Height',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.resolutionHeight!.toString(),
         ),
         const SizedBox(
@@ -114,8 +105,7 @@ class ComprasionDetailsColumn extends StatelessWidget {
         ),
         CustomDescrptionItemBox(
           text: 'Operating System',
-                    secand: secand,
-
+          secand: secand,
           textValue: laptops.os!,
         ),
       ],

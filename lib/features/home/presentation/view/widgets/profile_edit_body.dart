@@ -4,9 +4,7 @@ import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/features/home/data/model/profile.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,11 +28,11 @@ class ProfileEditBody extends StatelessWidget {
       body: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
           if (state is ProfileSuccess) {
-            return profileEditBody(
+            return ProfileEditBodyDetials(
               profile: state.profile,
             );
           } else {
-            return Center(child: Text('there was an error!'));
+            return const Center(child: Text('there was an error!'));
           }
         },
       ),
@@ -42,8 +40,8 @@ class ProfileEditBody extends StatelessWidget {
   }
 }
 
-class profileEditBody extends StatelessWidget {
-  const profileEditBody({
+class ProfileEditBodyDetials extends StatelessWidget {
+  const ProfileEditBodyDetials({
     super.key,
     required this.profile,
   });
@@ -96,7 +94,7 @@ class profileEditBody extends StatelessWidget {
               onTap: () {
                 GoRouter.of(context).push(AppRouter.kchangePassword);
               },
-              child: const Details_Field(text: '**********')),
+              child: const DetailsField(text: '**********')),
           const SizedBox(
             height: 40,
           ),
@@ -128,10 +126,11 @@ class CutsomTextForm extends StatelessWidget {
         onTap: onTap,
         decoration: InputDecoration(
             hintText: text,
-            hintStyle: TextStyle(color: Color(0xff2B2B2B).withOpacity(0.8)),
+            hintStyle:
+                TextStyle(color: const Color(0xff2B2B2B).withOpacity(0.8)),
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,
-            fillColor: Color(0xffF7F7F9),
+            fillColor: const Color(0xffF7F7F9),
             filled: true),
       ),
     );

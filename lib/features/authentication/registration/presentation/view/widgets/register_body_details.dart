@@ -12,6 +12,7 @@ import '../../../../../../../../core/utils/widgets/custom_all_content_text_form_
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../core/utils/widgets/custom_widget_row_text.dart';
 import '../../../../../../core/utils/widgets/input_validation_mixin.dart';
+import '../../../../forget_password/presentation/view/widgets/custom_text_forget_password.dart';
 
 class RegisterBodyDetails extends StatefulWidget with InputValidationMixin {
   const RegisterBodyDetails({super.key});
@@ -70,30 +71,43 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: Center(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Register Account !',
-                            style: Styles.textStyle28,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'Fill your details or continue with  \n social media',
-                            style: Styles.textStyle16Smei
-                                .copyWith(color: Color(0xff707B81)),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      )),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height * 0.25,
+                    //   child: Center(
+                    //       child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.end,
+                    //     children: [
+                    //       const Text(
+                    //         'Register Account !',
+                    //         style: Styles.textStyle28,
+                    //       ),
+                    //       const SizedBox(
+                    //         height: 8,
+                    //       ),
+                    //       Text(
+                    //         'Fill your details or continue with  \n social media',
+                    //         style: Styles.textStyle16Smei
+                    //             .copyWith(color: const Color(0xff707B81)),
+                    //         textAlign: TextAlign.center,
+                    //       )
+                    //     ],
+                    //   )),
+                    // ),
+                    const SizedBox(
+                      height: 60,
                     ),
-                    SizedBox(
-                      height: 20,
+                    // const Spacer(
+                    //   flex: 1,
+                    // ),
+                    const CustomTextForgetPassword(
+                      text: 'Registration',
+                      textDetails: 'please sign uo with your mail',
+                    ),
+                    // const Spacer(
+                    //   flex: 1,
+                    // ),
+                    const SizedBox(
+                      height: 80,
                     ),
                     CustomAllContentTextFormField(
                       validator: (name) {
@@ -180,6 +194,9 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                     const SizedBox(
                       height: 34,
                     ),
+                    // const Spacer(
+                    //   flex: 1,
+                    // ),
                     Center(
                         child: CustomButton(
                             onPressed: () {
@@ -220,6 +237,9 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.050,
                     ),
+                    // const Spacer(
+                    //   flex: 1,
+                    // ),
                     CustomWidgetRowText(
                       text: 'Already Have Account? ',
                       textColor: kThridColor,
@@ -232,6 +252,9 @@ class _RegisterBodyDetailsState extends State<RegisterBodyDetails> {
                     const SizedBox(
                       height: 8,
                     ),
+                    // const Spacer(
+                    //   flex: 1,
+                    // ),
                   ],
                 ),
               ),
