@@ -1,17 +1,17 @@
-import 'package:bloc/bloc.dart';
+import 'dart:developer';
 import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/search/data/repo/search_repsitery.dart';
 import 'package:equatable/equatable.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 part 'get_laptops_state.dart';
 
 class GetLaptopsCubit extends Cubit<GetLaptopsState> {
   GetLaptopsCubit(this.searchRepo) : super(GetLaptopsInitial());
- final SearchRepo searchRepo;
+  final SearchRepo searchRepo;
   Future<void> recommendedLaptops(List<String> laptops, int budget) async {
     try {
       emit(GetLaptopsLoading());
-      var result = await searchRepo.recommendedLaptops(laptops,budget);
+      var result = await searchRepo.recommendedLaptops(laptops, budget);
       result.fold((failure) {
         emit(
           GetLaptopsFaluire(
@@ -24,7 +24,7 @@ class GetLaptopsCubit extends Cubit<GetLaptopsState> {
         );
       });
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
   }
 }

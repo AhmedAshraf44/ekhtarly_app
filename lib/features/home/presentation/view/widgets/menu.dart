@@ -1,13 +1,6 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/features/home/data/model/profile.dart';
-<<<<<<< HEAD
-import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
-=======
 import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
-import 'package:flutter/cupertino.dart';
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -32,7 +25,6 @@ class _MyDrawerState extends State<MyDrawer> {
   Profile? profile;
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return Drawer(
         backgroundColor: const Color(0xffFFFFFF),
         elevation: 0,
@@ -41,9 +33,7 @@ class _MyDrawerState extends State<MyDrawer> {
             BlocBuilder<ProfileCubit, ProfileState>(
               builder: (context, state) {
                 if (state is ProfileSuccess) {
-                  return MyHeader(
-                    profile: state.profile,
-                  );
+                  return const MyHeader();
                 } else {
                   return Container();
                 }
@@ -54,42 +44,6 @@ class _MyDrawerState extends State<MyDrawer> {
                 GoRouter.of(context).push(AppRouter.kProfile);
               },
               child: const ListTile(
-=======
-    return Container(
-      child: Drawer(
-          backgroundColor: const Color(0xffFFFFFF),
-          elevation: 0,
-          child: ListView(
-            children: [
-              BlocBuilder<ProfileCubit, ProfileState>(
-                builder: (context, state) {
-                  if (state is ProfileSuccess) {
-                    return MyHeader();
-                  } else {
-                    return Container();
-                  }
-                },
-              ),
-              GestureDetector(
-                onTap: () {
-                  GoRouter.of(context).push(AppRouter.kProfile);
-                },
-                child: const ListTile(
-                  title: Text(
-                    'Profile',
-                    style: TextStyle(
-                        color: Color(0xff0D0D26),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15),
-                  ),
-                  leading: Icon(
-                    FontAwesomeIcons.user,
-                    size: 20,
-                  ),
-                ),
-              ),
-              const ListTile(
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
                 title: Text(
                   'Profile',
                   style: TextStyle(
@@ -103,19 +57,6 @@ class _MyDrawerState extends State<MyDrawer> {
                 ),
               ),
             ),
-            // const ListTile(
-            //   title: Text(
-            //     'Favourite',
-            //     style: TextStyle(
-            //         color: Color(0xff0D0D26),
-            //         fontWeight: FontWeight.w500,
-            //         fontSize: 15),
-            //   ),
-            //   leading: Icon(
-            //     FontAwesomeIcons.heart,
-            //     size: 20,
-            //   ),
-            // ),
             GestureDetector(
               onTap: () {
                 GoRouter.of(context).push(AppRouter.kComprasion);
@@ -177,7 +118,7 @@ class _MyDrawerState extends State<MyDrawer> {
 }
 
 class MyHeader extends StatefulWidget {
-  MyHeader({super.key, this.textcolor});
+  const MyHeader({super.key, this.textcolor});
   final Color? textcolor;
 
   @override
@@ -209,13 +150,8 @@ class _MyHeaderState extends State<MyHeader> {
                   image: AssetImage('assets/images/profile.png'))),
         ),
         Text(
-<<<<<<< HEAD
-          profile?.name ?? 'Jon Sina',
-          style: const TextStyle(
-=======
           profile.name ?? '',
-          style: TextStyle(
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
+          style: const TextStyle(
               color: Color(0xff0D0D26),
               fontSize: 20,
               fontWeight: FontWeight.w500),

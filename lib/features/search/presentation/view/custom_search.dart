@@ -5,9 +5,7 @@ import 'package:ekhtarly_app/features/home/presentation/view/widgets/newest_lapt
 import 'package:ekhtarly_app/features/search/data/model/program_model.dart';
 import 'package:ekhtarly_app/features/search/presentation/cubit/get_laptops/get_laptops_cubit.dart';
 import 'package:ekhtarly_app/features/search/presentation/cubit/search/search_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
@@ -28,7 +26,6 @@ class _CustomSearchState extends State<CustomSearch> {
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
-    ;
     return CustomScrollView(slivers: [
       SliverToBoxAdapter(
         child: Padding(
@@ -56,12 +53,13 @@ class _CustomSearchState extends State<CustomSearch> {
             ),
             slider(),
             Text.rich(TextSpan(children: [
-              TextSpan(text: 'Your Budget : ', style: Styles.textStyle15),
+              const TextSpan(text: 'Your Budget : ', style: Styles.textStyle15),
               TextSpan(
                   text: '${sliderValue.toInt()}',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16)),
             ])),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             selecting.isNotEmpty
@@ -87,7 +85,7 @@ class _CustomSearchState extends State<CustomSearch> {
       BlocBuilder<GetLaptopsCubit, GetLaptopsState>(
         builder: (context, state) {
           if (state is GetLaptopsSuccess) {
-            return SliverToBoxAdapter(
+            return const SliverToBoxAdapter(
               child: Text(
                 'Your Recommended Laptop',
                 style: Styles.textStyle20,
@@ -107,7 +105,7 @@ class _CustomSearchState extends State<CustomSearch> {
                 return Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: 10, horizontal: width * 0.2),
-                  child: Container(
+                  child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.30,
                     child: NewestLaptopsItem(
                       image: imageList[index],
@@ -119,7 +117,7 @@ class _CustomSearchState extends State<CustomSearch> {
               itemCount: 7,
             );
           } else if (state is GetLaptopsLoading) {
-            return SliverToBoxAdapter(
+            return const SliverToBoxAdapter(
                 child: Center(child: CircularProgressIndicator()));
           } else if (state is GetLaptopsFaluire) {
             return SliverToBoxAdapter(child: Text(state.messsage));

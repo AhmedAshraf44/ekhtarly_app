@@ -41,7 +41,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     if (state is ProfileSuccess) {
                       return Container(
                           color: kSecondaryColor,
-                          child: MyHeader(
+                          child: const MyHeader(
                             textcolor: Colors.black,
                           ));
                     } else {

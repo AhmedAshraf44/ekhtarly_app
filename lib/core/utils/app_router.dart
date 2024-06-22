@@ -1,25 +1,13 @@
-import 'package:dio/dio.dart';
-import 'package:ekhtarly_app/core/utils/api_service.dart';
 import 'package:ekhtarly_app/features/authentication/otp_verify_email/presentation/view/otp_view.dart';
 import 'package:ekhtarly_app/features/authentication/registration/presentation/view/register_view.dart';
 import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/features/comprasion/presentation/views/comprasion_view.dart';
-import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
-import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/home_view.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/change_password.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edit_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/setting.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
-<<<<<<< HEAD
-=======
-import 'package:ekhtarly_app/features/search/data/repo/search_repositert_implementation.dart';
-import 'package:ekhtarly_app/features/search/data/repo/search_repsitery.dart';
-import 'package:ekhtarly_app/features/search/presentation/cubit/get_laptops/get_laptops_cubit.dart';
-import 'package:ekhtarly_app/features/search/presentation/cubit/search/search_cubit.dart';
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
 import '../../features/authentication/forget_password/presentation/view/otp_forget_passwoed_view.dart';

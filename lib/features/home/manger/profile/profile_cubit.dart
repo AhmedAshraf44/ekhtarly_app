@@ -12,10 +12,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> getProfile() async {
     var result = await homeRepo.getprofile();
-<<<<<<< HEAD
 
-=======
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
     result.fold(
         (failure) => emit(
               ProfileFaluire(
@@ -27,12 +24,9 @@ class ProfileCubit extends Cubit<ProfileState> {
         ProfileSuccess(profile: profile),
       );
     });
-<<<<<<< HEAD
-=======
   }
 
   Profile getmyprofile() {
     return myprofile;
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
   }
 }

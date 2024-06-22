@@ -25,10 +25,7 @@ class SearchImpl extends SearchRepo {
         program.add(ProgramModel.fromjson(element));
       }
 
-<<<<<<< HEAD
       log('successs');
-=======
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
       return Right(program);
     } catch (e) {
       if (e is DioException) {

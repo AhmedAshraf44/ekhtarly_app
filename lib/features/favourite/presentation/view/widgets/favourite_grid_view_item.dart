@@ -40,7 +40,6 @@ class FavouriteGridViewItem extends StatelessWidget {
               height: 10,
             ),
             // Flexble
-<<<<<<< HEAD
             CustomTittleNewestLaptopsItem(title: laptops.name.toString()),
             CustomPriceNewestLaptopsItem(
               onPressed: () {
@@ -53,16 +52,8 @@ class FavouriteGridViewItem extends StatelessWidget {
               ),
               //const Icon(Icons.favorite, color: Colors.red),
               price: laptops.price!,
-=======
-            CustomTittleNewestLaptopsItem(
-                title: laptops.name.toString()),
-            CustomPriceNewestLaptopsItem(onPressed: (){
-              BlocProvider.of<FavouriteCubit>(context).deleteToFavourite(id: laptops.id!);
-            },iconColor: const Icon(Icons.favorite, color: Colors.red),
-              price: laptops.price!.toInt(),
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
             ),
-            // const Spacer(),
+            
           ],
         ),
       ),

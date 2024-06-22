@@ -26,15 +26,11 @@ class SearchView extends StatelessWidget {
           centerTitle: true,
         ),
         backgroundColor: kBackgroundColor,
-<<<<<<< HEAD
-        body: const CustomSearch(),
-=======
         body: BlocProvider(
           create: (context) =>
               GetLaptopsCubit(SearchImpl(apiService: ApiService(Dio()))),
-          child: CustomSearch(),
+          child: const CustomSearch(),
         ),
->>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
       ),
     );
   }
