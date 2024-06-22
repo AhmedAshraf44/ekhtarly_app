@@ -25,12 +25,12 @@ class IntroductionViewBody extends StatelessWidget {
       done: const ArrowIcon(),
       next: const ArrowIcon(),
       onSkip: () {
-        GoRouter.of(context).push(
+        GoRouter.of(context).pushReplacement(
           AppRouter.kLoginView,
         );
       },
       onDone: () {
-        GoRouter.of(context).push(
+        GoRouter.of(context).pushReplacement(
           AppRouter.kLoginView,
         );
       },

@@ -4,7 +4,12 @@ import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/features/home/data/model/profile.dart';
+<<<<<<< HEAD
 import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
+=======
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
+import 'package:flutter/cupertino.dart';
+>>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -36,12 +41,6 @@ class _AccountProfileBodyState extends State<AccountProfileBody> {
           style: Styles.textStyle20,
         ),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.keyboard_arrow_left),
-          onPressed: () {
-            GoRouter.of(context).pop();
-          },
-        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -49,12 +48,17 @@ class _AccountProfileBodyState extends State<AccountProfileBody> {
           child: BlocBuilder<ProfileCubit, ProfileState>(
             builder: (context, state) {
               if (state is ProfileSuccess) {
+<<<<<<< HEAD
                 log('hii');
 
                 return ProfileBody(profile: state.profile);
               } else {
                 log('fa');
 
+=======
+                return ProfileBody(profile: state.profile);
+              } else {
+>>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
                 return Container();
               }
             },

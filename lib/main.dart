@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:ekhtarly_app/core/utils/api_service.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/service_locator.dart';
 import 'package:ekhtarly_app/features/authentication/data/repos/auth_repo_impl.dart';
@@ -9,11 +11,11 @@ import 'package:ekhtarly_app/features/authentication/manger/otp_verify_email_cub
 import 'package:ekhtarly_app/features/authentication/manger/register_cubit/register_cubit.dart';
 import 'package:ekhtarly_app/features/comprasion/presentation/view_model/cubit/comprasion_cubit.dart';
 import 'package:ekhtarly_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/change_password/change_password_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/manger/newest_laptops_cubit/newest_laptops_cubit.dart';
-import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/search/data/repo/search_repositert_implementation.dart';
-import 'package:ekhtarly_app/features/search/presentation/cubit/search_cubit.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/search/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -93,10 +95,13 @@ class EkhtarlyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SearchCubit(getIt.get<SearchImpl>()),
         ),
+        BlocProvider(
+            create: (context) => ProfileCubit(HomeRepoImpl(ApiService(Dio()))))
       ],
       child: MaterialApp.router(
         // locale: DevicePreview.locale(context),
         // builder: DevicePreview.appBuilder,
+
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
         theme: ThemeData(

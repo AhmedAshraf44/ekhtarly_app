@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ekhtarly_app/core/errors/failure.dart';
+import 'package:ekhtarly_app/core/models/newest_laptops_details_model/laptops.dart';
 import 'package:ekhtarly_app/core/utils/api_service.dart';
 import 'package:ekhtarly_app/features/search/data/model/program_model.dart';
 import 'package:ekhtarly_app/features/search/data/repo/search_repsitery.dart';
@@ -24,8 +25,35 @@ class SearchImpl extends SearchRepo {
         program.add(ProgramModel.fromjson(element));
       }
 
+<<<<<<< HEAD
       log('successs');
+=======
+>>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
       return Right(program);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Laptops>>> recommendedLaptops(
+      List<String> programs, int budget) async {
+    List<Laptops> laptops = [];
+    try {
+      var data = await apiService.getWithList(
+        budget: budget,
+        programs: programs,
+        endpoint: 'api/programs/recommend?limit=10',
+      );
+
+      for (var element in data['scoredLaps']) {
+        laptops.add(Laptops.fromJson(element));
+      }
+
+      return Right(laptops);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.formDioError(e));

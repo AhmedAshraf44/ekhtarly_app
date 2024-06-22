@@ -12,6 +12,13 @@ import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_edi
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/profile_body.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/setting.dart';
 import 'package:ekhtarly_app/features/introduction_screen/presentation/view/intro_view.dart';
+<<<<<<< HEAD
+=======
+import 'package:ekhtarly_app/features/search/data/repo/search_repositert_implementation.dart';
+import 'package:ekhtarly_app/features/search/data/repo/search_repsitery.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/get_laptops/get_laptops_cubit.dart';
+import 'package:ekhtarly_app/features/search/presentation/cubit/search/search_cubit.dart';
+>>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/forget_password/presentation/view/change_new_password_view.dart';
@@ -68,10 +75,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kHomeView,
-      builder: (context, state) => BlocProvider(
-        create: (context) => ProfileCubit(HomeRepoImpl(ApiService(Dio()))),
-        child: const HomeView(),
-      ),
+      builder: (context, state) => const HomeView(),
     ),
     GoRoute(
       path: kSetting,

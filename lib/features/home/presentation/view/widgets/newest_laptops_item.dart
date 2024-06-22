@@ -31,7 +31,7 @@ class _NewestLaptopsItemState extends State<NewestLaptopsItem> {
   bool value = false;
   @override
   Widget build(BuildContext context) {
-    value = widget.laptops.isFavorite!;
+    value = widget.laptops.isFavorite??false;
     return GestureDetector(
       onTap: () {
         GoRouter.of(context)
@@ -71,7 +71,11 @@ class _NewestLaptopsItemState extends State<NewestLaptopsItem> {
                 }
               },
               child: CustomPriceNewestLaptopsItem(
+<<<<<<< HEAD
                 price: widget.laptops.price!,
+=======
+                price: widget.laptops.price!.toInt(),
+>>>>>>> 972a371abda74f5579881c1e7c40d5508fa3ef30
                 onPressed: () {
                   if (widget.laptops.isFavorite! == false) {
                     BlocProvider.of<FavouriteCubit>(context)

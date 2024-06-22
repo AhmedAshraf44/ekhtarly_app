@@ -5,6 +5,6 @@ class ProgramModel {
   ProgramModel({required this.name, required this.id});
 
   factory ProgramModel.fromjson(Map<String, dynamic> json) {
-    return ProgramModel(name: json['name'], id: json['id']);
+    return ProgramModel(name: json['name'], id: json['_id']);
   }
 }
