@@ -75,10 +75,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kHomeView,
-      builder: (context, state) => BlocProvider(
-        create: (context) => ProfileCubit(HomeRepoImpl(ApiService(Dio()))),
-        child: const HomeView(),
-      ),
+      builder: (context, state) => const HomeView(),
     ),
     GoRoute(
       path: kSetting,

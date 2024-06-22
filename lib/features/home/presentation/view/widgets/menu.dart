@@ -1,6 +1,6 @@
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/features/home/data/model/profile.dart';
-import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -36,9 +36,7 @@ class _MyDrawerState extends State<MyDrawer> {
               BlocBuilder<ProfileCubit, ProfileState>(
                 builder: (context, state) {
                   if (state is ProfileSuccess) {
-                    return MyHeader(
-                      profile: state.profile,
-                    );
+                    return MyHeader();
                   } else {
                     return Container();
                   }
@@ -136,13 +134,25 @@ class _MyDrawerState extends State<MyDrawer> {
   }
 }
 
-class MyHeader extends StatelessWidget {
-  MyHeader({super.key, this.textcolor, this.profile});
+class MyHeader extends StatefulWidget {
+  MyHeader({super.key, this.textcolor});
   final Color? textcolor;
 
-  Profile? profile;
+  @override
+  State<MyHeader> createState() => _MyHeaderState();
+}
+
+class _MyHeaderState extends State<MyHeader> {
+  late Profile profile;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    profile = BlocProvider.of<ProfileCubit>(context).getmyprofile();
+
     return Container(
       width: double.infinity,
       height: 200,
@@ -157,15 +167,15 @@ class MyHeader extends StatelessWidget {
                   image: AssetImage('assets/images/profile.png'))),
         ),
         Text(
-          profile?.name ?? 'Jon Sina',
+          profile.name ?? '',
           style: TextStyle(
               color: Color(0xff0D0D26),
               fontSize: 20,
               fontWeight: FontWeight.w500),
         ),
         Text(
-          profile?.email ?? 'jonsina@gmail.com',
-          style: TextStyle(color: textcolor ?? const Color(0xff95969D)),
+          profile.email ?? 'jonsina@gmail.com',
+          style: TextStyle(color: widget.textcolor ?? const Color(0xff95969D)),
         ),
       ]),
     );

@@ -2,7 +2,7 @@ import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
 import 'package:ekhtarly_app/core/utils/widgets/custom_button.dart';
 import 'package:ekhtarly_app/features/home/data/model/profile.dart';
-import 'package:ekhtarly_app/features/home/presentation/manger/profile/profile_cubit.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,12 +30,6 @@ class _AccountProfileBodyState extends State<AccountProfileBody> {
         automaticallyImplyLeading: false,
         title: const Text('Profile'),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.keyboard_arrow_left),
-          onPressed: () {
-            GoRouter.of(context).pop();
-          },
-        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -43,10 +37,8 @@ class _AccountProfileBodyState extends State<AccountProfileBody> {
           child: BlocBuilder<ProfileCubit, ProfileState>(
             builder: (context, state) {
               if (state is ProfileSuccess) {
-
                 return ProfileBody(profile: state.profile);
               } else {
-
                 return Container();
               }
             },

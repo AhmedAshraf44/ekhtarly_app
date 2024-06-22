@@ -1,7 +1,10 @@
 import 'package:ekhtarly_app/constants.dart';
 import 'package:ekhtarly_app/core/utils/app_router.dart';
+import 'package:ekhtarly_app/features/home/data/model/profile.dart';
+import 'package:ekhtarly_app/features/home/manger/profile/profile_cubit.dart';
 import 'package:ekhtarly_app/features/home/presentation/view/widgets/menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -36,7 +39,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 borderRadius: BorderRadius.circular(12),
                 child: Container(
                     color: kSecondaryColor,
-                    child:  MyHeader(
+                    child: MyHeader(
                       textcolor: Colors.black,
                     ))),
             const SizedBox(

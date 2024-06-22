@@ -45,7 +45,6 @@ class _SettingScreenState extends State<SettingScreen> {
                       return Container(
                           color: kSecondaryColor,
                           child: MyHeader(
-                            profile: state.profile,
                             textcolor: Colors.black,
                           ));
                     } else {
